@@ -13,7 +13,7 @@ function Sidebar({ isOpen }) {
                 <ul className="nav">
 
                     {routes.map((route) => {
-                        const IconComponent = Icons[route.icon]; // Resuelve el ícono desde el objeto Icons
+                        const IconComponent = Icons[route.icon];
                         return (
                             <SidebarLink
                                 key={route.to || route.text}

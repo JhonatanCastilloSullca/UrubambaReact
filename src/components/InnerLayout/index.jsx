@@ -9,7 +9,7 @@ function MainLayout() {
     const toggleSidebar = () => setSidebarOpen(prev => !prev);
 
     return (
-        <div className="flex overflow-x-hidden ">
+        <div className="flex overflow-x-hidden min-h-screen">
             <Sidebar isOpen={sidebarOpen} />
             <div className="flex-1 bg-secondBackAdmin-light dark:bg-secondBackAdmin-dark">
                 <Header toggleSidebar={toggleSidebar} />

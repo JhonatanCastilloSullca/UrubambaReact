@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Dashboard from '../../pages/Dashboard';
 import Roles from '../../pages/Roles';
 import Page404 from '../../pages/404';
@@ -10,32 +10,52 @@ import Vias from '../../pages/Vias';
 import FichaCatalogacionEspaciosPublicos from '../../pages/FichaCatalogacionEspaciosPublicos';
 import Login from '../../pages/Login';
 import Logout from '../../pages/Logout';
-import { AuthProvider } from '../Services/Auth/auth';
+import { AuthProvider, useAuth } from '../Services/Auth/auth';
+import FichaRegistroCatalogacionInmuebles from '../../pages/FichaRegistroCatalogacionInmuebles';
 
+function ProtectedRoute({ children }) {
+    const { user } = useAuth();
+    return user ? children : <Navigate to="/login" replace />;
+}
 
+function PublicRoute({ children }) {
+    const { user } = useAuth();
+    return user ? <Navigate to="/" replace /> : children;
+}
 
-
-
-// Routes Config
 function Layout() {
     return (
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
-                    <Route path="login" element={<Login />} />
+                    <Route
+                        path="login"
+                        element={
+                            <PublicRoute>
+                                <Login />
+                            </PublicRoute>
+                        }
+                    />
                     <Route path="logout" element={<Logout />} />
-
-
-                    <Route path="/" element={<MainLayout />}>
+                    <Route
+                        path="/"
+                        element={
+                            <ProtectedRoute>
+                                <MainLayout />
+                            </ProtectedRoute>
+                        }
+                    >
                         <Route index element={<Dashboard />} />
                         <Route path="roles" element={<Roles />} />
                         <Route path="configuracion/sectores" element={<Sectores />} />
                         <Route path="configuracion/manzanas" element={<Manzanas />} />
                         <Route path="configuracion/vias" element={<Vias />} />
                         <Route path="fichas/ficha-catalogacion-espacios-publicos" element={<FichaCatalogacionEspaciosPublicos />} />
+                        <Route path="fichas/ficha-registro-catalogacion-inmuebles" element={<FichaRegistroCatalogacionInmuebles />} />
                         <Route path="404" element={<Page404 />} />
                         <Route path="403" element={<Page403 />} />
                     </Route>
+                    <Route path="*" element={<Navigate to="/404" replace />} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

@@ -28,6 +28,7 @@ const routes = [
         icon: 'MenuIcon',
         subLinks: [
             { to: '/fichas/ficha-catalogacion-espacios-publicos', text: 'Ficha de catalogación espacios públicos' },
+            { to: '/fichas/ficha-registro-catalogacion-inmuebles', text: 'Ficha de registro de catalogación de inmuebles' },
         ],
     },
     {
