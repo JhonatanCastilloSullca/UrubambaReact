@@ -1,6 +1,6 @@
-function NumeroForm({ nro, text, size, required }) {
+function NumeroForm({ nro, text, size, required, className = '' }) {
     return (
-        <div className="flex gap-2 items-center">
+        <div className={`flex gap-2 items-center ${className}`}>
             {nro && (
                 <div
                     className={`flex justify-center items-center h-8 w-8 flex-shrink-0 flex-grow-0 rounded-sm 

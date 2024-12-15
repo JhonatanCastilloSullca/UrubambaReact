@@ -1913,6 +1913,7 @@ function FichaCatalogacionEspaciosPublicos() {
                             </div>
                         </div>
                     </MainCard>
+
                     <div className="mt-4">
                         <button
                             type="submit"

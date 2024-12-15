@@ -1,11 +1,13 @@
-const OnlyLabelTd = ({ rowspan = 1, colspan = 1, label = '', orientation = 'horizontal' }) => {
+const OnlyLabelTd = ({ rowspan = 1, colspan = 1, label = '', orientation = 'horizontal', className = '' }) => {
     const isVertical = orientation === 'vertical';
 
     return (
         <td
             rowSpan={rowspan}
             colSpan={colspan}
-            className={`p-0 border border-gray-300 text-xs ${isVertical ? 'w-8 min-w-8 max-w-8 align-middle text-vertical rotate-180' : ''}`}
+            className={`p-0 border border-gray-300 text-xs 
+                        ${isVertical ? 'w-8 min-w-8 max-w-8 align-middle text-vertical rotate-180' : ''} 
+                        ${className}`}
         >
             <div className="p-0 m-0">
                 {label}
@@ -13,4 +15,5 @@ const OnlyLabelTd = ({ rowspan = 1, colspan = 1, label = '', orientation = 'hori
         </td>
     );
 };
+
 export default OnlyLabelTd;

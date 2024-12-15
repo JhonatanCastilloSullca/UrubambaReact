@@ -17,6 +17,10 @@ function FichaRegistroCatalogacionInmuebles() {
         control,
         name: "analisis_bloques_construidos",
     });
+    const { fields: fields_analisis_fachadas, append: append_fields_analisis_fachadas, remove: remove_fields_analisis_fachadas } = useFieldArray({
+        control,
+        name: "analisis_fachadas",
+    });
 
     const onSubmit = (data) => {
         console.log("Datos enviados:", data);
@@ -28,7 +32,6 @@ function FichaRegistroCatalogacionInmuebles() {
             </h3>
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)}>
-
                     <MainCard>
                         <div className="grid grid-cols-12 gap-4">
                             <div className="col-span-3 flex flex-col gap-2">
@@ -628,7 +631,6 @@ function FichaRegistroCatalogacionInmuebles() {
                                         <tbody>
                                             {fields_no_const.map((item, index) => (
                                                 <tr key={item.id}>
-
                                                     <td className="">
                                                         <button
                                                             type="button"
@@ -2133,7 +2135,884 @@ function FichaRegistroCatalogacionInmuebles() {
                             </div>
                         </div>
                     </MainCard>
+                    <MainCard>
+                        <NumeroForm
+                            nro="232"
+                            text="LEVANTAMIENTO PLANIMETRICO DE FACHADAS"
+                            size="sm"
+                        />
+                        <div className="grid grid-cols-12 gap-4">
+                            <div className="col-span-3 flex flex-col gap-2">
+                                <NumeroForm
+                                    text="FACHADA 1"
+                                    size="xs"
+                                />
+                                <input
+                                    type="file"
+                                    id="imagen_fachada_1"
+                                    accept="image/*"
+                                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    {...register('imagen_fachada_1', {
+                                        required: 'La imagen es obligatoria.',
+                                        validate: {
+                                            fileType: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                            },
+                                            fileSize: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                            }
+                                        }
+                                    })}
+                                />
+                                {errors.imagen_fachada_1 && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.imagen_fachada_1.message}
+                                    </span>
+                                )}
+                                <div className="flex gap-4 mt-2">
+                                    <NumeroForm
+                                        text="Codigo:"
+                                        size="xs"
+                                    />
+                                    <div className="flex flex-col">
+                                        <OnlyInputError
+                                            name={`codigo_imagen_fachada_1`}
+                                            register={register}
+                                            errors={errors.codigo_imagen_fachada_1}
+                                            maxLength={10}
+                                            isRequired={true}
+                                            tipo="letras"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-span-3 flex flex-col gap-2">
+                                <NumeroForm
+                                    text="FACHADA 2"
+                                    size="xs"
+                                />
+                                <input
+                                    type="file"
+                                    id="imagen_fachada_2"
+                                    accept="image/*"
+                                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    {...register('imagen_fachada_2', {
+                                        required: 'La imagen es obligatoria.',
+                                        validate: {
+                                            fileType: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                            },
+                                            fileSize: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                            }
+                                        }
+                                    })}
+                                />
+                                {errors.imagen_fachada_2 && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.imagen_fachada_2.message}
+                                    </span>
+                                )}
+                                <div className="flex gap-4 mt-2">
+                                    <NumeroForm
+                                        text="Codigo:"
+                                        size="xs"
+                                    />
+                                    <div className="flex flex-col">
+                                        <OnlyInputError
+                                            name={`codigo_imagen_fachada_2`}
+                                            register={register}
+                                            errors={errors.codigo_imagen_fachada_2}
+                                            maxLength={10}
+                                            isRequired={true}
+                                            tipo="letras"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-span-3 flex flex-col gap-2">
+                                <NumeroForm
+                                    text="FACHADA 3"
+                                    size="xs"
+                                />
+                                <input
+                                    type="file"
+                                    id="imagen_fachada_3"
+                                    accept="image/*"
+                                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    {...register('imagen_fachada_3', {
+                                        required: 'La imagen es obligatoria.',
+                                        validate: {
+                                            fileType: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                            },
+                                            fileSize: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                            }
+                                        }
+                                    })}
+                                />
+                                {errors.imagen_fachada_3 && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.imagen_fachada_3.message}
+                                    </span>
+                                )}
+                                <div className="flex gap-4 mt-2">
+                                    <NumeroForm
+                                        text="Codigo:"
+                                        size="xs"
+                                    />
+                                    <div className="flex flex-col">
+                                        <OnlyInputError
+                                            name={`codigo_imagen_fachada_3`}
+                                            register={register}
+                                            errors={errors.codigo_imagen_fachada_3}
+                                            maxLength={10}
+                                            isRequired={true}
+                                            tipo="letras"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-span-3 flex flex-col gap-2">
+                                <NumeroForm
+                                    text="FACHADA 4"
+                                    size="xs"
+                                />
+                                <input
+                                    type="file"
+                                    id="imagen_fachada_4"
+                                    accept="image/*"
+                                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    {...register('imagen_fachada_4', {
+                                        required: 'La imagen es obligatoria.',
+                                        validate: {
+                                            fileType: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                            },
+                                            fileSize: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                            }
+                                        }
+                                    })}
+                                />
+                                {errors.imagen_fachada_4 && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.imagen_fachada_4.message}
+                                    </span>
+                                )}
+                                <div className="flex gap-4 mt-2">
+                                    <NumeroForm
+                                        text="Codigo:"
+                                        size="xs"
+                                    />
+                                    <div className="flex flex-col">
+                                        <OnlyInputError
+                                            name={`codigo_imagen_fachada_4`}
+                                            register={register}
+                                            errors={errors.codigo_imagen_fachada_4}
+                                            maxLength={10}
+                                            isRequired={true}
+                                            tipo="letras"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </MainCard>
+                    <MainCard>
+                        <NumeroForm
+                            text="CULTURA VIVA"
+                            size="sm"
+                        />
+                        <div className="grid grid-cols-12 gap-4">
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="241"
+                                    text="IMAGEN"
+                                    size="xs"
+                                />
+                                <input
+                                    type="file"
+                                    id="imagen_cultura_viva"
+                                    accept="image/*"
+                                    className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    {...register('imagen_cultura_viva', {
+                                        required: 'La imagen es obligatoria.',
+                                        validate: {
+                                            fileType: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                            },
+                                            fileSize: (fileList) => {
+                                                const file = fileList?.[0];
+                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                            }
+                                        }
+                                    })}
+                                />
+                                {errors.imagen_cultura_viva && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.imagen_cultura_viva.message}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="242"
+                                    text="DESCRIPCION"
+                                    size="xs"
+                                />
 
+                                <div className="my-4">
+                                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Descripcion..."
+                                        {...register('cultura_viva_descripcion', {
+                                            required: 'Este campo es obligatorio.',
+                                            minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                            pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        })}
+                                    >
+                                    </textarea>
+                                </div>
+                                {errors.cultura_viva_descripcion && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.cultura_viva_descripcion.message}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="243"
+                                    text="DESCRIPCION"
+                                    size="xs"
+                                />
+
+                                <div className="my-4">
+                                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Observaciones..."
+                                        {...register('cultura_viva_observaciones', {
+                                            required: 'Este campo es obligatorio.',
+                                            minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                            pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        })}
+                                    >
+                                    </textarea>
+                                </div>
+                                {errors.cultura_viva_observaciones && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.cultura_viva_observaciones.message}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    </MainCard>
+                    <MainCard>
+                        <h4 className="mb-4 font-bold text-xl text-textAdmin-light dark:text-textAdmin-dark">
+                            ANALISIS DE BLOQUES NO CONSTRUIDOS
+                        </h4>
+                        <div className="grid grid-cols-12 gap-4">
+                            <div className="col-span-12 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="214"
+                                    text="ANALISIS DE BLOQUES NO CONSTRUIDOS"
+                                    size="sm"
+                                />
+                                <div className="w-full overflow-x-auto">
+                                    <table className="table-auto border-collapse border-none border-gray-300 w-full text-center">
+                                        <thead>
+                                            <tr>
+                                                <td rowSpan="6" className="w-8 min-w-8 max-w-8 p-0 border-none border-gray-300 align-middle text-vertical rotate-180 text-xs">
+                                                    <button
+                                                        type="button"
+                                                        className="h-8 w-8 bg-green-600 rounded-sm"
+                                                        onClick={() => append_fields_analisis_fachadas({ carac_fachada_sectores: "", carac_fachada_nro_unidad_cat: "" })}
+                                                    >
+                                                        +
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <OnlyLabelTd label="233" />
+                                                <OnlyLabelTd label="234" />
+                                                <OnlyLabelTd colspan={2} label="235" />
+                                                <OnlyLabelTd colspan={4} label="236" />
+                                                <OnlyLabelTd colspan={4} label="237" />
+                                                <OnlyLabelTd colspan={7} label="221" />
+                                                <OnlyLabelTd colspan={8} label="238" />
+                                                <OnlyLabelTd colspan={4} label="239" />
+                                                <OnlyLabelTd colspan={8} label="240" />
+                                                <OnlyLabelTd colspan={4} label="215" />
+                                            </tr>
+                                            <tr>
+                                                <OnlyLabelTd rowspan={2} label="ELEMENTO" orientation="vertical" />
+                                                <OnlyLabelTd rowspan={2} label="CANTIDAD" orientation="vertical" />
+
+                                                <OnlyLabelTd colspan={2} label="FACTURA" />
+                                                <OnlyLabelTd colspan={4} label="UBICACION" />
+                                                <OnlyLabelTd colspan={4} label="EPOCA" />
+                                                <OnlyLabelTd colspan={7} label="FILIACION ESTILISTICA" />
+                                                <OnlyLabelTd colspan={8} label="MATERIAL" />
+                                                <OnlyLabelTd colspan={4} label="DETALLES" />
+                                                <OnlyLabelTd colspan={8} label="COLOR" />
+                                                <OnlyLabelTd colspan={4} label="ESTADO CONSERV." />
+                                            </tr>
+                                            <tr>
+                                                <OnlyLabelTd label="Simple" orientation="vertical" />
+                                                <OnlyLabelTd label="Elaborado" orientation="vertical" />
+                                                <OnlyLabelTd label="Fachada 1" orientation="vertical" />
+                                                <OnlyLabelTd label="Fachada 2" orientation="vertical" />
+                                                <OnlyLabelTd label="Fachada 3" orientation="vertical" />
+                                                <OnlyLabelTd label="Fachada 4" orientation="vertical" />
+                                                <OnlyLabelTd label="Prehispanico" orientation="vertical" />
+                                                <OnlyLabelTd label="Colonial" orientation="vertical" />
+                                                <OnlyLabelTd label="Republicano" orientation="vertical" />
+                                                <OnlyLabelTd label="Contemp." orientation="vertical" />
+                                                <OnlyLabelTd label="Manierista" orientation="vertical" />
+                                                <OnlyLabelTd label="Plateresco" orientation="vertical" />
+                                                <OnlyLabelTd label="Barroco" orientation="vertical" />
+                                                <OnlyLabelTd label="Neoclasico" orientation="vertical" />
+                                                <OnlyLabelTd label="Rococo" orientation="vertical" />
+                                                <OnlyLabelTd label="Mudejar" orientation="vertical" />
+                                                <OnlyLabelTd label="Otros" orientation="vertical" />
+                                                <OnlyLabelTd label="Tierra" orientation="vertical" />
+                                                <OnlyLabelTd label="Ladrillo" orientation="vertical" />
+                                                <OnlyLabelTd label="Piedra" orientation="vertical" />
+                                                <OnlyLabelTd label="yeso" orientation="vertical" />
+                                                <OnlyLabelTd label="Concreto" orientation="vertical" />
+                                                <OnlyLabelTd label="Madera" orientation="vertical" />
+                                                <OnlyLabelTd label="metal" orientation="vertical" />
+                                                <OnlyLabelTd label="Vidrio" orientation="vertical" />
+                                                <OnlyLabelTd label="Rejas" orientation="vertical" />
+                                                <OnlyLabelTd label="Balaustres" orientation="vertical" />
+                                                <OnlyLabelTd label="Celosias" orientation="vertical" />
+                                                <OnlyLabelTd label="Casetones" orientation="vertical" />
+                                                <OnlyLabelTd label="Blanco" orientation="vertical" />
+                                                <OnlyLabelTd label="Marfil" orientation="vertical" />
+                                                <OnlyLabelTd label="Crema" orientation="vertical" />
+                                                <OnlyLabelTd label="Azul" orientation="vertical" />
+                                                <OnlyLabelTd label="Marron" orientation="vertical" />
+                                                <OnlyLabelTd label="Verde" orientation="vertical" />
+                                                <OnlyLabelTd label="Natural" orientation="vertical" />
+                                                <OnlyLabelTd label="Otros" orientation="vertical" />
+                                                <OnlyLabelTd label="Bueno" orientation="vertical" />
+                                                <OnlyLabelTd label="Regular" orientation="vertical" />
+                                                <OnlyLabelTd label="Malo" orientation="vertical" />
+                                                <OnlyLabelTd label="Ruinoso" orientation="vertical" />
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {fields_analisis_fachadas.map((item, index) => (
+                                                <tr key={item.id}>
+                                                    <td className="">
+                                                        <button
+                                                            type="button"
+                                                            className="w-8 bg-red-600 rounded-sm"
+                                                            onClick={() => remove_fields_analisis_fachadas(index)}
+                                                        >
+                                                            -
+                                                        </button>
+                                                    </td>
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._elemento_codigo`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._elemento_codigo}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._cantidad`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._cantidad}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._facturacion_simple`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._facturacion_simple}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._facturacion_elaborado`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._facturacion_elaborado}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_1`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_1}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_2`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_2}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_3`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_3}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_4`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_4}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._epoca_prehispanico`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._epoca_prehispanico}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._epoca_colonial`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._epoca_colonial}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._epoca_republicano`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._epoca_republicano}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._epoca_contemp`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._epoca_contemp}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_manierista`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_manierista}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_plateresco`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_plateresco}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_barroco`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_barroco}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_neoclasico`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_neoclasico}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_rococo`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_rococo}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_mudejar`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_mudejar}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_otros`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_otros}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_tierra`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_tierra}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_ladrillo`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_ladrillo}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_piedra`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_piedra}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_yeso`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_yeso}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_concreto`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_concreto}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_madera`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_madera}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_metal`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_metal}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._material_vidrio`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._material_vidrio}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._detalles_rejas`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._detalles_rejas}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._detalles_balaustres`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._detalles_balaustres}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._detalles_celosias`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._detalles_celosias}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._detalles_casetones`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._detalles_casetones}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_blanco`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_blanco}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_marfil`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_marfil}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_crema`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_crema}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_azul`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_azul}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_marron`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_marron}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_verde`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_verde}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_natural`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_natural}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._color_otros`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._color_otros}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._estado_conserv_bueno`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._estado_conserv_bueno}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._estado_conserv_regular`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._estado_conserv_regular}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._estado_conserv_malo`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._estado_conserv_malo}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                    <OnlyInputLetras
+                                                        name={`analisis_fachadas.${index}._estado_conserv_ruinoso`}
+                                                        register={register}
+                                                        errors={errors.analisis_fachadas?.[index]?._estado_conserv_ruinoso}
+                                                        maxLength={1}
+                                                        isRequired={true}
+                                                        tipo="letras"
+                                                    />
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-span-12 flex flex-col gap-2">
+                            <div className="my-4">
+                                <NumeroForm
+                                    nro="204"
+                                    text="OBSERVACIONES"
+                                    size="sm"
+                                />
+                                <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Observaciones..."
+                                    {...register('analisis_fachadas_observaciones', {
+                                        required: 'Este campo es obligatorio.',
+                                        minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                        maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                        pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                    })}
+                                >
+                                </textarea>
+                            </div>
+                            {errors.analisis_fachadas_observaciones && (
+                                <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                    <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                    {errors.analisis_fachadas_observaciones.message}
+                                </span>
+                            )}
+                        </div>
+                    </MainCard>
+                    <MainCard>
+                        <div className="grid grid-cols-12 gap-4">
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="1"
+                                    text="FECHA"
+                                    size="sm"
+                                />
+                                <input
+                                    type="date"
+                                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    {...register('fecha_inspeccion', {
+                                        required: 'Este campo es obligatorio.',
+                                        validate: value => new Date(value) <= new Date() || 'La fecha no puede ser futura.',
+                                    })}
+                                />
+                                {errors.fecha_inspeccion && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.fecha_inspeccion.message}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="2"
+                                    text="HORA"
+                                    size="sm"
+                                />
+                                <input
+                                    type="time"
+                                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    {...register('hora_inspeccion', {
+                                        required: 'Este campo es obligatorio.',
+                                        validate: value => value !== '' || 'Debe seleccionar una hora válida.',
+                                    })}
+                                />
+                                {errors.hora_inspeccion && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.hora_inspeccion.message}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="3"
+                                    text="BRIGADA"
+                                    size="sm"
+                                />
+                                <OnlyInputError
+                                    name={`brigada`}
+                                    register={register}
+                                    errors={errors.brigada}
+                                    maxLength={10}
+                                    isRequired={true}
+                                    tipo="letras"
+                                />
+                            </div>
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="1"
+                                    text="COORDINADOR DE BRIGADA"
+                                    size="sm"
+                                />
+                                <OnlyInputError
+                                    name={`coordinador_brigada`}
+                                    register={register}
+                                    errors={errors.coordinador_brigada}
+                                    maxLength={10}
+                                    isRequired={true}
+                                    tipo="letras"
+                                />
+                            </div>
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="2"
+                                    text="TECNICO CATALOGADOR"
+                                    size="sm"
+                                />
+                                <OnlyInputError
+                                    name={`tecnico_catalogador`}
+                                    register={register}
+                                    errors={errors.tecnico_catalogador}
+                                    maxLength={10}
+                                    isRequired={true}
+                                    tipo="letras"
+                                />
+                            </div>
+                            <div className="col-span-4 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="3"
+                                    text="PROPIETARIO"
+                                    size="sm"
+                                />
+                                <OnlyInputError
+                                    name={`propietario`}
+                                    register={register}
+                                    errors={errors.propietario}
+                                    maxLength={10}
+                                    isRequired={true}
+                                    tipo="letras"
+                                />
+                            </div>
+                        </div>
+                    </MainCard>
                     <div className="mt-4">
                         <button
                             type="submit"

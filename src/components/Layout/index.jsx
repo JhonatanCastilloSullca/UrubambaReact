@@ -12,6 +12,7 @@ import Login from '../../pages/Login';
 import Logout from '../../pages/Logout';
 import { AuthProvider, useAuth } from '../Services/Auth/auth';
 import FichaRegistroCatalogacionInmuebles from '../../pages/FichaRegistroCatalogacionInmuebles';
+import FichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/FichaRegistroCatalogacionInmueblesAreaMonumental';
 
 function ProtectedRoute({ children }) {
     const { user } = useAuth();
@@ -52,6 +53,7 @@ function Layout() {
                         <Route path="configuracion/vias" element={<Vias />} />
                         <Route path="fichas/ficha-catalogacion-espacios-publicos" element={<FichaCatalogacionEspaciosPublicos />} />
                         <Route path="fichas/ficha-registro-catalogacion-inmuebles" element={<FichaRegistroCatalogacionInmuebles />} />
+                        <Route path="fichas/ficha-registro-catalogacion-inmuebles-area-monumental" element={<FichaRegistroCatalogacionInmueblesAreaMonumental />} />
                         <Route path="404" element={<Page404 />} />
                         <Route path="403" element={<Page403 />} />
                     </Route>
