@@ -16,10 +16,10 @@ function Login() {
         <div className="w-full m-0 min-h-screen flex flex-col">
             <div className="page-content mt-0 flex-grow p-6 items-center flex bg-backAdmin-light dark:bg-backAdmin-dark">
                 <div className="w-full mx-auto flex flex-row max-w-6xl">
-                    <div className="basis-5/12 bg-[url('https://placehold.jp/500x333.png')] bg-cover bg-center"></div>
+                    <div className="basis-5/12 bg-[url('https://i1.sndcdn.com/artworks-000102934157-8ipbcu-t500x500.jpg')] bg-cover bg-center"></div>
                     <div className="basis-7/12">
                         <div className="py-5 px-4">
-                            <a href="#" className="text-textAdmin-light dark:text-textAdmin-dark text-2xl font-bold">Municipalidad distrital de Urubamba</a>
+                            <a href="#" className="text-textAdmin-light dark:text-textAdmin-dark text-2xl font-bold">Municipalidad Provincial de Urubamba</a>
                             <form onSubmit={handleSubmit}>
                                 <div className="mt-2">
                                     <label
@@ -60,7 +60,7 @@ function Login() {
                                 <div>
                                     <button
                                         type="submit"
-                                        className="max-w-32 w-32 rounded py-3 px-5 mt-2 text-sm text-textAdmin-light dark:text-backAdmin-dark bg-backAdmin-dark dark:bg-backAdmin-light hover:text-textAdmin-dark dark:hover:font-bold focus:outline-none">
+                                        className="max-w-32 w-32 rounded py-3 px-5 mt-2 text-sm text-textAdmin-dark dark:text-backAdmin-dark bg-backAdmin-dark dark:bg-backAdmin-light hover:text-textAdmin-dark dark:hover:font-bold focus:outline-none">
                                         Iniciar Sesión
                                     </button>
                                 </div>

@@ -13,6 +13,7 @@ import Logout from '../../pages/Logout';
 import { AuthProvider, useAuth } from '../Services/Auth/auth';
 import FichaRegistroCatalogacionInmuebles from '../../pages/FichaRegistroCatalogacionInmuebles';
 import FichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/FichaRegistroCatalogacionInmueblesAreaMonumental';
+import Usuarios from '../../pages/Usuarios';
 
 function ProtectedRoute({ children }) {
     const { user } = useAuth();
@@ -48,6 +49,7 @@ function Layout() {
                     >
                         <Route index element={<Dashboard />} />
                         <Route path="roles" element={<Roles />} />
+                        <Route path="usuarios" element={<Usuarios />} />
                         <Route path="configuracion/sectores" element={<Sectores />} />
                         <Route path="configuracion/manzanas" element={<Manzanas />} />
                         <Route path="configuracion/vias" element={<Vias />} />
