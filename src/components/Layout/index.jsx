@@ -14,6 +14,7 @@ import { AuthProvider, useAuth } from '../Services/Auth/auth';
 import FichaRegistroCatalogacionInmuebles from '../../pages/FichaRegistroCatalogacionInmuebles';
 import FichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/FichaRegistroCatalogacionInmueblesAreaMonumental';
 import Usuarios from '../../pages/Usuarios';
+import Tecnicos from '../../pages/Tecnicos';
 
 function ProtectedRoute({ children }) {
     const { user } = useAuth();
@@ -53,6 +54,7 @@ function Layout() {
                         <Route path="configuracion/sectores" element={<Sectores />} />
                         <Route path="configuracion/manzanas" element={<Manzanas />} />
                         <Route path="configuracion/vias" element={<Vias />} />
+                        <Route path="configuracion/tecnicos" element={<Tecnicos />} />
                         <Route path="fichas/ficha-catalogacion-espacios-publicos" element={<FichaCatalogacionEspaciosPublicos />} />
                         <Route path="fichas/ficha-registro-catalogacion-inmuebles" element={<FichaRegistroCatalogacionInmuebles />} />
                         <Route path="fichas/ficha-registro-catalogacion-inmuebles-area-monumental" element={<FichaRegistroCatalogacionInmueblesAreaMonumental />} />
