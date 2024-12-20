@@ -36,7 +36,7 @@ function Header({ toggleSidebar }) {
             <button className="p-1 mr-4" onClick={toggleSidebar}>
                 <MenuIcon strokeColor={isDarkMode ? "#e9ecef" : "#172340"} strokeWidth={3} />
             </button>
-            <h1 className="flex-1">Bienvenido {user?.username}</h1>
+            <h1 className="flex-1">Bienvenido {user.usuario}</h1>
             <button
                 onClick={toggleTheme}
                 className="p-2 rounded  text-white dark:text-black"
