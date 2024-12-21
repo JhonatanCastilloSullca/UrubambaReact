@@ -19,25 +19,30 @@ function FichaRegistroHistorico() {
 
 
     const postData = async (data) => {
+        const token = localStorage.getItem("token");
+
         const response = await fetch("http://127.0.0.1:85/api/ficha-registro-historico", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(data),
         });
+
         if (!response.ok) {
             throw new Error('Error al enviar los datos');
         }
+
         return response.json();
     };
 
 
     const mutation = useMutation({
-        mutationFn: postData, // Aquí pasamos explícitamente la función
+        mutationFn: postData,
         onSuccess: () => {
             console.log("Enviado correctamente");
-            navigate("/ruta-de-redireccion"); // Cambia la ruta aquí
+            navigate("/ruta-de-redireccion");
         },
         onError: (error) => {
             console.error("Error al enviar los datos:", error);
@@ -47,8 +52,8 @@ function FichaRegistroHistorico() {
 
 
     const onSubmit = (data) => {
-        console.log("Datos enviados:", data); // Verifica los datos
-        console.log("Errores:", errors);     // Verifica si hay errores
+        console.log("Datos enviados:", data);
+        console.log("Errores:", errors);
 
         mutation.mutate(data);
     };
