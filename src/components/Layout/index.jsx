@@ -15,6 +15,7 @@ import FichaRegistroCatalogacionInmuebles from '../../pages/FichaRegistroCatalog
 import FichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/FichaRegistroCatalogacionInmueblesAreaMonumental';
 import Usuarios from '../../pages/Usuarios';
 import Tecnicos from '../../pages/Tecnicos';
+import FichaRegistroHistorico from '../../pages/FichaRegistroHistorico';
 
 function ProtectedRoute({ children }) {
     const { user } = useAuth();
@@ -58,6 +59,7 @@ function Layout() {
                         <Route path="fichas/ficha-catalogacion-espacios-publicos" element={<FichaCatalogacionEspaciosPublicos />} />
                         <Route path="fichas/ficha-registro-catalogacion-inmuebles" element={<FichaRegistroCatalogacionInmuebles />} />
                         <Route path="fichas/ficha-registro-catalogacion-inmuebles-area-monumental" element={<FichaRegistroCatalogacionInmueblesAreaMonumental />} />
+                        <Route path="fichas/ficha-registro-historico" element={<FichaRegistroHistorico />} />
                         <Route path="404" element={<Page404 />} />
                         <Route path="403" element={<Page403 />} />
                     </Route>
