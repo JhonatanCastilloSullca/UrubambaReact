@@ -12,23 +12,23 @@ export function AuthProvider({ children }) {
         const token = localStorage.getItem('token');
         const id = localStorage.getItem('id');
         const usuario = localStorage.getItem('usuario');
-        
+
         if (token && id && usuario) {
-            setUser({ token, id, usuario }); // Establece todos los valores en el estado user
+            setUser({ token, id, usuario });
         }
     }, []);
-    
+
     const login = (data) => {
         const token = data.token;
         const usuario = data.user.usuario;
         const id = data.user.id;
-        localStorage.setItem('token', token); 
-        localStorage.setItem('usuario', usuario); 
-        localStorage.setItem('id', id); 
-        setUser({ token, usuario, id }); // Usar el token correctamente
-        navigate('/'); 
+        localStorage.setItem('token', token);
+        localStorage.setItem('usuario', usuario);
+        localStorage.setItem('id', id);
+        setUser({ token, usuario, id });
+        navigate('/');
     };
-    
+
 
     const logout = () => {
         localStorage.removeItem('token');
@@ -47,5 +47,5 @@ export function AuthProvider({ children }) {
 
 
 export function useAuth() {
-    return useContext(AuthContext); 
+    return useContext(AuthContext);
 }

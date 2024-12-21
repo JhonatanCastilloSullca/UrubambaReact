@@ -17,11 +17,10 @@ function FichaRegistroHistorico() {
 
     const navigate = useNavigate();
 
-
     const postData = async (data) => {
         const token = localStorage.getItem("token");
 
-        const response = await fetch("https://admin.vertigotravelperu.com/api/ficha-registro-historico", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-registro-historico`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -69,7 +68,7 @@ function FichaRegistroHistorico() {
                             <div className="col-span-12 flex flex-col gap-2">
                                 <NumeroForm
                                     nro="1"
-                                    text="DIRECION"
+                                    text="DIRECCION"
                                     size="sm"
                                 />
 
@@ -79,6 +78,7 @@ function FichaRegistroHistorico() {
                                     errors={errors.direccion}
                                     maxLength={255}
                                     isRequired={false}
+                                    tipo=''
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-3">
@@ -227,7 +227,7 @@ function FichaRegistroHistorico() {
                                                     {...register(`ficha_registro_historico.${index}.descripcion`, {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                                        maxLength: { value: 255, message: 'No debe exceder los 255 caracteres.' },
+                                                        maxLength: { value: 1000, message: 'No debe exceder los 255 caracteres.' },
                                                     })}
                                                 >
                                                 </textarea>
@@ -277,6 +277,7 @@ function FichaRegistroHistorico() {
                                     errors={errors.registrado}
                                     maxLength={255}
                                     isRequired={false}
+                                    tipo=''
                                 />
                             </div>
                         </div>

@@ -5,6 +5,8 @@ import NumeroForm from "../../components/NumeroForm";
 import OnlyInputLetras from "../../components/OnlyInputLetras";
 import OnlyLabelTd from "../../components/OnlyLabelTd";
 import OnlyInputError from "../../components/OnlyInputError";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 function FichaRegistroCatalogacionInmueblesAreaMonumental() {
     const methods = useForm();
@@ -18,8 +20,44 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
         name: "evidencias_arq_fachadas_interior_inmuebles",
     });
 
+
+    const navigate = useNavigate();
+
+
+    const postData = async (data) => {
+        const token = localStorage.getItem("token");
+
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble-arquitectonica`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al enviar los datos');
+        }
+        return response.json();
+    };
+
+    const mutation = useMutation({
+        mutationFn: postData,
+        onSuccess: () => {
+            console.log("Enviado correctamente");
+            navigate("/usuarios");
+        },
+        onError: (error) => {
+            console.error("Error al enviar los datos:", error);
+        },
+    });
+
     const onSubmit = (data) => {
         console.log("Datos enviados:", data);
+        console.log("Errores:", errors);
+
+        mutation.mutate(data);
     };
     return (
         <>

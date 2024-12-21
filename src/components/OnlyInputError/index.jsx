@@ -14,7 +14,7 @@ const OnlyInputError = ({
         ? /^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/
         : tipo === 'numeros'
             ? /^[0-9]+$/
-            : /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]+$/;
+            : /./;;
 
 
     const errorMessage = tipo === 'letras'

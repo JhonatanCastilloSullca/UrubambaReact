@@ -6,6 +6,7 @@ import OnlyInputLetras from "../../components/OnlyInputLetras";
 import OnlyLabelTd from "../../components/OnlyLabelTd";
 import OnlyInputError from "../../components/OnlyInputError";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 function FichaRegistroCatalogacionInmuebles() {
     const methods = useForm();
@@ -24,25 +25,93 @@ function FichaRegistroCatalogacionInmuebles() {
     });
 
 
+
+
+
+    const navigate = useNavigate();
+
     const postData = async (data) => {
-        const response = await fetch("http://127.0.0.1:85/api/guardarinfo", {
+        const token = localStorage.getItem("token");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(data),
         });
+
         if (!response.ok) {
             throw new Error('Error al enviar los datos');
         }
         return response.json();
     };
 
-    const { mutate } = useMutation(postData);
+    const mutation = useMutation({
+        mutationFn: postData,
+        onSuccess: () => {
+            console.log("Enviado correctamente");
+            navigate("/usuarios");
+        },
+        onError: (error) => {
+            console.error("Error al enviar los datos:", error);
+        },
+    });
 
     const onSubmit = (data) => {
-        console.log("Datos enviados:", data);
-        mutate(data);
+        const infoGeneral = [
+            { name: "info_general_declaro_patrimonio", value: data.info_general_declaro_patrimonio },
+            { name: "info_general_direccion", value: data.info_general_direccion },
+            { name: "info_general_barrio", value: data.info_general_barrio },
+            { name: "info_general_denominacion", value: data.info_general_denominacion },
+            { name: "info_general_cat_catal_ch", value: data.info_general_cat_catal_ch },
+            { name: "info_general_zon_am", value: data.info_general_zon_am },
+            { name: "info_general_zon_zt", value: data.info_general_zon_zt },
+            { name: "info_general_sect_gest_s7", value: data.info_general_sect_gest_s7 },
+            { name: "info_general_fil_cult_ph", value: data.info_general_fil_cult_ph },
+            { name: "info_general_fil_cult_c", value: data.info_general_fil_cult_c },
+            { name: "info_general_fil_cult_r", value: data.info_general_fil_cult_r },
+            { name: "info_general_fil_cult_cp", value: data.info_general_fil_cult_cp }
+        ];
+        const culturaViva = [
+            { name: "imagen_cultura_viva", value: data.imagen_cultura_viva },
+            { name: "cultura_viva_descripcion", value: data.cultura_viva_descripcion },
+            { name: "cultura_viva_observaciones", value: data.cultura_viva_observaciones },
+        ]
+        const levantamientoPlanimetricoFachadas = [
+
+            { name: "imagen_fachada_1", value: data.imagen_fachada_1 },
+            { name: "codigo_imagen_fachada_1", value: data.codigo_imagen_fachada_1 },
+            { name: "imagen_fachada_2", value: data.imagen_fachada_2 },
+            { name: "codigo_imagen_fachada_2", value: data.codigo_imagen_fachada_2 },
+            { name: "imagen_fachada_3", value: data.imagen_fachada_3 },
+            { name: "codigo_imagen_fachada_3", value: data.codigo_imagen_fachada_3 },
+            { name: "imagen_fachada_4", value: data.imagen_fachada_4 },
+            { name: "codigo_imagen_fachada_4", value: data.codigo_imagen_fachada_4 },
+        ]
+        const responsablesDatos = [
+
+
+            { name: "fecha_inspeccion", value: data.fecha_inspeccion },
+            { name: "hora_inspeccion", value: data.hora_inspeccion },
+            { name: "brigada", value: data.brigada },
+            { name: "coordinador_brigada", value: data.coordinador_brigada },
+            { name: "tecnico_catalogador", value: data.tecnico_catalogador },
+            { name: "propietario", value: data.propietario },
+
+        ]
+
+        const formattedData = {
+            ...data,
+            info_general: infoGeneral,
+            culturaViva: culturaViva,
+            levantamientoPlanimetricoFachadas: levantamientoPlanimetricoFachadas,
+            responsablesDatos: responsablesDatos,
+        };
+        console.log("Datos enviados:", formattedData);
+        console.log("Errores:", errors);
+
+        mutation.mutate(formattedData);
     };
     return (
         <>
@@ -556,7 +625,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     <button
                                                         type="button"
                                                         className="h-8 w-8 bg-green-600 rounded-sm"
-                                                        onClick={() => append_fields_no_const({ carac_fachada_sectores: "", carac_fachada_nro_unidad_cat: "" })}
+                                                        onClick={() => append_fields_no_const({})}
                                                     >
                                                         +
                                                     </button>
@@ -1126,7 +1195,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     <button
                                                         type="button"
                                                         className="h-8 w-8 bg-green-600 rounded-sm"
-                                                        onClick={() => append_fields_const({ carac_fachada_sectores: "", carac_fachada_nro_unidad_cat: "" })}
+                                                        onClick={() => append_fields_const({})}
                                                     >
                                                         +
                                                     </button>
@@ -2462,7 +2531,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     <button
                                                         type="button"
                                                         className="h-8 w-8 bg-green-600 rounded-sm"
-                                                        onClick={() => append_fields_analisis_fachadas({ carac_fachada_sectores: "", carac_fachada_nro_unidad_cat: "" })}
+                                                        onClick={() => append_fields_analisis_fachadas({})}
                                                     >
                                                         +
                                                     </button>
