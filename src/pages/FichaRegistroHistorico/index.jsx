@@ -55,7 +55,7 @@ function FichaRegistroHistorico() {
                                     name={`direccion`}
                                     register={register}
                                     errors={errors.direccion}
-                                    maxLength={10}
+                                    maxLength={255}
                                     isRequired={true}
                                     tipo="letras"
                                 />
@@ -70,7 +70,7 @@ function FichaRegistroHistorico() {
                                     name={`cod_sector`}
                                     register={register}
                                     errors={errors.cod_sector}
-                                    maxLength={10}
+                                    maxLength={255}
                                     isRequired={true}
                                 />
                             </div>
@@ -84,7 +84,7 @@ function FichaRegistroHistorico() {
                                     name={`cod_manzana`}
                                     register={register}
                                     errors={errors.cod_manzana}
-                                    maxLength={10}
+                                    maxLength={255}
                                     isRequired={true}
                                 />
                             </div>
@@ -98,7 +98,7 @@ function FichaRegistroHistorico() {
                                     name={`cod_lote`}
                                     register={register}
                                     errors={errors.cod_lote}
-                                    maxLength={10}
+                                    maxLength={255}
                                     isRequired={true}
                                 />
                             </div>
@@ -136,11 +136,11 @@ function FichaRegistroHistorico() {
                                                 name={`ficha_registro_historico.${index}.fecha`}
                                                 register={register}
                                                 errors={errors.ficha_registro_historico?.[index]?.fecha}
-                                                maxLength={10}
+                                                maxLength={255}
                                                 isRequired={true}
                                             />
                                         </div>
-                                        <div className="col-span-10"></div>
+                                        <div className="col-span-255"></div>
                                         <div className="flex flex-col gap-2 col-span-6">
                                             <NumeroForm
                                                 nro="6"
@@ -154,7 +154,7 @@ function FichaRegistroHistorico() {
                                                     {...register(`ficha_registro_historico.${index}.propietario_arrendatario`, {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                                        maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                                        maxLength: { value: 255, message: 'No debe exceder los 255 caracteres.' },
                                                         pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                                     })}
                                                 >
@@ -180,7 +180,7 @@ function FichaRegistroHistorico() {
                                                     {...register(`ficha_registro_historico.${index}.fuente`, {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                                        maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                                        maxLength: { value: 255, message: 'No debe exceder los 255 caracteres.' },
                                                         pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                                     })}
                                                 >
@@ -206,7 +206,7 @@ function FichaRegistroHistorico() {
                                                     {...register(`ficha_registro_historico.${index}.descripcion `, {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                                        maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                                        maxLength: { value: 255, message: 'No debe exceder los 255 caracteres.' },
                                                         pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                                     })}
                                                 >
@@ -255,7 +255,7 @@ function FichaRegistroHistorico() {
                                     name={`registrado`}
                                     register={register}
                                     errors={errors.registrado}
-                                    maxLength={10}
+                                    maxLength={255}
                                     isRequired={true}
                                     tipo="letras"
                                 />
