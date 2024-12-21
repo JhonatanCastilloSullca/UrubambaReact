@@ -42,7 +42,7 @@ function FichaRegistroHistorico() {
         mutationFn: postData,
         onSuccess: () => {
             console.log("Enviado correctamente");
-            navigate("/ruta-de-redireccion");
+            navigate("/usuarios");
         },
         onError: (error) => {
             console.error("Error al enviar los datos:", error);
