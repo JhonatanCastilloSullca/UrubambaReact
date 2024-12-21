@@ -227,3 +227,221 @@
 .text-vertical{
   writing-mode:vertical-rl;
 }
+
+.datatable-table {
+  color: #6b7280;
+  font-size: .875rem;
+  text-align: left;
+  width: 100%;
+}
+table {
+  border-collapse: collapse;
+  border-color: inherit;
+  text-indent: 0;
+}
+.dark .datatable-table thead {
+  background-color: #1f2937;
+  color: #9ca3af;
+}
+.datatable-table thead {
+  background-color: #f9fafb;
+  color: #6b7280;
+  font-size: .75rem;
+}
+
+.datatable-table thead th {
+  padding: .75rem 1.5rem;
+  width: auto !important;
+}
+
+.datatable-table thead th, .datatable-table thead th {
+  text-transform: uppercase;
+}
+
+.dark .datatable-table tbody tr {
+  border-bottom: 1px solid #374151;
+}
+.datatable-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+
+.datatable-table tbody td, .datatable-table tbody th, .datatable-table thead th {
+    padding: .75rem 1.5rem;
+    width: auto !important;
+}
+:is(.dark .dark\:text-white) {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+
+
+.whitespace-nowrap {
+    white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .datatable-bottom {
+      align-items: center;
+      flex-direction: row;
+  }
+}
+.datatable-bottom {
+  align-items: start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.dark  .datatable-bottom .datatable-info {
+  color: #9ca3af;
+}
+ .datatable-bottom .datatable-info {
+  color: #6b7280;
+  font-size: .875rem;
+}
+
+ .datatable-bottom .datatable-pagination .datatable-pagination-list {
+  align-items: center;
+  display: flex
+;
+  font-size: .875rem;
+  height: 2rem;
+}
+menu, ol, ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type,  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type {
+  position: relative;
+}
+
+
+.dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link {
+  border-left: 1px solid #374151;
+}
+.dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link, .dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link,  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link,  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
+  color: transparent;
+}
+ .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link {
+  border-bottom-left-radius: .5rem;
+  border-left: 1px solid #d1d5db;
+  border-top-left-radius: .5rem;
+}
+.dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link {
+  border-color: #374151;
+  color: #9ca3af;
+}
+ .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link {
+  align-items: center;
+  border-bottom: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  border-top: 1px solid #d1d5db;
+  color: #6b7280;
+  display: flex
+;
+  font-size: .875rem;
+  font-weight: 500;
+  height: 2rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+[role=button], button {
+  cursor: pointer;
+}
+
+button, select {
+  text-transform: none;
+}
+button, input, optgroup, select, textarea {
+  font-feature-settings: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  font-variation-settings: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link, .dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link,  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link,  .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
+  color: transparent;
+}
+.dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link:hover {
+  background-color: #374151;
+  color: #fff;
+}
+ .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
+  border-bottom-right-radius: .5rem;
+  border-left: 0;
+  border-top-right-radius: .5rem;
+}
+ .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link:hover {
+  background-color: #f9fafb;
+  color: #374151;
+}
+.dark  .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link {
+  border-color: #374151;
+  color: #9ca3af;
+}
+ .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link {
+  align-items: center;
+  border-bottom: 1px solid #d1d5db;
+  border-right: 1px solid #d1d5db;
+  border-top: 1px solid #d1d5db;
+  color: #6b7280;
+  display: flex;
+  font-size: .875rem;
+  font-weight: 500;
+  height: 2rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
+@media (min-width: 640px) {
+   .datatable-top {
+      align-items: center;
+      flex-direction: row-reverse;
+  }
+}
+ .datatable-top {
+  align-items: start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.dark  .datatable-input, .dark  .datatable-search .datatable-input {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  color: #fff;
+}
+ .datatable-input,  .datatable-search .datatable-input {
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: .5rem;
+  color: #111827;
+  font-size: .875rem;
+  min-width: 16rem;
+}
+
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+button, input, optgroup, select, textarea {
+  font-feature-settings: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  font-variation-settings: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}

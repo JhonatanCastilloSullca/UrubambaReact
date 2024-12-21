@@ -12,10 +12,10 @@ function Login() {
     e.preventDefault();
 
     setLoading(true);
-    setError(null);  
+    setError(null);
 
     try {
-      const response = await fetch("http://192.168.40.203:83/api/login", {
+      const response = await fetch("http://127.0.0.1:85/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ function Login() {
       console.log("Login exitoso", data);
 
       login(data.data);
-      
+
     } catch (err) {
       console.error("Error al iniciar sesión", err);
       setError("Error al iniciar sesión. Intenta nuevamente.");

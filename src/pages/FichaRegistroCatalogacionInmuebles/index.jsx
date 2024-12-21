@@ -5,6 +5,7 @@ import NumeroForm from "../../components/NumeroForm";
 import OnlyInputLetras from "../../components/OnlyInputLetras";
 import OnlyLabelTd from "../../components/OnlyLabelTd";
 import OnlyInputError from "../../components/OnlyInputError";
+import { useMutation } from "@tanstack/react-query";
 
 function FichaRegistroCatalogacionInmuebles() {
     const methods = useForm();
@@ -22,8 +23,26 @@ function FichaRegistroCatalogacionInmuebles() {
         name: "analisis_fachadas",
     });
 
+
+    const postData = async (data) => {
+        const response = await fetch("http://127.0.0.1:85/api/guardarinfo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+            throw new Error('Error al enviar los datos');
+        }
+        return response.json();
+    };
+
+    const { mutate } = useMutation(postData);
+
     const onSubmit = (data) => {
         console.log("Datos enviados:", data);
+        mutate(data);
     };
     return (
         <>

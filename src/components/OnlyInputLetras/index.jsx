@@ -7,7 +7,7 @@ const OnlyInputLetras = ({
     maxLength = 1,
     isRequired = true,
     nextOnComplete = true,
-    className = 'w-full text-center text-secondBackAdmin-dark h-full',
+    className = 'w-full text-center text-secondBackAdmin-dark h-full py-3',
     tipo = 'letras'
 }) => {
 

@@ -1,7 +1,46 @@
 import ErrorIcono from "../../assets/icons/errorIcono"
+import Datatable from "../../components/Datatable"
 import MainCard from "../../components/MainCard"
+import data from "../../data/usuarios.json"
+
+// {
+//     "id": 1,
+//     "first_name": "Pennie",
+//     "last_name": "Vivien",
+//     "email": "pvivien0@ed.gov",
+//     "gender": "Female",
+//     "ip_address": "190.146.39.81"
+// },
+
+const columns = [
+    {
+        header: "ID",
+        accessorKey: 'id',
+    },
+    {
+        header: "Nombres",
+        accessorKey: 'first_name',
+    },
+    {
+        header: "Apellidos",
+        accessorKey: 'last_name',
+    },
+    {
+        header: "E-mail",
+        accessorKey: 'email',
+    },
+    {
+        header: "Genero",
+        accessorKey: 'gender',
+    },
+    {
+        header: "IP",
+        accessorKey: 'ip_address',
+    },
+]
 
 function Usuarios() {
+
     return (
         <>
             <MainCard>
@@ -13,6 +52,7 @@ function Usuarios() {
                         Crear Usuario
                     </button>
                 </div>
+                <Datatable columns={columns} data={data} />
             </MainCard>
         </>
 
