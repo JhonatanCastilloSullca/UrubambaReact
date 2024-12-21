@@ -52,9 +52,9 @@ function FichaRegistroHistorico() {
                                 />
 
                                 <OnlyInputError
-                                    name={`codigo_unico_catastral`}
+                                    name={`direccion`}
                                     register={register}
-                                    errors={errors.codigo_unico_catastral}
+                                    errors={errors.direccion}
                                     maxLength={10}
                                     isRequired={true}
                                     tipo="letras"
@@ -119,7 +119,7 @@ function FichaRegistroHistorico() {
                                     <button
                                         type="button"
                                         className="h-8 w-8 bg-green-600 rounded-sm"
-                                        onClick={() => append_fields_ficha_registro_hist({ carac_fachada_sectores: "", carac_fachada_nro_unidad_cat: "" })}
+                                        onClick={() => append_fields_ficha_registro_hist({})}
                                     >
                                         +
                                     </button>
