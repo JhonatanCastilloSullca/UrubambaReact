@@ -4,6 +4,8 @@ import ErrorIcono from "../../assets/icons/errorIcono";
 import NumeroForm from "../../components/NumeroForm";
 import OnlyInputError from "../../components/OnlyInputError";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+
 
 function FichaRegistroHistorico() {
     const methods = useForm();
@@ -13,10 +15,11 @@ function FichaRegistroHistorico() {
         name: "ficha_registro_historico",
     });
 
+    const navigate = useNavigate();
 
 
     const postData = async (data) => {
-        const response = await fetch("http://127.0.0.1:85/api/guardarfichahistorico", {
+        const response = await fetch("http://127.0.0.1:85/api/ficha-registro-historico", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -29,12 +32,27 @@ function FichaRegistroHistorico() {
         return response.json();
     };
 
-    const { mutate } = useMutation(postData);
+
+    const mutation = useMutation({
+        mutationFn: postData, // Aquí pasamos explícitamente la función
+        onSuccess: () => {
+            console.log("Enviado correctamente");
+            navigate("/ruta-de-redireccion"); // Cambia la ruta aquí
+        },
+        onError: (error) => {
+            console.error("Error al enviar los datos:", error);
+        },
+    });
+
+
 
     const onSubmit = (data) => {
-        console.log("Datos enviados:", data);
-        mutate(data);
+        console.log("Datos enviados:", data); // Verifica los datos
+        console.log("Errores:", errors);     // Verifica si hay errores
+
+        mutation.mutate(data);
     };
+
     return (
         <>
             <h3 className="mb-4 font-bold text-2xl text-textAdmin-light dark:text-textAdmin-dark">
@@ -140,7 +158,7 @@ function FichaRegistroHistorico() {
                                                 isRequired={true}
                                             />
                                         </div>
-                                        <div className="col-span-255"></div>
+                                        <div className="col-span-10"></div>
                                         <div className="flex flex-col gap-2 col-span-6">
                                             <NumeroForm
                                                 nro="6"
