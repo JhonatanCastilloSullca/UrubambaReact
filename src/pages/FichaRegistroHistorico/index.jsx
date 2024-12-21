@@ -178,7 +178,7 @@ function FichaRegistroHistorico() {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
                                                         maxLength: { value: 255, message: 'No debe exceder los 255 caracteres.' },
-                                                        pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+
                                                     })}
                                                 >
                                                 </textarea>
@@ -204,7 +204,7 @@ function FichaRegistroHistorico() {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
                                                         maxLength: { value: 255, message: 'No debe exceder los 255 caracteres.' },
-                                                        pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+
                                                     })}
                                                 >
                                                 </textarea>
@@ -230,7 +230,6 @@ function FichaRegistroHistorico() {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
                                                         maxLength: { value: 255, message: 'No debe exceder los 255 caracteres.' },
-                                                        pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                                     })}
                                                 >
                                                 </textarea>
