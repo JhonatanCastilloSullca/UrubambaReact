@@ -67,9 +67,9 @@ function FichaRegistroHistorico() {
                                     size="sm"
                                 />
                                 <OnlyInputError
-                                    name={`sector`}
+                                    name={`cod_sector`}
                                     register={register}
-                                    errors={errors.sector}
+                                    errors={errors.cod_sector}
                                     maxLength={10}
                                     isRequired={true}
                                 />
@@ -81,9 +81,9 @@ function FichaRegistroHistorico() {
                                     size="sm"
                                 />
                                 <OnlyInputError
-                                    name={`manzana`}
+                                    name={`cod_manzana`}
                                     register={register}
-                                    errors={errors.manzana}
+                                    errors={errors.cod_manzana}
                                     maxLength={10}
                                     isRequired={true}
                                 />
@@ -95,9 +95,9 @@ function FichaRegistroHistorico() {
                                     size="sm"
                                 />
                                 <OnlyInputError
-                                    name={`lote`}
+                                    name={`cod_lote`}
                                     register={register}
-                                    errors={errors.lote}
+                                    errors={errors.cod_lote}
                                     maxLength={10}
                                     isRequired={true}
                                 />
