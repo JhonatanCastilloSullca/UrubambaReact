@@ -24,6 +24,10 @@ function FichaRegistroCatalogacionInmuebles() {
         name: "analisis_fachadas",
     });
 
+
+
+
+
     const navigate = useNavigate();
 
     const postData = async (formData) => {
@@ -32,14 +36,17 @@ function FichaRegistroCatalogacionInmuebles() {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
+                // No es necesario establecer "Content-Type" ya que "FormData" se encarga de eso.
             },
             body: formData,
         });
+
         if (!response.ok) {
             throw new Error('Error al enviar los datos');
         }
         return response.json();
     };
+
 
     const mutation = useMutation({
         mutationFn: postData,
@@ -52,47 +59,62 @@ function FichaRegistroCatalogacionInmuebles() {
         },
     });
 
-    const appendToFormData = (formData, fieldName, fieldData) => {
-        if (Array.isArray(fieldData)) {
-            fieldData.forEach((item, index) => {
-                if (item instanceof File) {
-                    formData.append(`${fieldName}[]`, item);
-                } else {
-                    formData.append(`${fieldName}[${index}]`, JSON.stringify(item));
-                }
-            });
-        } else {
-            formData.append(fieldName, fieldData);
-        }
-    };
-
     const onSubmit = (data) => {
         const formData = new FormData();
 
-        // 1. Iterar sobre las propiedades de `data` y agregar cada una al FormData
-        Object.keys(data).forEach(fieldName => {
-            const fieldData = data[fieldName];
-            appendToFormData(formData, fieldName, fieldData);
+
+        Object.keys(data).forEach(key => {
+            if (Array.isArray(data[key])) {
+                data[key].forEach((file) => {
+                    if (file instanceof File) {
+                        formData.append(`${key}[]`, file);
+                    }
+                });
+            } else if (data[key] instanceof FileList) {
+                Array.from(data[key]).forEach((file) => {
+                    formData.append(`${key}[]`, file);
+                });
+            } else if (data[key] instanceof File) {
+                formData.append(key, data[key]);
+            } else {
+                formData.append(key, data[key]);
+            }
         });
 
-        // 2. Agregar los FieldArrays específicos: 'analisis_bloques_no_construidos', 'analisis_bloques_construidos', 'analisis_fachadas'
-        ['analisis_bloques_no_construidos', 'analisis_bloques_construidos', 'analisis_fachadas'].forEach(fieldName => {
-            const fieldData = data[fieldName];
-            appendToFormData(formData, fieldName, fieldData);
+
+        const arraysToProcess = [
+            { name: "analisis_bloques_no_construidos", fields: fields_no_const },
+            { name: "analisis_bloques_construidos", fields: fields_const },
+            { name: "analisis_fachadas", fields: fields_analisis_fachadas },
+        ];
+
+        arraysToProcess.forEach(({ name, fields }) => {
+
+            const groupData = fields.map((item) => {
+                const obj = {};
+                Object.keys(item).forEach((key) => {
+                    const value = item[key];
+                    if (value instanceof File) {
+                        formData.append(`${name}[${key}]`, value);
+                    } else {
+                        obj[key] = value;
+                    }
+                });
+                return obj;
+            });
+
+
+            formData.append(name, JSON.stringify(groupData));
         });
 
-        // 3. Revisa el contenido de formData antes de enviarlo
+
         for (let [key, value] of formData.entries()) {
-            console.log(key, value);  // Verifica el contenido de FormData
+            console.log(key, value);
         }
 
-        // 4. Enviar la solicitud con `FormData`
+
         mutation.mutate(formData);
     };
-
-
-
-
 
 
 
