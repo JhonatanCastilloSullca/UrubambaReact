@@ -35,6 +35,7 @@ function FichaRegistroCatalogacionInmuebles() {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble`, {
             method: "POST",
             headers: {
+                'Content-Type': 'multipart/form-data',
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             },
@@ -51,7 +52,7 @@ function FichaRegistroCatalogacionInmuebles() {
         mutationFn: postData,
         onSuccess: () => {
             console.log("Enviado correctamente");
-            navigate("/usuarios");
+            navigate("/");
         },
         onError: (error) => {
             console.error("Error al enviar los datos:", error);
@@ -74,7 +75,7 @@ function FichaRegistroCatalogacionInmuebles() {
             "info_general_fil_cult_cp": data.info_general_fil_cult_cp,
         };
         const culturaViva = {
-            "imagen_cultura_viva": data.imagen_cultura_viva,
+            "imagen_cultura_viva": data.imagen_cultura_viva[0],
             "cultura_viva_descripcion": data.cultura_viva_descripcion,
             "cultura_viva_observaciones": data.cultura_viva_observaciones,
         };
@@ -102,6 +103,7 @@ function FichaRegistroCatalogacionInmuebles() {
             culturaViva: culturaViva,
             levantamientoPlanimetricoFachadas: levantamientoPlanimetricoFachadas,
             responsablesDatos: responsablesDatos,
+            imagen_nuev: data.imagen[0]
         };
         console.log("Datos enviados:", formattedData);
         console.log("Errores:", errors);
@@ -129,8 +131,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.codigo_unico_catastral}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="letras"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-3">
@@ -144,8 +145,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.codigo_hoja_catastral}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="letras"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-2">
@@ -159,7 +159,6 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.codigo_registro}
                                     maxLength={10}
-                                    isRequired={true}
                                 />
                             </div>
                         </div>
@@ -182,7 +181,6 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_dpto}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -193,7 +191,6 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_prov}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -204,7 +201,6 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_dist}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -252,7 +248,6 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_edifica}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -263,8 +258,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_entrada}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
+                                                    isRequired={false}
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
@@ -274,8 +269,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_piso}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
+                                                    isRequired={false}
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
@@ -285,8 +280,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_unidad}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
+                                                    isRequired={false}
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
@@ -296,8 +291,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                                     register={register}
                                                     errors={errors.ubicacion_dc}
                                                     maxLength={10}
-                                                    isRequired={true}
                                                     tipo="numeros"
+                                                    isRequired={false}
                                                 />
                                             </div>
                                         </div>
@@ -351,8 +346,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                             register={register}
                                             errors={errors.ubicacion_fraccion}
                                             maxLength={10}
-                                            isRequired={true}
                                             tipo="numeros"
+                                            isRequired={false}
                                         />
                                     </div>
                                 </div>
@@ -376,7 +371,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                         id="select"
                                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         {...register('info_general_declaro_patrimonio', {
-                                            required: 'Este campo es obligatorio.',
+                                            // required: 'Este campo es obligatorio.',
                                         })}
                                     >
                                         <option value="">Seleccione...</option>
@@ -403,8 +398,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_direccion}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -418,8 +412,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_barrio}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -433,8 +426,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_denominacion}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-5 flex flex-col gap-2">
@@ -448,8 +440,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_cat_catal_ch}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -463,8 +454,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_zon_am}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -478,8 +468,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_zon_zt}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -493,8 +482,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_sect_gest_s7}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -508,8 +496,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_fil_cult_ph}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -523,8 +510,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_fil_cult_c}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -538,8 +524,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_fil_cult_r}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -553,8 +538,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     register={register}
                                     errors={errors.info_general_fil_cult_cp}
                                     maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
+                                    isRequired={false}
                                 />
                             </div>
                         </div>
@@ -571,10 +555,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones Tipos..."
                                     {...register('contexto_historico_espacial', {
-                                        required: 'Este campo es obligatorio.',
-                                        minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                        maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
-                                        pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        // required: 'Este campo es obligatorio.',
+                                        // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                        // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                     })}
                                 >
                                 </textarea>
@@ -597,10 +580,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones Tipos..."
                                     {...register('descripcion_general', {
-                                        required: 'Este campo es obligatorio.',
-                                        minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                        maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
-                                        pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        // required: 'Este campo es obligatorio.',
+                                        // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                        // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                     })}
                                 >
                                 </textarea>
@@ -741,7 +723,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._sectores}
                                                         maxLength={1}
                                                         isRequired={true}
-                                                        tipo="letras"
+                                                        tipo="numeros"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`analisis_bloques_no_construidos.${index}.tipo_patio`}
@@ -1185,7 +1167,7 @@ function FichaRegistroCatalogacionInmuebles() {
                     </MainCard>
                     <MainCard>
                         <h4 className="mb-4 font-bold text-xl text-textAdmin-light dark:text-textAdmin-dark">
-                            ANALISIS DE BLOQUES NO CONSTRUIDOS
+                            ANALISIS DE BLOQUES CONSTRUIDOS
                         </h4>
                         <div className="grid grid-cols-12 gap-4">
                             <div className="col-span-12 flex flex-col gap-2">
@@ -1375,7 +1357,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         errors={errors.analisis_bloques_construidos?.[index]?._bloque}
                                                         maxLength={1}
                                                         isRequired={true}
-                                                        tipo="letras"
+                                                        tipo="numeros"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`analisis_bloques_construidos.${index}.nivel_edificacion`}
@@ -1383,7 +1365,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         errors={errors.analisis_bloques_construidos?.[index]?._nivel_edificacion}
                                                         maxLength={1}
                                                         isRequired={true}
-                                                        tipo="letras"
+                                                        tipo="numeros"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`analisis_bloques_construidos.${index}.partido_arq_bloque_u`}
@@ -2148,20 +2130,21 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <input
                                     type="file"
                                     id="imagen"
+                                    name={`imagen`}
                                     accept="image/*"
                                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     {...register('imagen', {
-                                        required: 'La imagen es obligatoria.',
-                                        validate: {
-                                            fileType: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
-                                            },
-                                            fileSize: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
-                                            }
-                                        }
+                                        // required: 'La imagen es obligatoria.',
+                                        // validate: {
+                                        //     fileType: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                        //     },
+                                        //     // fileSize: (fileList) => {
+                                        //     //     const file = fileList?.[0];
+                                        //     //     return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                        //     // }
+                                        // }
                                     })}
                                 />
                                 {errors.imagen && (
@@ -2180,20 +2163,20 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <input
                                     type="file"
                                     id="pdf"
-                                    accept=".pdf"
+                                    accept="image/*"
                                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     {...register('pdf', {
-                                        required: 'El archivo PDF es obligatorio.',
-                                        validate: {
-                                            fileType: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.type === 'application/pdf' ? true : 'Solo se permiten archivos PDF.';
-                                            },
-                                            fileSize: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'El PDF debe pesar menos de 2MB.';
-                                            }
-                                        }
+                                        // required: 'El archivo PDF es obligatorio.',
+                                        // validate: {
+                                        //     fileType: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.type === 'application/pdf' ? true : 'Solo se permiten archivos PDF.';
+                                        //     },
+                                        //     // fileSize: (fileList) => {
+                                        //     //     const file = fileList?.[0];
+                                        //     //     return file && file.size <= 2 * 1024 * 1024 ? true : 'El PDF debe pesar menos de 2MB.';
+                                        //     // }
+                                        // }
                                     })}
                                 />
                                 {errors.pdf && (
@@ -2213,10 +2196,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Observaciones..."
                                         {...register('caracteristicas_fachada_colores_observaciones', {
-                                            required: 'Este campo es obligatorio.',
-                                            minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                            maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
-                                            pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                            // required: 'Este campo es obligatorio.',
+                                            // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                         })}
                                     >
                                     </textarea>
@@ -2248,17 +2230,17 @@ function FichaRegistroCatalogacionInmuebles() {
                                     accept="image/*"
                                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     {...register('imagen_fachada_1', {
-                                        required: 'La imagen es obligatoria.',
-                                        validate: {
-                                            fileType: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
-                                            },
-                                            fileSize: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
-                                            }
-                                        }
+                                        // required: 'La imagen es obligatoria.',
+                                        // validate: {
+                                        //     fileType: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                        //     },
+                                        //     fileSize: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                        //     }
+                                        // }
                                     })}
                                 />
                                 {errors.imagen_fachada_1 && (
@@ -2278,8 +2260,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             register={register}
                                             errors={errors.codigo_imagen_fachada_1}
                                             maxLength={10}
-                                            isRequired={true}
-                                            tipo="letras"
+                                            isRequired={false}
                                         />
                                     </div>
                                 </div>
@@ -2295,17 +2276,17 @@ function FichaRegistroCatalogacionInmuebles() {
                                     accept="image/*"
                                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     {...register('imagen_fachada_2', {
-                                        required: 'La imagen es obligatoria.',
-                                        validate: {
-                                            fileType: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
-                                            },
-                                            fileSize: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
-                                            }
-                                        }
+                                        // required: 'La imagen es obligatoria.',
+                                        // validate: {
+                                        //     fileType: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                        //     },
+                                        //     fileSize: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                        //     }
+                                        // }
                                     })}
                                 />
                                 {errors.imagen_fachada_2 && (
@@ -2325,8 +2306,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             register={register}
                                             errors={errors.codigo_imagen_fachada_2}
                                             maxLength={10}
-                                            isRequired={true}
-                                            tipo="letras"
+                                            isRequired={false}
                                         />
                                     </div>
                                 </div>
@@ -2342,17 +2322,17 @@ function FichaRegistroCatalogacionInmuebles() {
                                     accept="image/*"
                                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     {...register('imagen_fachada_3', {
-                                        required: 'La imagen es obligatoria.',
-                                        validate: {
-                                            fileType: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
-                                            },
-                                            fileSize: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
-                                            }
-                                        }
+                                        // required: 'La imagen es obligatoria.',
+                                        // validate: {
+                                        //     fileType: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                        //     },
+                                        //     fileSize: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                        //     }
+                                        // }
                                     })}
                                 />
                                 {errors.imagen_fachada_3 && (
@@ -2372,8 +2352,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             register={register}
                                             errors={errors.codigo_imagen_fachada_3}
                                             maxLength={10}
-                                            isRequired={true}
-                                            tipo="letras"
+                                            isRequired={false}
                                         />
                                     </div>
                                 </div>
@@ -2389,17 +2368,17 @@ function FichaRegistroCatalogacionInmuebles() {
                                     accept="image/*"
                                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     {...register('imagen_fachada_4', {
-                                        required: 'La imagen es obligatoria.',
-                                        validate: {
-                                            fileType: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
-                                            },
-                                            fileSize: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
-                                            }
-                                        }
+                                        // required: 'La imagen es obligatoria.',
+                                        // validate: {
+                                        //     fileType: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                        //     },
+                                        //     fileSize: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                        //     }
+                                        // }
                                     })}
                                 />
                                 {errors.imagen_fachada_4 && (
@@ -2419,8 +2398,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             register={register}
                                             errors={errors.codigo_imagen_fachada_4}
                                             maxLength={10}
-                                            isRequired={true}
-                                            tipo="letras"
+                                            isRequired={false}
                                         />
                                     </div>
                                 </div>
@@ -2445,17 +2423,17 @@ function FichaRegistroCatalogacionInmuebles() {
                                     accept="image/*"
                                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                     {...register('imagen_cultura_viva', {
-                                        required: 'La imagen es obligatoria.',
-                                        validate: {
-                                            fileType: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
-                                            },
-                                            fileSize: (fileList) => {
-                                                const file = fileList?.[0];
-                                                return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
-                                            }
-                                        }
+                                        // required: 'La imagen es obligatoria.',
+                                        // validate: {
+                                        //     fileType: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.type.startsWith('image/') ? true : 'Solo se permiten imágenes.';
+                                        //     },
+                                        //     fileSize: (fileList) => {
+                                        //         const file = fileList?.[0];
+                                        //         return file && file.size <= 2 * 1024 * 1024 ? true : 'La imagen debe pesar menos de 2MB.';
+                                        //     }
+                                        // }
                                     })}
                                 />
                                 {errors.imagen_cultura_viva && (
@@ -2476,10 +2454,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Descripcion..."
                                         {...register('cultura_viva_descripcion', {
-                                            required: 'Este campo es obligatorio.',
-                                            minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                            maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
-                                            pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                            // required: 'Este campo es obligatorio.',
+                                            // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                         })}
                                     >
                                     </textarea>
@@ -2502,10 +2479,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Observaciones..."
                                         {...register('cultura_viva_observaciones', {
-                                            required: 'Este campo es obligatorio.',
-                                            minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                            maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
-                                            pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                            // required: 'Este campo es obligatorio.',
+                                            // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                         })}
                                     >
                                     </textarea>
@@ -2521,13 +2497,13 @@ function FichaRegistroCatalogacionInmuebles() {
                     </MainCard>
                     <MainCard>
                         <h4 className="mb-4 font-bold text-xl text-textAdmin-light dark:text-textAdmin-dark">
-                            ANALISIS DE BLOQUES NO CONSTRUIDOS
+                            ANALISIS DE FACHADAS
                         </h4>
                         <div className="grid grid-cols-12 gap-4">
                             <div className="col-span-12 flex flex-col gap-2">
                                 <NumeroForm
                                     nro="214"
-                                    text="ANALISIS DE BLOQUES NO CONSTRUIDOS"
+                                    text="ANALISIS DE FACHADAS"
                                     size="sm"
                                 />
                                 <div className="w-full overflow-x-auto">
@@ -2639,7 +2615,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         errors={errors.analisis_fachadas?.[index]?._cantidad}
                                                         maxLength={1}
                                                         isRequired={true}
-                                                        tipo="letras"
+                                                        tipo="numeros"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`analisis_fachadas.${index}.facturacion_simple`}
@@ -2933,16 +2909,12 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         name={`analisis_fachadas.${index}.color_otros`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_otros}
-                                                        maxLength={1}
-                                                        isRequired={true}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`analisis_fachadas.${index}.estado_conserv_bueno`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_bueno}
-                                                        maxLength={1}
-                                                        isRequired={true}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2986,10 +2958,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones..."
                                     {...register('analisis_fachadas_observaciones', {
-                                        required: 'Este campo es obligatorio.',
-                                        minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
-                                        maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
-                                        pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        // required: 'Este campo es obligatorio.',
+                                        // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                        // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                     })}
                                 >
                                 </textarea>
@@ -3014,8 +2985,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                     type="date"
                                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     {...register('fecha_inspeccion', {
-                                        required: 'Este campo es obligatorio.',
-                                        validate: value => new Date(value) <= new Date() || 'La fecha no puede ser futura.',
+                                        // required: 'Este campo es obligatorio.',
+                                        // validate: value => new Date(value) <= new Date() || 'La fecha no puede ser futura.',
                                     })}
                                 />
                                 {errors.fecha_inspeccion && (
@@ -3035,8 +3006,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                     type="time"
                                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     {...register('hora_inspeccion', {
-                                        required: 'Este campo es obligatorio.',
-                                        validate: value => value !== '' || 'Debe seleccionar una hora válida.',
+                                        // required: 'Este campo es obligatorio.',
+                                        // validate: value => value !== '' || 'Debe seleccionar una hora válida.',
                                     })}
                                 />
                                 {errors.hora_inspeccion && (
@@ -3056,9 +3027,8 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`brigada`}
                                     register={register}
                                     errors={errors.brigada}
-                                    maxLength={10}
-                                    isRequired={true}
-                                    tipo="letras"
+                                    maxLength={100}
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -3071,9 +3041,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`coordinador_brigada`}
                                     register={register}
                                     errors={errors.coordinador_brigada}
-                                    maxLength={10}
-                                    isRequired={true}
+                                    maxLength={100}
                                     tipo="letras"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -3086,9 +3056,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`tecnico_catalogador`}
                                     register={register}
                                     errors={errors.tecnico_catalogador}
-                                    maxLength={10}
-                                    isRequired={true}
+                                    maxLength={100}
                                     tipo="letras"
+                                    isRequired={false}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -3101,9 +3071,9 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`propietario`}
                                     register={register}
                                     errors={errors.propietario}
-                                    maxLength={10}
-                                    isRequired={true}
+                                    maxLength={100}
                                     tipo="letras"
+                                    isRequired={false}
                                 />
                             </div>
                         </div>
