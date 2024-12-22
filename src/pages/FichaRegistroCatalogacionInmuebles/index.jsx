@@ -397,7 +397,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`info_general_direccion`}
                                     register={register}
                                     errors={errors.info_general_direccion}
-                                    maxLength={10}
+                                    maxLength={150}
                                     isRequired={false}
                                 />
                             </div>
@@ -730,7 +730,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_patio}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -738,7 +738,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_jardin}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -746,7 +746,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_patio_jardin}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -754,7 +754,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_huerto}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -762,7 +762,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_corral}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -770,7 +770,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_estacionamiento}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -778,7 +778,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_otros}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -786,7 +786,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_prehispanico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -794,7 +794,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_colonial}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -802,7 +802,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_republicano}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -810,7 +810,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_contemporaneo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -818,7 +818,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_canto_rodado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -826,7 +826,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_laja_piedra}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -834,7 +834,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_empedrado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -842,7 +842,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_concreto}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -850,7 +850,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_terrazo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -858,7 +858,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_ceramico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -866,7 +866,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_tierra}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -874,7 +874,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_ladrillo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -882,7 +882,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_piso_verde}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -890,7 +890,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_otros}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -898,7 +898,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_sin_acabado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -906,7 +906,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_techo_opaco}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -914,7 +914,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_techo_translucido}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -922,7 +922,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._estado_const_terminado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -930,7 +930,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._estado_const_en_const}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -938,7 +938,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._estado_const_inconcluso}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -946,7 +946,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.elementos_bancas}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -954,7 +954,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.elementos_jardinera}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -962,7 +962,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.elementos_escalera}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -970,7 +970,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.elementos_fuente}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -978,7 +978,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.elementos_escultura}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -986,7 +986,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.elementos_diseminado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -994,7 +994,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.vegetacion_arb_nativos}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1002,7 +1002,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.vegetacion_arb_foraneos}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1010,7 +1010,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.vegetacion_arbustos}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1018,7 +1018,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.vegetacion_gras}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1026,7 +1026,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.tipo_intervencion_sin_intervencion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1034,7 +1034,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.tipo_intervencion_restauracion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1042,7 +1042,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.tipo_intervencion_refacion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1050,7 +1050,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.tipo_intervencion_remodelacion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1058,7 +1058,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.tipo_intervencion_reconstruccion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1066,7 +1066,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.tipo_intervencion_obra_nueva}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1074,7 +1074,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.tipo_intervencion_demolicion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1082,7 +1082,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.uso_compartido}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1090,7 +1090,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.uso_privado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1098,7 +1098,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.estado_conserv_bueno}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1106,7 +1106,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.estado_conserv_regular}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1114,7 +1114,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.estado_conserv_malo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1122,7 +1122,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.estado_conserv_ruinoso}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1130,7 +1130,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.categoria_registro_valor_patri}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1138,7 +1138,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.categoria_registro_valor_contex}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1146,7 +1146,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.categoria_registro_element_patrimoni}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1154,7 +1154,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?.categoria_registro_sin_valor}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                 </tr>
@@ -1372,7 +1372,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_bloque_u}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1380,7 +1380,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_bloque_l}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1388,7 +1388,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_bloque_i}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1396,7 +1396,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_claustral}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1404,7 +1404,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_compacto}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1412,7 +1412,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_prehispanico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1420,7 +1420,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_colonial}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1428,7 +1428,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_republicano}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1436,7 +1436,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_contemp}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1444,7 +1444,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_civil_publica}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1452,7 +1452,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_civil_domest}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1460,7 +1460,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_religiosa}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1468,7 +1468,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_indust}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1476,7 +1476,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_comercial}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1484,7 +1484,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_militar}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1492,7 +1492,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_manierista}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1500,7 +1500,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_plateresco}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1508,7 +1508,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_barroco}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1516,7 +1516,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_neoclasico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1524,7 +1524,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_rococo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1532,7 +1532,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_mudejar}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1540,7 +1540,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_otros}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1548,7 +1548,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_terminado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1556,7 +1556,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_en_const}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1564,7 +1564,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_inconclusa}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1572,7 +1572,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_sin_construir}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1580,7 +1580,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_adobe}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1588,7 +1588,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_quincha}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1596,7 +1596,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_madera}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1604,7 +1604,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_ladrillo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1612,7 +1612,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_piedra}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1620,7 +1620,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_concreto}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1628,7 +1628,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_madera_parquet}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1636,7 +1636,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_ladrillo_pastelero}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1644,7 +1644,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_ceramico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1652,7 +1652,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_piedra}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1660,7 +1660,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_tierra}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1668,7 +1668,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_concreto}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1676,7 +1676,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_teja_artesanal}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1684,7 +1684,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_teja_indust}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1692,7 +1692,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_calamina}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1700,7 +1700,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_translucido}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1708,7 +1708,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_concreto}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1716,7 +1716,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_obra_original}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1724,7 +1724,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_restauracion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1732,7 +1732,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_refacion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1740,7 +1740,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_remodelacion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1748,7 +1748,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_reconstrucion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1756,7 +1756,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_obra_nueva}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1764,7 +1764,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_demolicion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1772,7 +1772,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_ampliacion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1780,7 +1780,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_residencial}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1788,7 +1788,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_comercio_servicio}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1796,7 +1796,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_hospedaje}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1804,7 +1804,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_educacion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1812,7 +1812,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_salud}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1820,7 +1820,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_recreacion}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1828,7 +1828,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_indus_produc}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1836,7 +1836,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_otros_usos}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1844,7 +1844,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_optimo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1852,7 +1852,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_hacinado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1860,7 +1860,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_tugurio}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1868,7 +1868,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_desocupado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1876,7 +1876,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._servicios_comunes_serv_higienico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1884,7 +1884,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._servicios_comunes_grifo_agua}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1892,7 +1892,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._servicios_comunes_energia_luz}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1900,7 +1900,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_propietario}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1908,7 +1908,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_alquilado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1916,7 +1916,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_anticresis}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1924,7 +1924,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_consenso}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1932,7 +1932,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_alojado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1940,7 +1940,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_otros}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1948,7 +1948,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_bueno}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1956,7 +1956,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_regular}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1964,7 +1964,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_malo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1972,7 +1972,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_ruinoso}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1980,7 +1980,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_valor_patrimonial}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1988,7 +1988,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_valor_contextual}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -1996,7 +1996,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_elem_patrimoni}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2004,7 +2004,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_sin_valor}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2012,7 +2012,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_zaguan}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2020,7 +2020,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_galeria_arcos}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2028,7 +2028,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_galeria_adint}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2036,7 +2036,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_corredor}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2044,7 +2044,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_chiflon}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2052,7 +2052,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_caja_escalera}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2060,7 +2060,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_logia_arcos}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2068,7 +2068,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_logia_adint}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2076,7 +2076,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_otros}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2084,7 +2084,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_pintura_mural}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2092,7 +2092,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_religiosas}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2100,7 +2100,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_bienes_muebles}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2108,7 +2108,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_diseminados}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                 </tr>
@@ -2622,7 +2622,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._facturacion_simple}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2630,7 +2630,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._facturacion_elaborado}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2638,7 +2638,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_1}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2646,7 +2646,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_2}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2654,7 +2654,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_3}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2662,7 +2662,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_4}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2670,7 +2670,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_prehispanico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2678,7 +2678,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_colonial}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2686,7 +2686,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_republicano}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2694,7 +2694,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_contemp}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2702,7 +2702,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_manierista}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2710,7 +2710,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_plateresco}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2718,7 +2718,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_barroco}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2726,7 +2726,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_neoclasico}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2734,7 +2734,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_rococo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2742,7 +2742,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_mudejar}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2750,7 +2750,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_otros}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2758,7 +2758,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_tierra}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2766,7 +2766,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_ladrillo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2774,7 +2774,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_piedra}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2782,7 +2782,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_yeso}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2790,7 +2790,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_concreto}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2798,7 +2798,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_madera}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2806,7 +2806,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_metal}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2814,7 +2814,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_vidrio}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2822,7 +2822,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_rejas}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2830,7 +2830,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_balaustres}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2838,7 +2838,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_celosias}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2846,7 +2846,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_casetones}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2854,7 +2854,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_blanco}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2862,7 +2862,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_marfil}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2870,7 +2870,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_crema}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2878,7 +2878,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_azul}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2886,7 +2886,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_marron}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2894,7 +2894,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_verde}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2902,19 +2902,21 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_natural}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`analisis_fachadas.${index}.color_otros`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_otros}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`analisis_fachadas.${index}.estado_conserv_bueno`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_bueno}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2922,7 +2924,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_regular}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2930,7 +2932,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_malo}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
@@ -2938,7 +2940,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_ruinoso}
                                                         maxLength={1}
-                                                        isRequired={true}
+                                                        isRequired={false}
                                                         tipo="letras"
                                                     />
                                                 </tr>
