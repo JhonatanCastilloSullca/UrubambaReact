@@ -59,48 +59,43 @@ function FichaRegistroCatalogacionInmuebles() {
     });
 
     const onSubmit = (data) => {
-        const infoGeneral = [
-            { name: "info_general_declaro_patrimonio", value: data.info_general_declaro_patrimonio },
-            { name: "info_general_direccion", value: data.info_general_direccion },
-            { name: "info_general_barrio", value: data.info_general_barrio },
-            { name: "info_general_denominacion", value: data.info_general_denominacion },
-            { name: "info_general_cat_catal_ch", value: data.info_general_cat_catal_ch },
-            { name: "info_general_zon_am", value: data.info_general_zon_am },
-            { name: "info_general_zon_zt", value: data.info_general_zon_zt },
-            { name: "info_general_sect_gest_s7", value: data.info_general_sect_gest_s7 },
-            { name: "info_general_fil_cult_ph", value: data.info_general_fil_cult_ph },
-            { name: "info_general_fil_cult_c", value: data.info_general_fil_cult_c },
-            { name: "info_general_fil_cult_r", value: data.info_general_fil_cult_r },
-            { name: "info_general_fil_cult_cp", value: data.info_general_fil_cult_cp }
-        ];
-        const culturaViva = [
-            { name: "imagen_cultura_viva", value: data.imagen_cultura_viva },
-            { name: "cultura_viva_descripcion", value: data.cultura_viva_descripcion },
-            { name: "cultura_viva_observaciones", value: data.cultura_viva_observaciones },
-        ]
-        const levantamientoPlanimetricoFachadas = [
-
-            { name: "imagen_fachada_1", value: data.imagen_fachada_1 },
-            { name: "codigo_imagen_fachada_1", value: data.codigo_imagen_fachada_1 },
-            { name: "imagen_fachada_2", value: data.imagen_fachada_2 },
-            { name: "codigo_imagen_fachada_2", value: data.codigo_imagen_fachada_2 },
-            { name: "imagen_fachada_3", value: data.imagen_fachada_3 },
-            { name: "codigo_imagen_fachada_3", value: data.codigo_imagen_fachada_3 },
-            { name: "imagen_fachada_4", value: data.imagen_fachada_4 },
-            { name: "codigo_imagen_fachada_4", value: data.codigo_imagen_fachada_4 },
-        ]
-        const responsablesDatos = [
-
-
-            { name: "fecha_inspeccion", value: data.fecha_inspeccion },
-            { name: "hora_inspeccion", value: data.hora_inspeccion },
-            { name: "brigada", value: data.brigada },
-            { name: "coordinador_brigada", value: data.coordinador_brigada },
-            { name: "tecnico_catalogador", value: data.tecnico_catalogador },
-            { name: "propietario", value: data.propietario },
-
-        ]
-
+        const infoGeneral = {
+            "info_general_declaro_patrimonio": data.info_general_declaro_patrimonio,
+            "info_general_direccion": data.info_general_direccion,
+            "info_general_barrio": data.info_general_barrio,
+            "info_general_denominacion": data.info_general_denominacion,
+            "info_general_cat_catal_ch": data.info_general_cat_catal_ch,
+            "info_general_zon_am": data.info_general_zon_am,
+            "info_general_zon_zt": data.info_general_zon_zt,
+            "info_general_sect_gest_s7": data.info_general_sect_gest_s7,
+            "info_general_fil_cult_ph": data.info_general_fil_cult_ph,
+            "info_general_fil_cult_c": data.info_general_fil_cult_c,
+            "info_general_fil_cult_r": data.info_general_fil_cult_r,
+            "info_general_fil_cult_cp": data.info_general_fil_cult_cp,
+        };
+        const culturaViva = {
+            "imagen_cultura_viva": data.imagen_cultura_viva,
+            "cultura_viva_descripcion": data.cultura_viva_descripcion,
+            "cultura_viva_observaciones": data.cultura_viva_observaciones,
+        };
+        const levantamientoPlanimetricoFachadas = {
+            "imagen_fachada_1": data.imagen_fachada_1,
+            "codigo_imagen_fachada_1": data.codigo_imagen_fachada_1,
+            "imagen_fachada_2": data.imagen_fachada_2,
+            "codigo_imagen_fachada_2": data.codigo_imagen_fachada_2,
+            "imagen_fachada_3": data.imagen_fachada_3,
+            "codigo_imagen_fachada_3": data.codigo_imagen_fachada_3,
+            "imagen_fachada_4": data.imagen_fachada_4,
+            "codigo_imagen_fachada_4": data.codigo_imagen_fachada_4,
+        };
+        const responsablesDatos = {
+            "fecha_inspeccion": data.fecha_inspeccion,
+            "hora_inspeccion": data.hora_inspeccion,
+            "brigada": data.brigada,
+            "coordinador_brigada": data.coordinador_brigada,
+            "tecnico_catalogador": data.tecnico_catalogador,
+            "propietario": data.propietario,
+        };
         const formattedData = {
             ...data,
             info_general: infoGeneral,
@@ -376,14 +371,26 @@ function FichaRegistroCatalogacionInmuebles() {
                                     text="DECLARADO PATRIMONIO"
                                     size="xs"
                                 />
-                                <OnlyInputError
-                                    name={`info_general_declaro_patrimonio`}
-                                    register={register}
-                                    errors={errors.info_general_declaro_patrimonio}
-                                    maxLength={10}
-                                    isRequired={true}
-                                    tipo="numeros"
-                                />
+                                <div className="">
+                                    <select
+                                        id="select"
+                                        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        {...register('info_general_declaro_patrimonio', {
+                                            required: 'Este campo es obligatorio.',
+                                        })}
+                                    >
+                                        <option value="">Seleccione...</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                        <option value="EN TRAMITE">EN TRAMITE</option>
+                                    </select>
+                                </div>
+                                {errors.info_general_declaro_patrimonio && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.info_general_declaro_patrimonio.message}
+                                    </span>
+                                )}
                             </div>
                             <div className="col-span-3 flex flex-col gap-2">
                                 <NumeroForm
@@ -563,7 +570,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Observaciones</label>
                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones Tipos..."
-                                    {...register('ficha_cultural_descripcion', {
+                                    {...register('contexto_historico_espacial', {
                                         required: 'Este campo es obligatorio.',
                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
                                         maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
@@ -572,10 +579,10 @@ function FichaRegistroCatalogacionInmuebles() {
                                 >
                                 </textarea>
                             </div>
-                            {errors.ficha_cultural_descripcion && (
+                            {errors.contexto_historico_espacial && (
                                 <span className="text-sm text-red-600 font-medium flex items-center gap-2">
                                     <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
-                                    {errors.ficha_cultural_descripcion.message}
+                                    {errors.contexto_historico_espacial.message}
                                 </span>
                             )}
                         </div>
@@ -589,7 +596,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Observaciones</label>
                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones Tipos..."
-                                    {...register('ficha_cultural_descripcion', {
+                                    {...register('descripcion_general', {
                                         required: 'Este campo es obligatorio.',
                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
                                         maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
@@ -598,10 +605,10 @@ function FichaRegistroCatalogacionInmuebles() {
                                 >
                                 </textarea>
                             </div>
-                            {errors.ficha_cultural_descripcion && (
+                            {errors.descripcion_general && (
                                 <span className="text-sm text-red-600 font-medium flex items-center gap-2">
                                     <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
-                                    {errors.ficha_cultural_descripcion.message}
+                                    {errors.descripcion_general.message}
                                 </span>
                             )}
                         </div>
@@ -729,7 +736,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         </button>
                                                     </td>
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._sectores`}
+                                                        name={`analisis_bloques_no_construidos.${index}.sectores`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._sectores}
                                                         maxLength={1}
@@ -737,7 +744,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_patio`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_patio`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_patio}
                                                         maxLength={1}
@@ -745,7 +752,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_jardin`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_jardin`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_jardin}
                                                         maxLength={1}
@@ -753,7 +760,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_patio_jardin`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_patio_jardin`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_patio_jardin}
                                                         maxLength={1}
@@ -761,7 +768,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_huerto`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_huerto`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_huerto}
                                                         maxLength={1}
@@ -769,7 +776,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_corral`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_corral`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_corral}
                                                         maxLength={1}
@@ -777,7 +784,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_estacionamiento`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_estacionamiento`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_estacionamiento}
                                                         maxLength={1}
@@ -785,7 +792,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_otros`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_otros`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_otros}
                                                         maxLength={1}
@@ -793,7 +800,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._epoca_const_prehispanico`}
+                                                        name={`analisis_bloques_no_construidos.${index}.epoca_const_prehispanico`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_prehispanico}
                                                         maxLength={1}
@@ -801,7 +808,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._epoca_const_colonial`}
+                                                        name={`analisis_bloques_no_construidos.${index}.epoca_const_colonial`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_colonial}
                                                         maxLength={1}
@@ -809,7 +816,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._epoca_const_republicano`}
+                                                        name={`analisis_bloques_no_construidos.${index}.epoca_const_republicano`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_republicano}
                                                         maxLength={1}
@@ -817,7 +824,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._epoca_const_contemporaneo`}
+                                                        name={`analisis_bloques_no_construidos.${index}.epoca_const_contemporaneo`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._epoca_const_contemporaneo}
                                                         maxLength={1}
@@ -825,7 +832,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_canto_rodado`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_canto_rodado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_canto_rodado}
                                                         maxLength={1}
@@ -833,7 +840,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_laja_piedra`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_laja_piedra`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_laja_piedra}
                                                         maxLength={1}
@@ -841,7 +848,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_empedrado`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_empedrado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_empedrado}
                                                         maxLength={1}
@@ -849,7 +856,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_concreto`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_concreto`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_concreto}
                                                         maxLength={1}
@@ -857,7 +864,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_terrazo`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_terrazo`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_terrazo}
                                                         maxLength={1}
@@ -865,7 +872,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_ceramico`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_ceramico`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_ceramico}
                                                         maxLength={1}
@@ -873,7 +880,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_tierra`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_tierra`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_tierra}
                                                         maxLength={1}
@@ -881,7 +888,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_ladrillo`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_ladrillo`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_ladrillo}
                                                         maxLength={1}
@@ -889,7 +896,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_piso_verde`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_piso_verde`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_piso_verde}
                                                         maxLength={1}
@@ -897,7 +904,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_otros`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_otros`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_otros}
                                                         maxLength={1}
@@ -905,7 +912,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_piso_sin_acabado`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_piso_sin_acabado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_piso_sin_acabado}
                                                         maxLength={1}
@@ -913,7 +920,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_techo_opaco`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_techo_opaco`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_techo_opaco}
                                                         maxLength={1}
@@ -921,7 +928,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._tipo_acabado_techo_translucido`}
+                                                        name={`analisis_bloques_no_construidos.${index}.tipo_acabado_techo_translucido`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._tipo_acabado_techo_translucido}
                                                         maxLength={1}
@@ -929,7 +936,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._estado_const_terminado`}
+                                                        name={`analisis_bloques_no_construidos.${index}.estado_const_terminado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._estado_const_terminado}
                                                         maxLength={1}
@@ -937,7 +944,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._estado_const_en_const`}
+                                                        name={`analisis_bloques_no_construidos.${index}.estado_const_en_const`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._estado_const_en_const}
                                                         maxLength={1}
@@ -945,7 +952,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_no_construidos.${index}._estado_const_inconcluso`}
+                                                        name={`analisis_bloques_no_construidos.${index}.estado_const_inconcluso`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_no_construidos?.[index]?._estado_const_inconcluso}
                                                         maxLength={1}
@@ -1363,7 +1370,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         </button>
                                                     </td>
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._bloque`}
+                                                        name={`analisis_bloques_construidos.${index}.bloque`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._bloque}
                                                         maxLength={1}
@@ -1371,7 +1378,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._nivel_edificacion`}
+                                                        name={`analisis_bloques_construidos.${index}.nivel_edificacion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._nivel_edificacion}
                                                         maxLength={1}
@@ -1379,7 +1386,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._partido_arq_bloque_u`}
+                                                        name={`analisis_bloques_construidos.${index}.partido_arq_bloque_u`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_bloque_u}
                                                         maxLength={1}
@@ -1387,7 +1394,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._partido_arq_bloque_l`}
+                                                        name={`analisis_bloques_construidos.${index}.partido_arq_bloque_l`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_bloque_l}
                                                         maxLength={1}
@@ -1395,7 +1402,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._partido_arq_bloque_i`}
+                                                        name={`analisis_bloques_construidos.${index}.partido_arq_bloque_i`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_bloque_i}
                                                         maxLength={1}
@@ -1403,7 +1410,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._partido_arq_claustral`}
+                                                        name={`analisis_bloques_construidos.${index}.partido_arq_claustral`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_claustral}
                                                         maxLength={1}
@@ -1411,7 +1418,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._partido_arq_compacto`}
+                                                        name={`analisis_bloques_construidos.${index}.partido_arq_compacto`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._partido_arq_compacto}
                                                         maxLength={1}
@@ -1419,7 +1426,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._epoca_const_prehispanico`}
+                                                        name={`analisis_bloques_construidos.${index}.epoca_const_prehispanico`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_prehispanico}
                                                         maxLength={1}
@@ -1427,7 +1434,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._epoca_const_colonial`}
+                                                        name={`analisis_bloques_construidos.${index}.epoca_const_colonial`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_colonial}
                                                         maxLength={1}
@@ -1435,7 +1442,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._epoca_const_republicano`}
+                                                        name={`analisis_bloques_construidos.${index}.epoca_const_republicano`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_republicano}
                                                         maxLength={1}
@@ -1443,7 +1450,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._epoca_const_contemp`}
+                                                        name={`analisis_bloques_construidos.${index}.epoca_const_contemp`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._epoca_const_contemp}
                                                         maxLength={1}
@@ -1451,7 +1458,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_arq_civil_publica`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_arq_civil_publica`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_civil_publica}
                                                         maxLength={1}
@@ -1459,7 +1466,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_arq_civil_domest`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_arq_civil_domest`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_civil_domest}
                                                         maxLength={1}
@@ -1467,7 +1474,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_arq_religiosa`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_arq_religiosa`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_religiosa}
                                                         maxLength={1}
@@ -1475,7 +1482,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_arq_indust`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_arq_indust`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_indust}
                                                         maxLength={1}
@@ -1483,7 +1490,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_arq_comercial`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_arq_comercial`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_comercial}
                                                         maxLength={1}
@@ -1491,7 +1498,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_arq_militar`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_arq_militar`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_arq_militar}
                                                         maxLength={1}
@@ -1499,7 +1506,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._filiacion_estilist_manierista`}
+                                                        name={`analisis_bloques_construidos.${index}.filiacion_estilist_manierista`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_manierista}
                                                         maxLength={1}
@@ -1507,7 +1514,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._filiacion_estilist_plateresco`}
+                                                        name={`analisis_bloques_construidos.${index}.filiacion_estilist_plateresco`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_plateresco}
                                                         maxLength={1}
@@ -1515,7 +1522,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._filiacion_estilist_barroco`}
+                                                        name={`analisis_bloques_construidos.${index}.filiacion_estilist_barroco`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_barroco}
                                                         maxLength={1}
@@ -1523,7 +1530,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._filiacion_estilist_neoclasico`}
+                                                        name={`analisis_bloques_construidos.${index}.filiacion_estilist_neoclasico`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_neoclasico}
                                                         maxLength={1}
@@ -1531,7 +1538,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._filiacion_estilist_rococo`}
+                                                        name={`analisis_bloques_construidos.${index}.filiacion_estilist_rococo`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_rococo}
                                                         maxLength={1}
@@ -1539,7 +1546,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._filiacion_estilist_mudejar`}
+                                                        name={`analisis_bloques_construidos.${index}.filiacion_estilist_mudejar`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_mudejar}
                                                         maxLength={1}
@@ -1547,7 +1554,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._filiacion_estilist_otros`}
+                                                        name={`analisis_bloques_construidos.${index}.filiacion_estilist_otros`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._filiacion_estilist_otros}
                                                         maxLength={1}
@@ -1555,7 +1562,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_const_terminado`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_const_terminado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_terminado}
                                                         maxLength={1}
@@ -1563,7 +1570,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_const_en_const`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_const_en_const`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_en_const}
                                                         maxLength={1}
@@ -1571,7 +1578,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_const_inconclusa`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_const_inconclusa`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_inconclusa}
                                                         maxLength={1}
@@ -1579,7 +1586,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_const_sin_construir`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_const_sin_construir`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_const_sin_construir}
                                                         maxLength={1}
@@ -1587,7 +1594,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_muros_adobe`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_muros_adobe`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_adobe}
                                                         maxLength={1}
@@ -1595,7 +1602,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_muros_quincha`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_muros_quincha`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_quincha}
                                                         maxLength={1}
@@ -1603,7 +1610,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_muros_madera`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_muros_madera`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_madera}
                                                         maxLength={1}
@@ -1611,7 +1618,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_muros_ladrillo`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_muros_ladrillo`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_ladrillo}
                                                         maxLength={1}
@@ -1619,7 +1626,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_muros_piedra`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_muros_piedra`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_piedra}
                                                         maxLength={1}
@@ -1627,7 +1634,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_muros_concreto`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_muros_concreto`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_muros_concreto}
                                                         maxLength={1}
@@ -1635,7 +1642,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_pisos_madera_parquet`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_pisos_madera_parquet`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_madera_parquet}
                                                         maxLength={1}
@@ -1643,7 +1650,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_pisos_ladrillo_pastelero`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_pisos_ladrillo_pastelero`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_ladrillo_pastelero}
                                                         maxLength={1}
@@ -1651,7 +1658,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_pisos_ceramico`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_pisos_ceramico`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_ceramico}
                                                         maxLength={1}
@@ -1659,7 +1666,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_pisos_piedra`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_pisos_piedra`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_piedra}
                                                         maxLength={1}
@@ -1667,7 +1674,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_pisos_tierra`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_pisos_tierra`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_tierra}
                                                         maxLength={1}
@@ -1675,7 +1682,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_pisos_concreto`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_pisos_concreto`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_pisos_concreto}
                                                         maxLength={1}
@@ -1683,7 +1690,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_techos_teja_artesanal`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_techos_teja_artesanal`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_teja_artesanal}
                                                         maxLength={1}
@@ -1691,7 +1698,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_techos_teja_indust`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_techos_teja_indust`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_teja_indust}
                                                         maxLength={1}
@@ -1699,7 +1706,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_techos_calamina`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_techos_calamina`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_calamina}
                                                         maxLength={1}
@@ -1707,7 +1714,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_techos_translucido`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_techos_translucido`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_translucido}
                                                         maxLength={1}
@@ -1715,7 +1722,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._material_pred_techos_concreto`}
+                                                        name={`analisis_bloques_construidos.${index}.material_pred_techos_concreto`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._material_pred_techos_concreto}
                                                         maxLength={1}
@@ -1723,7 +1730,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_obra_original`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_obra_original`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_obra_original}
                                                         maxLength={1}
@@ -1731,7 +1738,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_restauracion`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_restauracion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_restauracion}
                                                         maxLength={1}
@@ -1739,7 +1746,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_refacion`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_refacion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_refacion}
                                                         maxLength={1}
@@ -1747,7 +1754,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_remodelacion`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_remodelacion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_remodelacion}
                                                         maxLength={1}
@@ -1755,7 +1762,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_reconstrucion`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_reconstrucion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_reconstrucion}
                                                         maxLength={1}
@@ -1763,7 +1770,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_obra_nueva`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_obra_nueva`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_obra_nueva}
                                                         maxLength={1}
@@ -1771,7 +1778,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_demolicion`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_demolicion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_demolicion}
                                                         maxLength={1}
@@ -1779,7 +1786,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._tipo_intervencion_ampliacion`}
+                                                        name={`analisis_bloques_construidos.${index}.tipo_intervencion_ampliacion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._tipo_intervencion_ampliacion}
                                                         maxLength={1}
@@ -1787,7 +1794,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_residencial`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_residencial`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_residencial}
                                                         maxLength={1}
@@ -1795,7 +1802,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_comercio_servicio`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_comercio_servicio`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_comercio_servicio}
                                                         maxLength={1}
@@ -1803,7 +1810,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_hospedaje`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_hospedaje`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_hospedaje}
                                                         maxLength={1}
@@ -1811,7 +1818,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_educacion`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_educacion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_educacion}
                                                         maxLength={1}
@@ -1819,7 +1826,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_salud`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_salud`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_salud}
                                                         maxLength={1}
@@ -1827,7 +1834,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_recreacion`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_recreacion`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_recreacion}
                                                         maxLength={1}
@@ -1835,7 +1842,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_indus_produc`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_indus_produc`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_indus_produc}
                                                         maxLength={1}
@@ -1843,7 +1850,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._uso_actual_suelo_otros_usos`}
+                                                        name={`analisis_bloques_construidos.${index}.uso_actual_suelo_otros_usos`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._uso_actual_suelo_otros_usos}
                                                         maxLength={1}
@@ -1851,7 +1858,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._cond_habitabilidad_optimo`}
+                                                        name={`analisis_bloques_construidos.${index}.cond_habitabilidad_optimo`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_optimo}
                                                         maxLength={1}
@@ -1859,7 +1866,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._cond_habitabilidad_hacinado`}
+                                                        name={`analisis_bloques_construidos.${index}.cond_habitabilidad_hacinado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_hacinado}
                                                         maxLength={1}
@@ -1867,7 +1874,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._cond_habitabilidad_tugurio`}
+                                                        name={`analisis_bloques_construidos.${index}.cond_habitabilidad_tugurio`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_tugurio}
                                                         maxLength={1}
@@ -1875,7 +1882,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._cond_habitabilidad_desocupado`}
+                                                        name={`analisis_bloques_construidos.${index}.cond_habitabilidad_desocupado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._cond_habitabilidad_desocupado}
                                                         maxLength={1}
@@ -1883,7 +1890,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._servicios_comunes_serv_higienico`}
+                                                        name={`analisis_bloques_construidos.${index}.servicios_comunes_serv_higienico`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._servicios_comunes_serv_higienico}
                                                         maxLength={1}
@@ -1891,7 +1898,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._servicios_comunes_grifo_agua`}
+                                                        name={`analisis_bloques_construidos.${index}.servicios_comunes_grifo_agua`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._servicios_comunes_grifo_agua}
                                                         maxLength={1}
@@ -1899,7 +1906,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._servicios_comunes_energia_luz`}
+                                                        name={`analisis_bloques_construidos.${index}.servicios_comunes_energia_luz`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._servicios_comunes_energia_luz}
                                                         maxLength={1}
@@ -1907,7 +1914,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._regimen_tenencia_propietario`}
+                                                        name={`analisis_bloques_construidos.${index}.regimen_tenencia_propietario`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_propietario}
                                                         maxLength={1}
@@ -1915,7 +1922,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._regimen_tenencia_alquilado`}
+                                                        name={`analisis_bloques_construidos.${index}.regimen_tenencia_alquilado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_alquilado}
                                                         maxLength={1}
@@ -1923,7 +1930,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._regimen_tenencia_anticresis`}
+                                                        name={`analisis_bloques_construidos.${index}.regimen_tenencia_anticresis`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_anticresis}
                                                         maxLength={1}
@@ -1931,7 +1938,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._regimen_tenencia_consenso`}
+                                                        name={`analisis_bloques_construidos.${index}.regimen_tenencia_consenso`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_consenso}
                                                         maxLength={1}
@@ -1939,7 +1946,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._regimen_tenencia_alojado`}
+                                                        name={`analisis_bloques_construidos.${index}.regimen_tenencia_alojado`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_alojado}
                                                         maxLength={1}
@@ -1947,7 +1954,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._regimen_tenencia_otros`}
+                                                        name={`analisis_bloques_construidos.${index}.regimen_tenencia_otros`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._regimen_tenencia_otros}
                                                         maxLength={1}
@@ -1955,7 +1962,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_conserv_bueno`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_conserv_bueno`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_bueno}
                                                         maxLength={1}
@@ -1963,7 +1970,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_conserv_regular`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_conserv_regular`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_regular}
                                                         maxLength={1}
@@ -1971,7 +1978,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_conserv_malo`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_conserv_malo`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_malo}
                                                         maxLength={1}
@@ -1979,7 +1986,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._estado_conserv_ruinoso`}
+                                                        name={`analisis_bloques_construidos.${index}.estado_conserv_ruinoso`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._estado_conserv_ruinoso}
                                                         maxLength={1}
@@ -1987,7 +1994,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._categoria_registro_valor_patrimonial`}
+                                                        name={`analisis_bloques_construidos.${index}.categoria_registro_valor_patrimonial`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_valor_patrimonial}
                                                         maxLength={1}
@@ -1995,7 +2002,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._categoria_registro_valor_contextual`}
+                                                        name={`analisis_bloques_construidos.${index}.categoria_registro_valor_contextual`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_valor_contextual}
                                                         maxLength={1}
@@ -2003,7 +2010,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._categoria_registro_elem_patrimoni`}
+                                                        name={`analisis_bloques_construidos.${index}.categoria_registro_elem_patrimoni`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_elem_patrimoni}
                                                         maxLength={1}
@@ -2011,7 +2018,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._categoria_registro_sin_valor`}
+                                                        name={`analisis_bloques_construidos.${index}.categoria_registro_sin_valor`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._categoria_registro_sin_valor}
                                                         maxLength={1}
@@ -2019,7 +2026,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_zaguan`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_zaguan`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_zaguan}
                                                         maxLength={1}
@@ -2027,7 +2034,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_galeria_arcos`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_galeria_arcos`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_galeria_arcos}
                                                         maxLength={1}
@@ -2035,7 +2042,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_galeria_adint`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_galeria_adint`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_galeria_adint}
                                                         maxLength={1}
@@ -2043,7 +2050,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_corredor`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_corredor`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_corredor}
                                                         maxLength={1}
@@ -2051,7 +2058,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_chiflon`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_chiflon`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_chiflon}
                                                         maxLength={1}
@@ -2059,7 +2066,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_caja_escalera`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_caja_escalera`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_caja_escalera}
                                                         maxLength={1}
@@ -2067,7 +2074,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_logia_arcos`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_logia_arcos`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_logia_arcos}
                                                         maxLength={1}
@@ -2075,7 +2082,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_logia_adint`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_logia_adint`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_logia_adint}
                                                         maxLength={1}
@@ -2083,7 +2090,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._espacios_otros`}
+                                                        name={`analisis_bloques_construidos.${index}.espacios_otros`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._espacios_otros}
                                                         maxLength={1}
@@ -2091,7 +2098,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._elem_valor_pintura_mural`}
+                                                        name={`analisis_bloques_construidos.${index}.elem_valor_pintura_mural`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_pintura_mural}
                                                         maxLength={1}
@@ -2099,7 +2106,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._elem_valor_religiosas`}
+                                                        name={`analisis_bloques_construidos.${index}.elem_valor_religiosas`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_religiosas}
                                                         maxLength={1}
@@ -2107,7 +2114,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._elem_valor_bienes_muebles`}
+                                                        name={`analisis_bloques_construidos.${index}.elem_valor_bienes_muebles`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_bienes_muebles}
                                                         maxLength={1}
@@ -2115,7 +2122,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_bloques_construidos.${index}._elem_valor_diseminados`}
+                                                        name={`analisis_bloques_construidos.${index}.elem_valor_diseminados`}
                                                         register={register}
                                                         errors={errors.analisis_bloques_construidos?.[index]?._elem_valor_diseminados}
                                                         maxLength={1}
@@ -2200,7 +2207,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                 <div className="my-4">
                                     <NumeroForm
                                         nro="204"
-                                        text="DESCRIPCION DE LA  FACHADA"
+                                        text="DESCRIPCION DE LA FACHADA"
                                         size="sm"
                                     />
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -2619,15 +2626,15 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         </button>
                                                     </td>
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._elemento_codigo`}
+                                                        name={`analisis_fachadas.${index}.elemento_codigo`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._elemento_codigo}
-                                                        maxLength={1}
+                                                        maxLength={2}
                                                         isRequired={true}
-                                                        tipo="letras"
+                                                        tipo="numeros"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._cantidad`}
+                                                        name={`analisis_fachadas.${index}.cantidad`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._cantidad}
                                                         maxLength={1}
@@ -2635,7 +2642,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._facturacion_simple`}
+                                                        name={`analisis_fachadas.${index}.facturacion_simple`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._facturacion_simple}
                                                         maxLength={1}
@@ -2643,7 +2650,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._facturacion_elaborado`}
+                                                        name={`analisis_fachadas.${index}.facturacion_elaborado`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._facturacion_elaborado}
                                                         maxLength={1}
@@ -2651,7 +2658,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_1`}
+                                                        name={`analisis_fachadas.${index}.ubicacion_fachada_1`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_1}
                                                         maxLength={1}
@@ -2659,7 +2666,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_2`}
+                                                        name={`analisis_fachadas.${index}.ubicacion_fachada_2`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_2}
                                                         maxLength={1}
@@ -2667,7 +2674,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_3`}
+                                                        name={`analisis_fachadas.${index}.ubicacion_fachada_3`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_3}
                                                         maxLength={1}
@@ -2675,7 +2682,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._ubicacion_fachada_4`}
+                                                        name={`analisis_fachadas.${index}.ubicacion_fachada_4`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._ubicacion_fachada_4}
                                                         maxLength={1}
@@ -2683,7 +2690,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._epoca_prehispanico`}
+                                                        name={`analisis_fachadas.${index}.epoca_prehispanico`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_prehispanico}
                                                         maxLength={1}
@@ -2691,7 +2698,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._epoca_colonial`}
+                                                        name={`analisis_fachadas.${index}.epoca_colonial`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_colonial}
                                                         maxLength={1}
@@ -2699,7 +2706,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._epoca_republicano`}
+                                                        name={`analisis_fachadas.${index}.epoca_republicano`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_republicano}
                                                         maxLength={1}
@@ -2707,7 +2714,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._epoca_contemp`}
+                                                        name={`analisis_fachadas.${index}.epoca_contemp`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._epoca_contemp}
                                                         maxLength={1}
@@ -2715,7 +2722,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_manierista`}
+                                                        name={`analisis_fachadas.${index}.filiacion_estilistica_manierista`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_manierista}
                                                         maxLength={1}
@@ -2723,7 +2730,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_plateresco`}
+                                                        name={`analisis_fachadas.${index}.filiacion_estilistica_plateresco`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_plateresco}
                                                         maxLength={1}
@@ -2731,7 +2738,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_barroco`}
+                                                        name={`analisis_fachadas.${index}.filiacion_estilistica_barroco`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_barroco}
                                                         maxLength={1}
@@ -2739,7 +2746,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_neoclasico`}
+                                                        name={`analisis_fachadas.${index}.filiacion_estilistica_neoclasico`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_neoclasico}
                                                         maxLength={1}
@@ -2747,7 +2754,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_rococo`}
+                                                        name={`analisis_fachadas.${index}.filiacion_estilistica_rococo`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_rococo}
                                                         maxLength={1}
@@ -2755,7 +2762,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_mudejar`}
+                                                        name={`analisis_fachadas.${index}.filiacion_estilistica_mudejar`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_mudejar}
                                                         maxLength={1}
@@ -2763,7 +2770,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._filiacion_estilistica_otros`}
+                                                        name={`analisis_fachadas.${index}.filiacion_estilistica_otros`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._filiacion_estilistica_otros}
                                                         maxLength={1}
@@ -2771,7 +2778,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_tierra`}
+                                                        name={`analisis_fachadas.${index}.material_tierra`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_tierra}
                                                         maxLength={1}
@@ -2779,7 +2786,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_ladrillo`}
+                                                        name={`analisis_fachadas.${index}.material_ladrillo`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_ladrillo}
                                                         maxLength={1}
@@ -2787,7 +2794,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_piedra`}
+                                                        name={`analisis_fachadas.${index}.material_piedra`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_piedra}
                                                         maxLength={1}
@@ -2795,7 +2802,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_yeso`}
+                                                        name={`analisis_fachadas.${index}.material_yeso`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_yeso}
                                                         maxLength={1}
@@ -2803,7 +2810,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_concreto`}
+                                                        name={`analisis_fachadas.${index}.material_concreto`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_concreto}
                                                         maxLength={1}
@@ -2811,7 +2818,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_madera`}
+                                                        name={`analisis_fachadas.${index}.material_madera`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_madera}
                                                         maxLength={1}
@@ -2819,7 +2826,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_metal`}
+                                                        name={`analisis_fachadas.${index}.material_metal`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_metal}
                                                         maxLength={1}
@@ -2827,7 +2834,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._material_vidrio`}
+                                                        name={`analisis_fachadas.${index}.material_vidrio`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._material_vidrio}
                                                         maxLength={1}
@@ -2835,7 +2842,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._detalles_rejas`}
+                                                        name={`analisis_fachadas.${index}.detalles_rejas`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_rejas}
                                                         maxLength={1}
@@ -2843,7 +2850,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._detalles_balaustres`}
+                                                        name={`analisis_fachadas.${index}.detalles_balaustres`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_balaustres}
                                                         maxLength={1}
@@ -2851,7 +2858,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._detalles_celosias`}
+                                                        name={`analisis_fachadas.${index}.detalles_celosias`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_celosias}
                                                         maxLength={1}
@@ -2859,7 +2866,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._detalles_casetones`}
+                                                        name={`analisis_fachadas.${index}.detalles_casetones`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._detalles_casetones}
                                                         maxLength={1}
@@ -2867,7 +2874,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_blanco`}
+                                                        name={`analisis_fachadas.${index}.color_blanco`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_blanco}
                                                         maxLength={1}
@@ -2875,7 +2882,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_marfil`}
+                                                        name={`analisis_fachadas.${index}.color_marfil`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_marfil}
                                                         maxLength={1}
@@ -2883,7 +2890,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_crema`}
+                                                        name={`analisis_fachadas.${index}.color_crema`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_crema}
                                                         maxLength={1}
@@ -2891,7 +2898,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_azul`}
+                                                        name={`analisis_fachadas.${index}.color_azul`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_azul}
                                                         maxLength={1}
@@ -2899,7 +2906,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_marron`}
+                                                        name={`analisis_fachadas.${index}.color_marron`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_marron}
                                                         maxLength={1}
@@ -2907,7 +2914,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_verde`}
+                                                        name={`analisis_fachadas.${index}.color_verde`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_verde}
                                                         maxLength={1}
@@ -2915,7 +2922,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_natural`}
+                                                        name={`analisis_fachadas.${index}.color_natural`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_natural}
                                                         maxLength={1}
@@ -2923,7 +2930,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._color_otros`}
+                                                        name={`analisis_fachadas.${index}.color_otros`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._color_otros}
                                                         maxLength={1}
@@ -2931,7 +2938,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._estado_conserv_bueno`}
+                                                        name={`analisis_fachadas.${index}.estado_conserv_bueno`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_bueno}
                                                         maxLength={1}
@@ -2939,7 +2946,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._estado_conserv_regular`}
+                                                        name={`analisis_fachadas.${index}.estado_conserv_regular`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_regular}
                                                         maxLength={1}
@@ -2947,7 +2954,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._estado_conserv_malo`}
+                                                        name={`analisis_fachadas.${index}.estado_conserv_malo`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_malo}
                                                         maxLength={1}
@@ -2955,7 +2962,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`analisis_fachadas.${index}._estado_conserv_ruinoso`}
+                                                        name={`analisis_fachadas.${index}.estado_conserv_ruinoso`}
                                                         register={register}
                                                         errors={errors.analisis_fachadas?.[index]?._estado_conserv_ruinoso}
                                                         maxLength={1}

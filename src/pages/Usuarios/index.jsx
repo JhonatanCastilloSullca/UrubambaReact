@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useQuery } from '@tanstack/react-query';
 import ErrorIcono from "../../assets/icons/errorIcono";
 import Datatable from "../../components/Datatable";
 import MainCard from "../../components/MainCard";
+
+
 
 const columns = [
     {
@@ -9,60 +11,76 @@ const columns = [
         accessorKey: 'id',
     },
     {
-        header: "Nombres",
-        accessorKey: 'first_name',
+        header: "Usuario",
+        accessorKey: 'usuario',
     },
     {
-        header: "Apellidos",
-        accessorKey: 'last_name',
+        header: "Nombres",
+        accessorKey: 'nombres',
+    },
+    {
+        header: "Apellido Paterno",
+        accessorKey: 'ape_paterno',
+    },
+    {
+        header: "Apellido Materno",
+        accessorKey: 'ape_materno',
     },
     {
         header: "E-mail",
         accessorKey: 'email',
     },
     {
-        header: "Genero",
-        accessorKey: 'gender',
+        header: "Fecha de Creación",
+        accessorKey: 'fecha_creacion',
     },
     {
-        header: "IP",
-        accessorKey: 'ip_address',
+        header: "Estado",
+        accessorKey: 'estado',
     },
-]
+];
+
+const fetchUsuarios = async () => {
+    const token = localStorage.getItem("token");
+
+
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al obtener los usuarios');
+    }
+
+    const data = await response.json();
+    return data.data;
+};
+
 
 function Usuarios() {
-    const [usuarios, setUsuarios] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const { data: usuarios, isLoading, isError, error } = useQuery({
+        queryKey: ['usuarios'],
+        queryFn: fetchUsuarios,
+        retry: false,
+    });
 
-    useEffect(() => {
 
-        const fetchUsuarios = async () => {
-            try {
-                const response = await fetch("https://api.vertigotravelperu.com/api/users");
+    console.log('Datos de usuarios:', usuarios.data);
 
-                if (!response.ok) {
-                    throw new Error("Error al obtener los usuarios");
-                }
-
-                const data = await response.json();
-                setUsuarios(data);
-            } catch (err) {
-                setError("Error al obtener los usuarios. Intenta nuevamente.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchUsuarios();
-    }, []);
-
-    if (loading) {
+    if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        return <div>{error}</div>;
+    if (isError) {
+        return (
+            <div className="error-container">
+                <ErrorIcono />
+                <p>{error.message || "Error al obtener los usuarios. Intenta nuevamente."}</p>
+            </div>
+        );
     }
 
     return (
@@ -74,7 +92,7 @@ function Usuarios() {
                     Crear Usuario
                 </button>
             </div>
-            <Datatable columns={columns} data={usuarios} /> {/* Usar los datos de la API */}
+            <Datatable columns={columns} data={usuarios.data} />
         </MainCard>
     );
 }
