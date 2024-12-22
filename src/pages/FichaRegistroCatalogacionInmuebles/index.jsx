@@ -24,24 +24,17 @@ function FichaRegistroCatalogacionInmuebles() {
         name: "analisis_fachadas",
     });
 
-
-
-
-
     const navigate = useNavigate();
 
-    const postData = async (data) => {
+    const postData = async (formData) => {
         const token = localStorage.getItem("token");
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble`, {
             method: "POST",
             headers: {
-                'Content-Type': 'multipart/form-data',
-                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             },
-            body: JSON.stringify(data),
+            body: formData,
         });
-
         if (!response.ok) {
             throw new Error('Error al enviar los datos');
         }
@@ -59,57 +52,54 @@ function FichaRegistroCatalogacionInmuebles() {
         },
     });
 
-    const onSubmit = (data) => {
-        const infoGeneral = {
-            "info_general_declaro_patrimonio": data.info_general_declaro_patrimonio,
-            "info_general_direccion": data.info_general_direccion,
-            "info_general_barrio": data.info_general_barrio,
-            "info_general_denominacion": data.info_general_denominacion,
-            "info_general_cat_catal_ch": data.info_general_cat_catal_ch,
-            "info_general_zon_am": data.info_general_zon_am,
-            "info_general_zon_zt": data.info_general_zon_zt,
-            "info_general_sect_gest_s7": data.info_general_sect_gest_s7,
-            "info_general_fil_cult_ph": data.info_general_fil_cult_ph,
-            "info_general_fil_cult_c": data.info_general_fil_cult_c,
-            "info_general_fil_cult_r": data.info_general_fil_cult_r,
-            "info_general_fil_cult_cp": data.info_general_fil_cult_cp,
-        };
-        const culturaViva = {
-            "imagen_cultura_viva": data.imagen_cultura_viva[0],
-            "cultura_viva_descripcion": data.cultura_viva_descripcion,
-            "cultura_viva_observaciones": data.cultura_viva_observaciones,
-        };
-        const levantamientoPlanimetricoFachadas = {
-            "imagen_fachada_1": data.imagen_fachada_1,
-            "codigo_imagen_fachada_1": data.codigo_imagen_fachada_1,
-            "imagen_fachada_2": data.imagen_fachada_2,
-            "codigo_imagen_fachada_2": data.codigo_imagen_fachada_2,
-            "imagen_fachada_3": data.imagen_fachada_3,
-            "codigo_imagen_fachada_3": data.codigo_imagen_fachada_3,
-            "imagen_fachada_4": data.imagen_fachada_4,
-            "codigo_imagen_fachada_4": data.codigo_imagen_fachada_4,
-        };
-        const responsablesDatos = {
-            "fecha_inspeccion": data.fecha_inspeccion,
-            "hora_inspeccion": data.hora_inspeccion,
-            "brigada": data.brigada,
-            "coordinador_brigada": data.coordinador_brigada,
-            "tecnico_catalogador": data.tecnico_catalogador,
-            "propietario": data.propietario,
-        };
-        const formattedData = {
-            ...data,
-            info_general: infoGeneral,
-            culturaViva: culturaViva,
-            levantamientoPlanimetricoFachadas: levantamientoPlanimetricoFachadas,
-            responsablesDatos: responsablesDatos,
-            imagen_nuev: data.imagen[0]
-        };
-        console.log("Datos enviados:", formattedData);
-        console.log("Errores:", errors);
-
-        mutation.mutate(formattedData);
+    const appendToFormData = (formData, fieldName, fieldData) => {
+        if (Array.isArray(fieldData)) {
+            fieldData.forEach((item, index) => {
+                if (item instanceof File) {
+                    formData.append(`${fieldName}[]`, item);
+                } else {
+                    formData.append(`${fieldName}[${index}]`, JSON.stringify(item));
+                }
+            });
+        } else {
+            formData.append(fieldName, fieldData);
+        }
     };
+
+    const onSubmit = (data) => {
+        const formData = new FormData();
+
+        // 1. Iterar sobre las propiedades de `data` y agregar cada una al FormData
+        Object.keys(data).forEach(fieldName => {
+            const fieldData = data[fieldName];
+            appendToFormData(formData, fieldName, fieldData);
+        });
+
+        // 2. Agregar los FieldArrays específicos: 'analisis_bloques_no_construidos', 'analisis_bloques_construidos', 'analisis_fachadas'
+        ['analisis_bloques_no_construidos', 'analisis_bloques_construidos', 'analisis_fachadas'].forEach(fieldName => {
+            const fieldData = data[fieldName];
+            appendToFormData(formData, fieldName, fieldData);
+        });
+
+        // 3. Revisa el contenido de formData antes de enviarlo
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);  // Verifica el contenido de FormData
+        }
+
+        // 4. Enviar la solicitud con `FormData`
+        mutation.mutate(formData);
+    };
+
+
+
+
+
+
+
+
+
+
+
     return (
         <>
             <h3 className="mb-4 font-bold text-2xl text-textAdmin-light dark:text-textAdmin-dark">
