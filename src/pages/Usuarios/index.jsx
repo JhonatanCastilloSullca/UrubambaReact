@@ -68,7 +68,7 @@ function Usuarios() {
     });
 
 
-    console.log('Datos de usuarios:', usuarios.data);
+    console.log('Datos de usuarios:', usuarios?.data);
 
     if (isLoading) {
         return <div>Loading...</div>;

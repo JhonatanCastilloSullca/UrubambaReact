@@ -24,16 +24,15 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
     const navigate = useNavigate();
 
 
-    const postData = async (data) => {
-        const token = localStorage.getItem("token");
 
+    const postData = async (formData) => {
+        const token = localStorage.getItem("token");
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble-arquitectonica`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             },
-            body: JSON.stringify(data),
+            body: formData,
         });
 
         if (!response.ok) {
@@ -42,22 +41,66 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
         return response.json();
     };
 
+
+
+
+
     const mutation = useMutation({
         mutationFn: postData,
         onSuccess: () => {
             console.log("Enviado correctamente");
-            navigate("/usuarios");
+            navigate("/");
         },
         onError: (error) => {
             console.error("Error al enviar los datos:", error);
         },
     });
 
-    const onSubmit = (data) => {
-        console.log("Datos enviados:", data);
-        console.log("Errores:", errors);
 
-        mutation.mutate(data);
+
+
+    const onSubmit = (data) => {
+        const formData = new FormData();
+        Object.keys(data).forEach(key => {
+            if (Array.isArray(data[key])) {
+                data[key].forEach((file) => {
+                    if (file instanceof File) {
+                        formData.append(`${key}`, file);
+                    }
+                });
+            } else if (data[key] instanceof FileList) {
+                Array.from(data[key]).forEach((file) => {
+                    formData.append(`${key}`, file);
+                });
+            } else if (data[key] instanceof File) {
+                formData.append(key, data[key]);
+            } else {
+                formData.append(key, data[key]);
+            }
+        });
+
+        const arraysToProcess = [
+            { name: "evidencias_arq_fachadas_inmuebles", fields: fields_evidencias_arq_fachadas_inmuebles },
+            { name: "evidencias_arq_fachadas_interior_inmuebles", fields: fields_evidencias_arq_fachadas_interior_inmuebles },
+        ];
+
+        arraysToProcess.forEach(({ name, fields }) => {
+            const groupData = fields.map((item, index) => {
+                const obj = {
+                    ...data[name][index]
+                };
+                return obj;
+            });
+
+            formData.append(name, JSON.stringify(groupData));
+        });
+
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+
+        mutation.mutate(formData);
     };
     return (
         <>
@@ -1860,6 +1903,25 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         {errors.registro_fotografico_1.message}
                                     </span>
                                 )}
+
+                                <div className="my-4">
+                                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Registro fotografico Descripción..."
+                                        {...register('registro_fotografico_1_descripcion', {
+                                            // required: 'Este campo es obligatorio.',
+                                            // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            // maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                            // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        })}
+                                    >
+                                    </textarea>
+                                </div>
+                                {errors.registro_fotografico_1_descripcion && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.registro_fotografico_1_descripcion.message}
+                                    </span>
+                                )}
                             </div>
                             <div className="col-span-6 flex flex-col gap-2">
                                 <NumeroForm
@@ -1890,6 +1952,25 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     <span className="text-sm text-red-600 font-medium flex items-center gap-2">
                                         <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
                                         {errors.registro_fotografico_2.message}
+                                    </span>
+                                )}
+
+                                <div className="my-4">
+                                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Registro fotografico Descripción..."
+                                        {...register('registro_fotografico_2_descripcion', {
+                                            // required: 'Este campo es obligatorio.',
+                                            // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            // maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                            // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        })}
+                                    >
+                                    </textarea>
+                                </div>
+                                {errors.registro_fotografico_2_descripcion && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.registro_fotografico_2_descripcion.message}
                                     </span>
                                 )}
                             </div>

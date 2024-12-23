@@ -24,19 +24,13 @@ function FichaRegistroCatalogacionInmuebles() {
         name: "analisis_fachadas",
     });
 
-
-
-
-
     const navigate = useNavigate();
-
     const postData = async (formData) => {
         const token = localStorage.getItem("token");
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
-                // No es necesario establecer "Content-Type" ya que "FormData" se encarga de eso.
             },
             body: formData,
         });
@@ -46,8 +40,6 @@ function FichaRegistroCatalogacionInmuebles() {
         }
         return response.json();
     };
-
-
     const mutation = useMutation({
         mutationFn: postData,
         onSuccess: () => {
@@ -58,11 +50,8 @@ function FichaRegistroCatalogacionInmuebles() {
             console.error("Error al enviar los datos:", error);
         },
     });
-
     const onSubmit = (data) => {
         const formData = new FormData();
-
-
         Object.keys(data).forEach(key => {
             if (Array.isArray(data[key])) {
                 data[key].forEach((file) => {
@@ -81,7 +70,6 @@ function FichaRegistroCatalogacionInmuebles() {
             }
         });
 
-
         const arraysToProcess = [
             { name: "analisis_bloques_no_construidos", fields: fields_no_const },
             { name: "analisis_bloques_construidos", fields: fields_const },
@@ -98,8 +86,6 @@ function FichaRegistroCatalogacionInmuebles() {
 
             formData.append(name, JSON.stringify(groupData));
         });
-
-
 
         for (let [key, value] of formData.entries()) {
             console.log(key, value);
