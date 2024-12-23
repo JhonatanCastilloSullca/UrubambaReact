@@ -67,12 +67,12 @@ function FichaRegistroCatalogacionInmuebles() {
             if (Array.isArray(data[key])) {
                 data[key].forEach((file) => {
                     if (file instanceof File) {
-                        formData.append(`${key}[]`, file);
+                        formData.append(`${key}`, file);
                     }
                 });
             } else if (data[key] instanceof FileList) {
                 Array.from(data[key]).forEach((file) => {
-                    formData.append(`${key}[]`, file);
+                    formData.append(`${key}`, file);
                 });
             } else if (data[key] instanceof File) {
                 formData.append(key, data[key]);
@@ -89,20 +89,13 @@ function FichaRegistroCatalogacionInmuebles() {
         ];
 
         arraysToProcess.forEach(({ name, fields }) => {
-
-            const groupData = fields.map((item) => {
-                const obj = {};
-                Object.keys(item).forEach((key) => {
-                    const value = item[key];
-                    if (value instanceof File) {
-                        formData.append(`${name}[${key}]`, value);
-                    } else {
-                        obj[key] = value;
-                    }
-                });
+            // Convertir cada campo en un objeto plano
+            const groupData = fields.map((item, index) => {
+                const obj = {
+                    ...data.analisis_bloques_no_construidos[index] // Aquí combinas el ID y los campos dinámicos
+                };
                 return obj;
             });
-
 
             formData.append(name, JSON.stringify(groupData));
         });
