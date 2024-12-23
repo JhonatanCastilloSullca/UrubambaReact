@@ -317,7 +317,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             name={`ubicacion_sector_2`}
                                             register={register}
                                             errors={errors.ubicacion_sector_2}
-                                            maxLength={10}
+                                            maxLength={3}
                                             isRequired={true}
                                             tipo="numeros"
                                         />
@@ -328,7 +328,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             name={`ubicacion_mzna_2`}
                                             register={register}
                                             errors={errors.ubicacion_mzna_2}
-                                            maxLength={10}
+                                            maxLength={3}
                                             isRequired={true}
                                             tipo="numeros"
                                         />
@@ -339,7 +339,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             name={`ubicacion_lote_2`}
                                             register={register}
                                             errors={errors.ubicacion_lote_2}
-                                            maxLength={10}
+                                            maxLength={3}
                                             isRequired={true}
                                             tipo="numeros"
                                         />
@@ -350,7 +350,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                             name={`ubicacion_fraccion`}
                                             register={register}
                                             errors={errors.ubicacion_fraccion}
-                                            maxLength={10}
+                                            maxLength={1}
                                             tipo="numeros"
                                             isRequired={false}
                                         />
@@ -402,7 +402,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`info_general_direccion`}
                                     register={register}
                                     errors={errors.info_general_direccion}
-                                    maxLength={10}
+                                    maxLength={100}
                                     isRequired={false}
                                 />
                             </div>
@@ -416,7 +416,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`info_general_barrio`}
                                     register={register}
                                     errors={errors.info_general_barrio}
-                                    maxLength={10}
+                                    maxLength={100}
                                     isRequired={false}
                                 />
                             </div>
@@ -430,7 +430,7 @@ function FichaRegistroCatalogacionInmuebles() {
                                     name={`info_general_denominacion`}
                                     register={register}
                                     errors={errors.info_general_denominacion}
-                                    maxLength={10}
+                                    maxLength={100}
                                     isRequired={false}
                                 />
                             </div>
