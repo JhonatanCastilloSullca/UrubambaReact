@@ -481,14 +481,14 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     </td>
 
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._evidencia_material`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.evidencia_material`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._evidencia_material}
                                                         maxLength={1}
                                                         isRequired={true}
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ubicacion_fachada_1`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ubicacion_fachada_1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ubicacion_fachada_1}
                                                         maxLength={1}
@@ -496,7 +496,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ubicacion_fachada_2`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ubicacion_fachada_2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ubicacion_fachada_2}
                                                         maxLength={1}
@@ -504,7 +504,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ubicacion_fachada_3`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ubicacion_fachada_3`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ubicacion_fachada_3}
                                                         maxLength={1}
@@ -512,7 +512,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ubicacion_fachada_4`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ubicacion_fachada_4`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ubicacion_fachada_4}
                                                         maxLength={1}
@@ -520,7 +520,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ident_paramento_original_prehisp`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ident_paramento_original_prehisp`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ident_paramento_original_prehisp}
                                                         maxLength={1}
@@ -528,7 +528,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ident_paramento_elem_orig_reutilizados`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ident_paramento_elem_orig_reutilizados`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ident_paramento_elem_orig_reutilizados}
                                                         maxLength={1}
@@ -536,7 +536,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ident_paramento_reconstruido`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ident_paramento_reconstruido`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ident_paramento_reconstruido}
                                                         maxLength={1}
@@ -544,7 +544,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ident_paramento_restaurado`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ident_paramento_restaurado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ident_paramento_restaurado}
                                                         maxLength={1}
@@ -552,7 +552,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ident_paramento_vacio1`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ident_paramento_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ident_paramento_vacio1}
                                                         maxLength={1}
@@ -560,7 +560,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._ident_paramento_vacio2`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.ident_paramento_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._ident_paramento_vacio2}
                                                         maxLength={1}
@@ -568,7 +568,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_anden`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_anden`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_anden}
                                                         maxLength={1}
@@ -576,7 +576,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_cancha`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_cancha`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_cancha}
                                                         maxLength={1}
@@ -584,7 +584,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_canal`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_canal`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_canal}
                                                         maxLength={1}
@@ -592,7 +592,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_calle`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_calle`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_calle}
                                                         maxLength={1}
@@ -600,7 +600,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_contencion`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_contencion`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_contencion}
                                                         maxLength={1}
@@ -608,7 +608,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_escalinata`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_escalinata`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_escalinata}
                                                         maxLength={1}
@@ -616,7 +616,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_recinto`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_recinto`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_recinto}
                                                         maxLength={1}
@@ -624,7 +624,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_muro_portante`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_muro_portante`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_muro_portante}
                                                         maxLength={1}
@@ -632,7 +632,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._tipo_const_estruc_arq_vacio1`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.tipo_const_estruc_arq_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._tipo_const_estruc_arq_vacio1}
                                                         maxLength={1}
@@ -640,7 +640,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_argollas`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_argollas`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_argollas}
                                                         maxLength={1}
@@ -648,7 +648,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_canal_drenaje`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_canal_drenaje`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_canal_drenaje}
                                                         maxLength={1}
@@ -656,7 +656,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_clavos`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_clavos`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_clavos}
                                                         maxLength={1}
@@ -664,7 +664,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_dintel`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_dintel`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_dintel}
                                                         maxLength={1}
@@ -672,7 +672,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_nicho`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_nicho`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_nicho}
                                                         maxLength={1}
@@ -680,7 +680,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_petroglifo`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_petroglifo`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_petroglifo}
                                                         maxLength={1}
@@ -688,7 +688,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_vano_original`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_vano_original`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_vano_original}
                                                         maxLength={1}
@@ -696,7 +696,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_vano_aperturado`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_vano_aperturado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_vano_aperturado}
                                                         maxLength={1}
@@ -704,7 +704,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_umbral`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_umbral`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_umbral}
                                                         maxLength={1}
@@ -712,7 +712,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_vacio1`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_vacio1}
                                                         maxLength={1}
@@ -720,7 +720,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._elem_estruc_arq_vacio2`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.elem_estruc_arq_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._elem_estruc_arq_vacio2}
                                                         maxLength={1}
@@ -728,7 +728,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_celular`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_celular`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_celular}
                                                         maxLength={1}
@@ -736,7 +736,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_canteado`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_canteado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_canteado}
                                                         maxLength={1}
@@ -744,7 +744,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_engastado`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_engastado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_engastado}
                                                         maxLength={1}
@@ -752,7 +752,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_poligonal`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_poligonal`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_poligonal}
                                                         maxLength={1}
@@ -760,7 +760,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_sedimentario`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_sedimentario`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_sedimentario}
                                                         maxLength={1}
@@ -768,7 +768,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_rustico`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_rustico`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_rustico}
                                                         maxLength={1}
@@ -776,7 +776,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_vacio1`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_vacio1}
                                                         maxLength={1}
@@ -784,7 +784,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._aparejos_acab_vacio2`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.aparejos_acab_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._aparejos_acab_vacio2}
                                                         maxLength={1}
@@ -792,7 +792,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._material_const_andesita`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.material_const_andesita`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._material_const_andesita}
                                                         maxLength={1}
@@ -800,7 +800,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._material_const_arenisca`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.material_const_arenisca`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._material_const_arenisca}
                                                         maxLength={1}
@@ -808,7 +808,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._material_const_caliza`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.material_const_caliza`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._material_const_caliza}
                                                         maxLength={1}
@@ -816,7 +816,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._material_const_diorita`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.material_const_diorita`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._material_const_diorita}
                                                         maxLength={1}
@@ -824,7 +824,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._material_const_granito`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.material_const_granito`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._material_const_granito}
                                                         maxLength={1}
@@ -832,7 +832,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._material_const_vacio1`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.material_const_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._material_const_vacio1}
                                                         maxLength={1}
@@ -840,7 +840,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._material_const_vacio2`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.material_const_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._material_const_vacio2}
                                                         maxLength={1}
@@ -848,7 +848,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_arcilla`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_arcilla`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_arcilla}
                                                         maxLength={1}
@@ -856,7 +856,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_barro`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_barro`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_barro}
                                                         maxLength={1}
@@ -864,7 +864,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_calicanto`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_calicanto`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_calicanto}
                                                         maxLength={1}
@@ -872,7 +872,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_emboquillado`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_emboquillado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_emboquillado}
                                                         maxLength={1}
@@ -880,7 +880,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_sin_mortero`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_sin_mortero`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_sin_mortero}
                                                         maxLength={1}
@@ -888,7 +888,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_cemento`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_cemento`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_cemento}
                                                         maxLength={1}
@@ -896,7 +896,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_vacio1`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_vacio1}
                                                         maxLength={1}
@@ -904,7 +904,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._mortero_vacio2`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.mortero_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._mortero_vacio2}
                                                         maxLength={1}
@@ -912,7 +912,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._medidas_altura_promedio`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.medidas_altura_promedio`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._medidas_altura_promedio}
                                                         maxLength={1}
@@ -920,7 +920,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._medidas_ancho`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.medidas_ancho`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._medidas_ancho}
                                                         maxLength={1}
@@ -928,7 +928,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._medidas_largo`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.medidas_largo`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._medidas_largo}
                                                         maxLength={1}
@@ -936,7 +936,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._medidas_profundidad`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.medidas_profundidad`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._medidas_profundidad}
                                                         maxLength={1}
@@ -944,7 +944,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._medidas_diametro_dimension`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.medidas_diametro_dimension`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._medidas_diametro_dimension}
                                                         maxLength={1}
@@ -952,7 +952,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._medidas_inclinacion`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.medidas_inclinacion`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._medidas_inclinacion}
                                                         maxLength={1}
@@ -960,7 +960,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._estruc_compart_inmueb_compart_evidenc_estruc_arq`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.estruc_compart_inmueb_compart_evidenc_estruc_arq`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._estruc_compart_inmueb_compart_evidenc_estruc_arq}
                                                         maxLength={1}
@@ -968,7 +968,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._conserv_bueno`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.conserv_bueno`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._conserv_bueno}
                                                         maxLength={1}
@@ -976,7 +976,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._conserv_regular`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.conserv_regular`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._conserv_regular}
                                                         maxLength={1}
@@ -984,7 +984,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}._conserv_malo`}
+                                                        name={`evidencias_arq_fachadas_interior_inmuebles.${index}.conserv_malo`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._conserv_malo}
                                                         maxLength={1}
@@ -1111,14 +1111,14 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         </button>
                                                     </td>
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._evidencia_material`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.evidencia_material`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._evidencia_material}
                                                         maxLength={1}
                                                         isRequired={false}
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_original_prehisp`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_original_prehisp`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_original_prehisp}
                                                         maxLength={1}
@@ -1126,7 +1126,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_elem_orig_reutilizados`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_elem_orig_reutilizados`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_elem_orig_reutilizados}
                                                         maxLength={1}
@@ -1134,7 +1134,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_reconstruido`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_reconstruido`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_reconstruido}
                                                         maxLength={1}
@@ -1142,7 +1142,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_restaurado`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_restaurado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_restaurado}
                                                         maxLength={1}
@@ -1150,7 +1150,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_vacio1`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_vacio1}
                                                         maxLength={1}
@@ -1158,7 +1158,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_vacio2`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_vacio2}
                                                         maxLength={1}
@@ -1166,7 +1166,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_vacio3`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_vacio3`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_vacio3}
                                                         maxLength={1}
@@ -1174,7 +1174,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._ident_paramento_vacio4`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_vacio4`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._ident_paramento_vacio4}
                                                         maxLength={1}
@@ -1182,7 +1182,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_anden`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_anden`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_anden}
                                                         maxLength={1}
@@ -1190,7 +1190,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_cancha`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_cancha`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_cancha}
                                                         maxLength={1}
@@ -1198,7 +1198,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_canal`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_canal`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_canal}
                                                         maxLength={1}
@@ -1206,7 +1206,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_calle`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_calle`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_calle}
                                                         maxLength={1}
@@ -1214,7 +1214,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_contencion`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_contencion`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_contencion}
                                                         maxLength={1}
@@ -1222,7 +1222,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_escalinata`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_escalinata`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_escalinata}
                                                         maxLength={1}
@@ -1230,7 +1230,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_recinto`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_recinto`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_recinto}
                                                         maxLength={1}
@@ -1238,7 +1238,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._tipo_const_estruc_arq_muro_portante`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.tipo_const_estruc_arq_muro_portante`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._tipo_const_estruc_arq_muro_portante}
                                                         maxLength={1}
@@ -1246,7 +1246,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_argollas`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_argollas`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_argollas}
                                                         maxLength={1}
@@ -1254,7 +1254,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_canal_drenaje`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_canal_drenaje`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_canal_drenaje}
                                                         maxLength={1}
@@ -1262,7 +1262,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_clavos`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_clavos`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_clavos}
                                                         maxLength={1}
@@ -1270,7 +1270,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_dintel`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_dintel`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_dintel}
                                                         maxLength={1}
@@ -1278,7 +1278,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_nicho`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_nicho`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_nicho}
                                                         maxLength={1}
@@ -1286,7 +1286,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_petroglifo`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_petroglifo`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_petroglifo}
                                                         maxLength={1}
@@ -1294,7 +1294,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_vano_original`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_vano_original`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_vano_original}
                                                         maxLength={1}
@@ -1302,7 +1302,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_vano_aperturado`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_vano_aperturado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_vano_aperturado}
                                                         maxLength={1}
@@ -1310,7 +1310,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_umbral`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_umbral`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_umbral}
                                                         maxLength={1}
@@ -1318,7 +1318,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_elem_liticos_sueltos`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_elem_liticos_sueltos`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_elem_liticos_sueltos}
                                                         maxLength={1}
@@ -1326,7 +1326,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_vacio1`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_vacio1}
                                                         maxLength={1}
@@ -1334,7 +1334,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._elem_estruc_arq_vacio2`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.elem_estruc_arq_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._elem_estruc_arq_vacio2}
                                                         maxLength={1}
@@ -1342,7 +1342,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_celular`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_celular`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_celular}
                                                         maxLength={1}
@@ -1350,7 +1350,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_canteado`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_canteado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_canteado}
                                                         maxLength={1}
@@ -1358,7 +1358,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_engastado`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_engastado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_engastado}
                                                         maxLength={1}
@@ -1366,7 +1366,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_poligonal`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_poligonal`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_poligonal}
                                                         maxLength={1}
@@ -1374,7 +1374,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_sedimentario`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_sedimentario`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_sedimentario}
                                                         maxLength={1}
@@ -1382,7 +1382,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_rustico`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_rustico`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_rustico}
                                                         maxLength={1}
@@ -1390,7 +1390,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_vacio1`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_vacio1}
                                                         maxLength={1}
@@ -1398,7 +1398,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_vacio2`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_vacio2}
                                                         maxLength={1}
@@ -1406,7 +1406,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._aparejos_acab_vacio3`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.aparejos_acab_vacio3`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._aparejos_acab_vacio3}
                                                         maxLength={1}
@@ -1414,7 +1414,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._material_const_andesita`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.material_const_andesita`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._material_const_andesita}
                                                         maxLength={1}
@@ -1422,7 +1422,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._material_const_arenisca`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.material_const_arenisca`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._material_const_arenisca}
                                                         maxLength={1}
@@ -1430,7 +1430,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._material_const_caliza`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.material_const_caliza`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._material_const_caliza}
                                                         maxLength={1}
@@ -1438,7 +1438,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._material_const_diorita`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.material_const_diorita`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._material_const_diorita}
                                                         maxLength={1}
@@ -1446,7 +1446,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._material_const_granito`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.material_const_granito`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._material_const_granito}
                                                         maxLength={1}
@@ -1454,7 +1454,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._material_const_vacio1`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.material_const_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._material_const_vacio1}
                                                         maxLength={1}
@@ -1462,7 +1462,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._material_const_vacio2`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.material_const_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._material_const_vacio2}
                                                         maxLength={1}
@@ -1470,7 +1470,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_arcilla`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_arcilla`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_arcilla}
                                                         maxLength={1}
@@ -1478,7 +1478,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_barro`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_barro`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_barro}
                                                         maxLength={1}
@@ -1486,7 +1486,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_calicanto`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_calicanto`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_calicanto}
                                                         maxLength={1}
@@ -1494,7 +1494,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_emboquillado`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_emboquillado`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_emboquillado}
                                                         maxLength={1}
@@ -1502,7 +1502,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_sin_mortero`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_sin_mortero`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_sin_mortero}
                                                         maxLength={1}
@@ -1510,7 +1510,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_cemento`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_cemento`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_cemento}
                                                         maxLength={1}
@@ -1518,7 +1518,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_vacio1`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_vacio1`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_vacio1}
                                                         maxLength={1}
@@ -1526,7 +1526,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._mortero_vacio2`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.mortero_vacio2`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._mortero_vacio2}
                                                         maxLength={1}
@@ -1534,7 +1534,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._medidas_altura_promedio`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.medidas_altura_promedio`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._medidas_altura_promedio}
                                                         maxLength={1}
@@ -1542,7 +1542,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._medidas_ancho`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.medidas_ancho`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._medidas_ancho}
                                                         maxLength={1}
@@ -1550,7 +1550,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._medidas_largo`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.medidas_largo`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._medidas_largo}
                                                         maxLength={1}
@@ -1558,7 +1558,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._medidas_profundidad`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.medidas_profundidad`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._medidas_profundidad}
                                                         maxLength={1}
@@ -1566,7 +1566,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._medidas_diametro_dimension`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.medidas_diametro_dimension`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._medidas_diametro_dimension}
                                                         maxLength={1}
@@ -1574,7 +1574,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._medidas_inclinacion`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.medidas_inclinacion`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._medidas_inclinacion}
                                                         maxLength={1}
@@ -1582,7 +1582,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._estruc_compart_inmueb_compart_evidenc_estruc_arq`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.estruc_compart_inmueb_compart_evidenc_estruc_arq`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._estruc_compart_inmueb_compart_evidenc_estruc_arq}
                                                         maxLength={1}
@@ -1590,7 +1590,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._conserv_bueno`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.conserv_bueno`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._conserv_bueno}
                                                         maxLength={1}
@@ -1598,7 +1598,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._conserv_regular`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.conserv_regular`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._conserv_regular}
                                                         maxLength={1}
@@ -1606,7 +1606,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         tipo="letras"
                                                     />
                                                     <OnlyInputLetras
-                                                        name={`evidencias_arq_fachadas_inmuebles.${index}._conserv_malo`}
+                                                        name={`evidencias_arq_fachadas_inmuebles.${index}.conserv_malo`}
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._conserv_malo}
                                                         maxLength={1}
