@@ -89,16 +89,16 @@ function FichaRegistroCatalogacionInmuebles() {
         ];
 
         arraysToProcess.forEach(({ name, fields }) => {
-            // Convertir cada campo en un objeto plano
             const groupData = fields.map((item, index) => {
                 const obj = {
-                    ...data.analisis_bloques_no_construidos[index] // Aquí combinas el ID y los campos dinámicos
+                    ...data[name][index]
                 };
                 return obj;
             });
 
             formData.append(name, JSON.stringify(groupData));
         });
+
 
 
         for (let [key, value] of formData.entries()) {
