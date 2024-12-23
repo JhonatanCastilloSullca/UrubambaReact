@@ -17,6 +17,8 @@ import Usuarios from '../../pages/Usuarios';
 import Tecnicos from '../../pages/Tecnicos';
 import FichaRegistroHistorico from '../../pages/FichaRegistroHistorico';
 import ImpresionFichaRegistroHistorico from '../../pages/ImpresionFichaRegistroHistorico';
+import ImpresionFichaRegistroCatalogacionInmuebles from '../../pages/ImpresionFichaRegistroCatalogacionInmuebles';
+import ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental';
 
 function ProtectedRoute({ children }) {
     const { user } = useAuth();
@@ -62,8 +64,8 @@ function Layout() {
                         <Route path="fichas/ficha-registro-catalogacion-inmuebles-area-monumental" element={<FichaRegistroCatalogacionInmueblesAreaMonumental />} />
                         <Route path="fichas/ficha-registro-historico" element={<FichaRegistroHistorico />} />
                         <Route path="impresion/ficha-catalogacion-espacios-publicos" element={<Usuarios />} />
-                        <Route path="impresion/ficha-registro-catalogacion-inmuebles" element={<Usuarios />} />
-                        <Route path="impresion/ficha-registro-catalogacion-inmuebles-area-monumental" element={<Usuarios />} />
+                        <Route path="impresion/ficha-registro-catalogacion-inmuebles" element={<ImpresionFichaRegistroCatalogacionInmuebles />} />
+                        <Route path="impresion/ficha-registro-catalogacion-inmuebles-area-monumental" element={<ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental />} />
                         <Route path="impresion/ficha-registro-historico" element={<ImpresionFichaRegistroHistorico />} />
                         <Route path="404" element={<Page404 />} />
                         <Route path="403" element={<Page403 />} />

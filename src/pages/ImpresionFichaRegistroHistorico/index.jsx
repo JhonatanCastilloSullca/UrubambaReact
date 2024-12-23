@@ -11,32 +11,24 @@ const columns = [
         accessorKey: 'id',
     },
     {
-        header: "Usuario",
-        accessorKey: 'usuario',
+        header: "Sector",
+        accessorKey: 'unidad.cod_sector',
     },
     {
-        header: "Nombres",
-        accessorKey: 'nombres',
+        header: "Manzana",
+        accessorKey: 'unidad.cod_manzana',
     },
     {
-        header: "Apellido Paterno",
-        accessorKey: 'ape_paterno',
+        header: "Lote",
+        accessorKey: 'unidad.cod_lote',
     },
     {
-        header: "Apellido Materno",
-        accessorKey: 'ape_materno',
-    },
-    {
-        header: "E-mail",
-        accessorKey: 'email',
+        header: "Direccion",
+        accessorKey: 'direccion',
     },
     {
         header: "Fecha de Creación",
         accessorKey: 'fecha_creacion',
-    },
-    {
-        header: "Estado",
-        accessorKey: 'estado',
     },
 ];
 
@@ -44,7 +36,7 @@ const fetchUsuarios = async () => {
     const token = localStorage.getItem("token");
 
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-registro-historico`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -56,7 +48,7 @@ const fetchUsuarios = async () => {
     }
 
     const data = await response.json();
-    return data.data;
+    return data;
 };
 
 
@@ -68,7 +60,7 @@ function ImpresionFichaRegistroHistorico() {
     });
 
 
-    console.log('Datos de usuarios:', usuarios.data);
+    console.log('Datos de usuarios:', usuarios);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -85,12 +77,11 @@ function ImpresionFichaRegistroHistorico() {
 
     return (
         <MainCard>
+
             <div className="">
                 <h4 className="mb-4">Listado de Usuarios</h4>
-                <button type="button" className="font-bold text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2 gap-4">
-                    <ErrorIcono strokeColor="#FFFFFF" />
-                    Crear Usuario
-                </button>
+
+
             </div>
             <Datatable columns={columns} data={usuarios.data} />
         </MainCard>
