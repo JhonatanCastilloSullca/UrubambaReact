@@ -1619,6 +1619,31 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     </table>
                                 </div>
                             </div>
+                            <div className="col-span-12 flex flex-col gap-2">
+                                <NumeroForm
+                                    nro="244"
+                                    text="OBSERVACIONES EVIDENCIAS ARQUEOLOGICAS EN EL INTERIOR DEL INMUEBLE"
+                                    size="xs"
+                                />
+                                <div className="my-4">
+                                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Observaciones Evidencias Arqueologicas en el Interior del Inmueble..."
+                                        {...register('observaciones_evidencias_arqueologicas_int', {
+                                            // required: 'Este campo es obligatorio.',
+                                            // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
+                                            // maxLength: { value: 10, message: 'No debe exceder los 10 caracteres.' },
+                                            // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
+                                        })}
+                                    >
+                                    </textarea>
+                                </div>
+                                {errors.observaciones_evidencias_arqueologicas_int && (
+                                    <span className="text-sm text-red-600 font-medium flex items-center gap-2">
+                                        <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                        {errors.observaciones_evidencias_arqueologicas_int.message}
+                                    </span>
+                                )}
+                            </div>
                         </div>
                     </MainCard>
                     <MainCard>
