@@ -150,7 +150,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     name={`nro_ficha`}
                                     register={register}
                                     errors={errors.nro_ficha}
-                                    maxLength={10}
+                                    maxLength={15}
                                     isRequired={true}
                                 />
                             </div>
@@ -164,7 +164,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     name={`nombre_calle`}
                                     register={register}
                                     errors={errors.nombre_calle}
-                                    maxLength={10}
+                                    maxLength={100}
                                     isRequired={false}
                                 />
                             </div>
@@ -179,7 +179,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     size="sm"
                                 />
                                 <div className="grid grid-cols-12 gap-4">
-                                    <div className="col-span-4 flex flex-col gap-2">
+                                    <div className="col-span-3 flex flex-col gap-2">
                                         <div className="grid grid-cols-12 gap-4">
                                             <div className="col-span-4 flex flex-col gap-2">
                                                 <div className="titulo-text px-4 text-center self-center text-xs">DPTO.</div>
@@ -187,7 +187,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     name={`ubicacion_dpto`}
                                                     register={register}
                                                     errors={errors.ubicacion_dpto}
-                                                    maxLength={10}
+                                                    maxLength={2}
                                                     isRequired={true}
                                                     tipo="numeros"
                                                 />
@@ -216,8 +216,8 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-span-8 flex flex-col gap-2">
-                                        <div className="grid grid-cols-8 gap-4">
+                                    <div className="col-span-9 flex flex-col gap-2">
+                                        <div className="grid grid-cols-9 gap-4">
                                             <div className="col-span-1 flex flex-col gap-2">
                                                 <div className="titulo-text px-4 text-center self-center text-xs">SECTOR</div>
                                                 <OnlyInputError
@@ -252,6 +252,17 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
+                                                <div className="titulo-text px-4 text-center self-center text-xs">FRACCION</div>
+                                                <OnlyInputError
+                                                    name={`ubicacion_cod_fraccion`}
+                                                    register={register}
+                                                    errors={errors.ubicacion_cod_fraccion}
+                                                    maxLength={2}
+                                                    isRequired={false}
+                                                    tipo="numeros"
+                                                />
+                                            </div>
+                                            <div className="col-span-1 flex flex-col gap-2">
                                                 <div className="titulo-text px-4 text-center self-center text-xs">EDIFICA</div>
                                                 <OnlyInputError
                                                     name={`ubicacion_edifica`}
@@ -269,7 +280,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     register={register}
                                                     errors={errors.ubicacion_entrada}
                                                     maxLength={2}
-                                                    isRequired={true}
+                                                    isRequired={false}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -280,7 +291,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     register={register}
                                                     errors={errors.ubicacion_piso}
                                                     maxLength={2}
-                                                    isRequired={true}
+                                                    isRequired={false}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -291,18 +302,18 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     register={register}
                                                     errors={errors.ubicacion_unidad}
                                                     maxLength={2}
-                                                    isRequired={true}
+                                                    isRequired={false}
                                                     tipo="numeros"
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
-                                                <div className="titulo-text px-4 text-center self-center text-xs">DC</div>
+                                                <div className="titulo-text px-4 text-csenter self-center text-xs">DC</div>
                                                 <OnlyInputError
                                                     name={`ubicacion_dc`}
                                                     register={register}
                                                     errors={errors.ubicacion_dc}
                                                     maxLength={1}
-                                                    isRequired={true}
+                                                    isRequired={false}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -356,7 +367,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                             name={`ubicacion_fraccion`}
                                             register={register}
                                             errors={errors.ubicacion_fraccion}
-                                            maxLength={1}
+                                            maxLength={2}
                                             isRequired={false}
                                             tipo="numeros"
                                         />
@@ -485,6 +496,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_interior_inmuebles?.[index]?._evidencia_material}
                                                         maxLength={1}
+                                                        tipo="numeros"
                                                         isRequired={true}
                                                     />
                                                     <OnlyInputLetras
@@ -1115,7 +1127,8 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                         register={register}
                                                         errors={errors.evidencias_arq_fachadas_inmuebles?.[index]?._evidencia_material}
                                                         maxLength={1}
-                                                        isRequired={false}
+                                                        isRequired={true}
+                                                        tipo="numeros"
                                                     />
                                                     <OnlyInputLetras
                                                         name={`evidencias_arq_fachadas_inmuebles.${index}.ident_paramento_original_prehisp`}
@@ -2077,7 +2090,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     name={`nombre_catalogador`}
                                     register={register}
                                     errors={errors.nombre_catalogador}
-                                    maxLength={10}
+                                    maxLength={100}
                                     isRequired={false}
                                     tipo="letras"
                                 />
@@ -2244,7 +2257,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_1_dni`}
                                         register={register}
                                         errors={errors.declarante_1_dni}
-                                        maxLength={10}
+                                        maxLength={15}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2258,7 +2271,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_1_nombres`}
                                         register={register}
                                         errors={errors.declarante_1_nombres}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2272,7 +2285,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_1_apellidos`}
                                         register={register}
                                         errors={errors.declarante_1_apellidos}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2294,7 +2307,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_2_dni`}
                                         register={register}
                                         errors={errors.declarante_2_dni}
-                                        maxLength={10}
+                                        maxLength={15}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2308,7 +2321,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_2_nombres`}
                                         register={register}
                                         errors={errors.declarante_2_nombres}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2322,7 +2335,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_2_apellidos`}
                                         register={register}
                                         errors={errors.declarante_2_apellidos}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2344,7 +2357,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_3_dni`}
                                         register={register}
                                         errors={errors.declarante_3_dni}
-                                        maxLength={10}
+                                        maxLength={15}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2358,7 +2371,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_3_nombres`}
                                         register={register}
                                         errors={errors.declarante_3_nombres}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2372,7 +2385,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_3_apellidos`}
                                         register={register}
                                         errors={errors.declarante_3_apellidos}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2394,7 +2407,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_4_dni`}
                                         register={register}
                                         errors={errors.declarante_4_dni}
-                                        maxLength={10}
+                                        maxLength={15}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2408,7 +2421,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_4_nombres`}
                                         register={register}
                                         errors={errors.declarante_4_nombres}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
@@ -2422,7 +2435,7 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         name={`declarante_4_apellidos`}
                                         register={register}
                                         errors={errors.declarante_4_apellidos}
-                                        maxLength={10}
+                                        maxLength={100}
                                         isRequired={false}
                                     />
                                 </div>
