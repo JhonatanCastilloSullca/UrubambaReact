@@ -340,8 +340,6 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     <OnlyLabelTd className="h-48" colspan={1} label="Con elementos originales reutilizados" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Reconstruido" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Restaurado" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Anden" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Cancha" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Canal" orientation="vertical" />
@@ -350,7 +348,6 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     <OnlyLabelTd colspan={1} label="Escalinata" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Recinto" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Muro Portante" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Argollas" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Canal de Drenaje" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Clavos" orientation="vertical" />
@@ -360,31 +357,23 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     <OnlyLabelTd colspan={1} label="Vano Original" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Vano Aperturado" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Umbral" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Celular" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Canteado" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Engastado" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Poligonal" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Sedimentario" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Rustico" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Andesita" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Arenisca" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Caliza" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Diorita" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Granito" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Arcilla" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Barro" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Calicanto" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Emboquillado" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Sin Mortero" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Cemento" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                    <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Altura Promedio" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Ancho" orientation="vertical" />
                                     <OnlyLabelTd colspan={1} label="Largo" orientation="vertical" />
@@ -398,72 +387,65 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                 </tr>
                             </thead>
                             <tbody>
-
-
-                                <OnlyLabelTd colspan={1} label={`xs`} />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
-                                <OnlyLabelTd colspan={1} label="x" />
+                                {
+                                    data.data.evidenciaarquelogicafachadas.map((item, index) => (
+                                        <tr key={index}>
+                                            <OnlyLabelTd colspan={1} label={item.evidencia_material} />
+                                            <OnlyLabelTd colspan={1} label={item.ubicacion_fachada1} />
+                                            <OnlyLabelTd colspan={1} label={item.ubicacion_fachada2} />
+                                            <OnlyLabelTd colspan={1} label={item.ubicacion_fachada3} />
+                                            <OnlyLabelTd colspan={1} label={item.ubicacion_fachada4} />
+                                            <OnlyLabelTd colspan={1} label={item.identificacion_origial_prehispanico} />
+                                            <OnlyLabelTd colspan={1} label={item.identificacion_elementos_originales} />
+                                            <OnlyLabelTd colspan={1} label={item.identificacion_reconstruido} />
+                                            <OnlyLabelTd colspan={1} label={item.identificacion_restaurado} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_anden} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_cancha} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_canal} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_calle} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_contencion} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_escalinata} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_recinto} />
+                                            <OnlyLabelTd colspan={1} label={item.construccion_muro_portante} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_argollas} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_canal_drenaje} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_clavos} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_dintel} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_nicho} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_petroglifo} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_vano_original} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_vano_aperturado} />
+                                            <OnlyLabelTd colspan={1} label={item.elementos_umbral} />
+                                            <OnlyLabelTd colspan={1} label={item.acabados_celular} />
+                                            <OnlyLabelTd colspan={1} label={item.acabados_canteado} />
+                                            <OnlyLabelTd colspan={1} label={item.acabados_engastado} />
+                                            <OnlyLabelTd colspan={1} label={item.acabados_poligonal} />
+                                            <OnlyLabelTd colspan={1} label={item.acabados_sedimentario} />
+                                            <OnlyLabelTd colspan={1} label={item.acabados_rustico} />
+                                            <OnlyLabelTd colspan={1} label={item.material_andesita} />
+                                            <OnlyLabelTd colspan={1} label={item.material_arenisca} />
+                                            <OnlyLabelTd colspan={1} label={item.material_caliza} />
+                                            <OnlyLabelTd colspan={1} label={item.material_diorita} />
+                                            <OnlyLabelTd colspan={1} label={item.material_granito} />
+                                            <OnlyLabelTd colspan={1} label={item.mortero_arcilla} />
+                                            <OnlyLabelTd colspan={1} label={item.mortero_barro} />
+                                            <OnlyLabelTd colspan={1} label={item.mortero_calicanto} />
+                                            <OnlyLabelTd colspan={1} label={item.mortero_emboquillado} />
+                                            <OnlyLabelTd colspan={1} label={item.mortero_sin_mortero} />
+                                            <OnlyLabelTd colspan={1} label={item.mortero_cemento} />
+                                            <OnlyLabelTd colspan={1} label={item.medidas_altura} />
+                                            <OnlyLabelTd colspan={1} label={item.medidas_ancho} />
+                                            <OnlyLabelTd colspan={1} label={item.medidas_largo} />
+                                            <OnlyLabelTd colspan={1} label={item.medidas_profundida} />
+                                            <OnlyLabelTd colspan={1} label={item.medidas_diametro} />
+                                            <OnlyLabelTd colspan={1} label={item.medidas_inclinacion} />
+                                            <OnlyLabelTd colspan={1} label={item.estructuras_inmuebles} />
+                                            <OnlyLabelTd colspan={1} label={item.conservacion_bueno} />
+                                            <OnlyLabelTd colspan={1} label={item.conservacion_regular} />
+                                            <OnlyLabelTd colspan={1} label={item.conservacion_malo} />
+                                        </tr>
+                                    ))
+                                }
                             </tbody>
                         </table>
                     </div>
