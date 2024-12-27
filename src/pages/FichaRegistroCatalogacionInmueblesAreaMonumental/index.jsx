@@ -1050,10 +1050,10 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                 <OnlyLabelTd className="h-48" colspan={1} label="Con elementos originales reutilizados" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Reconstruido" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Restaurado" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 3" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 4" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Anden" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Cancha" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Canal" orientation="vertical" />
@@ -1072,32 +1072,32 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                 <OnlyLabelTd colspan={1} label="Vano Aperturado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Umbral" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Elem. Liticos Sueltos" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Celular" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Canteado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Engastado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Poligonal" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Sedimentario" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Rustico" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 3" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Andesita" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Arenisca" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Caliza" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Diorita" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Granito" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Arcilla" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Barro" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Calicanto" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Emboquillado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Sin Mortero" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Cemento" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Altura Promedio" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Ancho" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Largo" orientation="vertical" />
