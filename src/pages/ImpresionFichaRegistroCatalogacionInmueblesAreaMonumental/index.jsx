@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import ErrorIcono from "../../assets/icons/errorIcono";
 import Datatable from "../../components/Datatable";
 import MainCard from "../../components/MainCard";
+import { useNavigate } from 'react-router-dom';
 
 
 
-const columns = [
+const columns = (navigate) => [
     {
         header: "ID",
         accessorKey: 'id',
@@ -30,6 +31,18 @@ const columns = [
         header: "Fecha de Creación",
         accessorKey: 'fecha_creacion',
     },
+    {
+        header: "Acciones",
+        accessorKey: 'acciones',
+        cell: ({ row }) => (
+            <button
+                onClick={() => navigate(`/impresion/ficha-registro-catalogacion-inmuebles-area-monumental/${row.original.id}`)}
+                className="btn btn-primary"
+            >
+                Ver detalles
+            </button>
+        ),
+    },
 ];
 
 const fetchUsuarios = async () => {
@@ -53,6 +66,8 @@ const fetchUsuarios = async () => {
 
 
 function ImpresionFichaRegistroHistorico() {
+        const navigate = useNavigate();
+    
     const { data: usuarios, isLoading, isError, error } = useQuery({
         queryKey: ['usuarios'],
         queryFn: fetchUsuarios,
@@ -83,7 +98,7 @@ function ImpresionFichaRegistroHistorico() {
 
 
             </div>
-            <Datatable columns={columns} data={usuarios.data} />
+            <Datatable columns={columns(navigate)} data={usuarios.data} />
         </MainCard>
     );
 }

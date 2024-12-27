@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import ErrorIcono from "../../assets/icons/errorIcono";
 import Datatable from "../../components/Datatable";
 import MainCard from "../../components/MainCard";
 
-
-
-const columns = [
+const columns = (navigate) => [
     {
         header: "ID",
         accessorKey: 'id',
@@ -30,11 +29,22 @@ const columns = [
         header: "Fecha de Creación",
         accessorKey: 'fecha_creacion',
     },
+    {
+        header: "Acciones",
+        accessorKey: 'acciones',
+        cell: ({ row }) => (
+            <button
+                onClick={() => navigate(`/impresion/ficha-registro-historico/${row.original.id}`)}
+                className="btn btn-primary"
+            >
+                Ver detalles
+            </button>
+        ),
+    },
 ];
 
 const fetchUsuarios = async () => {
     const token = localStorage.getItem("token");
-
 
     const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-registro-historico`, {
         method: "GET",
@@ -51,16 +61,13 @@ const fetchUsuarios = async () => {
     return data;
 };
 
-
 function ImpresionFichaRegistroHistorico() {
+    const navigate = useNavigate();
     const { data: usuarios, isLoading, isError, error } = useQuery({
         queryKey: ['usuarios'],
         queryFn: fetchUsuarios,
         retry: false,
     });
-
-
-    console.log('Datos de usuarios:', usuarios);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -77,17 +84,12 @@ function ImpresionFichaRegistroHistorico() {
 
     return (
         <MainCard>
-
-            <div className="">
+            <div>
                 <h4 className="mb-4">Listado de Usuarios</h4>
-
-
             </div>
-            <Datatable columns={columns} data={usuarios.data} />
+            <Datatable columns={columns(navigate)} data={usuarios.data} />
         </MainCard>
     );
 }
 
 export default ImpresionFichaRegistroHistorico;
-
-
