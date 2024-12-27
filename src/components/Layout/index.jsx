@@ -77,10 +77,10 @@ function Layout() {
                         <Route path="impresion/ficha-registro-catalogacion-inmuebles" element={<ImpresionFichaRegistroCatalogacionInmuebles />} />
                         <Route path="impresion/ficha-registro-historico" element={<ImpresionFichaRegistroHistorico />} />
                         <Route path="impresion/ficha-registro-catalogacion-inmuebles-area-monumental" element={<ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental />} />
-                        
-                        <Route path="impresion/ficha-registro-catalogacion-inmuebles-area-monumental/:id" element={<ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow />} />
+
                         <Route path="impresion/ficha-registro-historico/:id" element={<ImpresionFichaRegistroHistoricoShow />} />
                         <Route path="impresion/ficha-registro-catalogacion-inmuebles/:id" element={<ImpresionFichaRegistroCatalogacionInmueblesShow />} />
+                        <Route path="impresion/ficha-registro-catalogacion-inmuebles-area-monumental/:id" element={<ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow />} />
 
                         <Route path="404" element={<Page404 />} />
                         <Route path="403" element={<Page403 />} />

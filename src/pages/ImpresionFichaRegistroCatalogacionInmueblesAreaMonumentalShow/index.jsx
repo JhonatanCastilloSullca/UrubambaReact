@@ -6,7 +6,7 @@ import OnlyLabelTd from '../../components/OnlyLabelTd';
 const fetchFichaRegistroCatalogacionInmueblesAreaMonumental = async (id) => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-registro-historico/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble-arquitectonica/${id}`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -48,7 +48,9 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
     return (
         <div className="flex flex-col w-full ">
             <div className="mx-auto flex w-full border-2 border-black">
-                <div className="h-56 w-96 bg-white flex justify-center items-center">x</div>
+                <div className="h-56 w-96 bg-white flex justify-center items-center px-4">
+                    <img src="/Imagen1.png" alt="" />
+                </div>
                 <div className='flex w-full flex-col'>
                     <div className="h-28 flex w-full">
                         <div className="w-full flex flex-col">
@@ -63,7 +65,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                             CODIGO UNICO CATASTRAL - CUC
                                         </div>
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            x
+                                            {data.data.cod_unico_catastral}
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +78,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                             CODIGO HOJA CATASTRAL
                                         </div>
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            x
+                                            {data.data.cod_hoja_catastral}
                                         </div>
                                     </div>
                                 </div>
@@ -89,13 +91,15 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                             N° DE FICHA
                                         </div>
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            x
+                                            {data.data.num_ficha}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="h-28 w-28 bg-white flex justify-center items-center">x</div>
+                        <div className="h-28 w-28 bg-white flex justify-center items-center p-2 px-4">
+                            <img src="/muniwanchaq-ic.png" alt="" />
+                        </div>
                     </div>
                     <div className="grid grid-cols-12">
                         <div className="col-span-9 bg-white flex flex-col">
@@ -116,13 +120,13 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            x
+                                            {data.data.unidad.cod_dep}
                                         </div>
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            x
+                                            {data.data.unidad.cod_prov}
                                         </div>
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            x
+                                            {data.data.unidad.cod_dist}
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +138,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xSECTOR
+                                            {data.data.unidad.cod_sector}
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +150,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xMZNA.
+                                            {data.data.unidad.cod_manzana}
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +163,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xLOTE
+                                            {data.data.unidad.cod_lote}
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +175,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xFRACCION
+                                            {data.data.unidad.cod_fraccion}
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +187,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xEDIFICA
+                                            {data.data.unidad.cod_edifica}
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +199,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xENTRADA
+                                            {data.data.unidad.cod_entrada}
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +211,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xPISO
+                                            {data.data.unidad.cod_piso}
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +223,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xUNIDAD
+                                            {data.data.unidad.cod_unidad}
                                         </div>
                                     </div>
                                 </div>
@@ -231,7 +235,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xDC
+                                            {data.data.unidad.cod_dc}
                                         </div>
                                     </div>
                                 </div>
@@ -248,7 +252,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xSECTOR
+                                            {data.data.registro.cod_sector}
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +264,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xMZNA.
+                                            {data.data.registro.cod_manzana}
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +277,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xLOTE
+                                            {data.data.registro.cod_lote}
                                         </div>
                                     </div>
                                 </div>
@@ -285,7 +289,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                     </div>
                                     <div className="flex">
                                         <div className="w-full bg-white h-7 text-center justify-center items-center flex">
-                                            xFRACCION
+                                            {data.data.registro.cod_fraccion}
                                         </div>
                                     </div>
                                 </div>
@@ -297,7 +301,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
 
             <div className="flex border-l-2 border-r-2 border-black">
                 <div className="h-7 w-96 bg-white flex ">
-                    <div className="w-full text-center">JR. HUASCAR Nº 664</div>
+                    <div className="w-full text-center">{data.data.direccion}</div>
                     <div className="h-7 w-7 text-center">195</div>
                 </div>
                 <div className='w-full bg-white text-center'>
@@ -394,7 +398,9 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <OnlyLabelTd colspan={1} label="x" />
+
+
+                                <OnlyLabelTd colspan={1} label={`xs`} />
                                 <OnlyLabelTd colspan={1} label="x" />
                                 <OnlyLabelTd colspan={1} label="x" />
                                 <OnlyLabelTd colspan={1} label="x" />

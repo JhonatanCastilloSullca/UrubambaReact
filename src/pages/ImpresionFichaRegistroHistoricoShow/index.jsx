@@ -65,12 +65,16 @@ function ImpresionFichaRegistroHistoricoShow() {
                         <td colSpan={1} className="px-4 py-2 font-medium">DESCRIPCIÓN:</td>
                         <td colSpan={1} className="px-4 py-2 font-medium">FUENTE:</td>
                     </tr>
-                    <tr className="bg-gray-100">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    {
+                        data.data.registrohistoricos.map((item, index) => (
+                            <tr key={index} className='bg-gray-100'>
+                                <td>{item.fecha}</td>
+                                <td>{item.propietario}</td>
+                                <td>{item.descripcion}</td>
+                                <td>{item.fuente}</td>
+                            </tr>
+                        ))
+                    }
                     <tr>
                         <td colSpan="4" className="text-xl font-semibold bg-gray-200 px-4 py-2 ">Registrado: {data.data.registrado}</td>
                     </tr>
