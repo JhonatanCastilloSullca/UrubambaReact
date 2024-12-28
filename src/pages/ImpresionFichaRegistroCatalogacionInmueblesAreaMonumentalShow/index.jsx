@@ -901,7 +901,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                             NOMBRES: {declarante.persona?.nombres || "No disponible"}
                         </div>
                         <div className="w-full bg-white h-7 flex">
-                            APELLIDOS: {declarante.persona?.apellidos || "No disponible"}
+                            APELLIDOS: {declarante.persona?.apellido_paterno || "No disponible"}
                         </div>
                     </div>
                 ))}
