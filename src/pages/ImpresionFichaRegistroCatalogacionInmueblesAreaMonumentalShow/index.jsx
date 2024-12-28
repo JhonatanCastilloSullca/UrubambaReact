@@ -895,13 +895,13 @@ function ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow() {
                             </div>
                         </div>
                         <div className="w-full bg-white h-7 flex">
-                            D.N.I: {declarante.declarante_id}
+                            D.N.I: {declarante.num_documento}
                         </div>
                         <div className="w-full bg-white h-7 flex">
-                            NOMBRES: {declarante.persona?.nombres || "No disponible"}
+                            NOMBRES: {declarante.persona?.nombres}
                         </div>
                         <div className="w-full bg-white h-7 flex">
-                            APELLIDOS: {declarante.persona?.apellido_paterno || "No disponible"}
+                            APELLIDOS: {declarante.persona?.apellido_paterno}
                         </div>
                     </div>
                 ))}
