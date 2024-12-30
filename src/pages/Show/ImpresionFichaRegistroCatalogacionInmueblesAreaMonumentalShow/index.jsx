@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import ErrorIcono from "../../assets/icons/errorIcono";
-import OnlyLabelTd from '../../components/OnlyLabelTd';
+import ErrorIcono from "../../../assets/icons/errorIcono";
+import OnlyLabelTd from '../../../components/OnlyLabelTd';
 
 const fetchFichaRegistroCatalogacionInmueblesAreaMonumental = async (id) => {
     const token = localStorage.getItem("token");

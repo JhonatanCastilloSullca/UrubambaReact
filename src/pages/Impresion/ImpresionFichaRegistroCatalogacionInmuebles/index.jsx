@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
+import ErrorIcono from "../../../assets/icons/errorIcono";
+import Datatable from "../../../components/Datatable";
+import MainCard from "../../../components/MainCard";
 import { useNavigate } from 'react-router-dom';
-import ErrorIcono from "../../assets/icons/errorIcono";
-import Datatable from "../../components/Datatable";
-import MainCard from "../../components/MainCard";
+
+
 
 const columns = (navigate) => [
     {
@@ -34,7 +36,7 @@ const columns = (navigate) => [
         accessorKey: 'acciones',
         cell: ({ row }) => (
             <button
-                onClick={() => navigate(`/impresion/ficha-registro-historico/${row.original.id}`)}
+                onClick={() => navigate(`/impresion/ficha-registro-catalogacion-inmuebles/${row.original.id}`)}
                 className="btn btn-primary"
             >
                 Ver detalles
@@ -46,7 +48,8 @@ const columns = (navigate) => [
 const fetchUsuarios = async () => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-registro-historico`, {
+
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -61,13 +64,21 @@ const fetchUsuarios = async () => {
     return data;
 };
 
+
 function ImpresionFichaRegistroHistorico() {
+
     const navigate = useNavigate();
+
+
+
     const { data: usuarios, isLoading, isError, error } = useQuery({
         queryKey: ['usuarios'],
         queryFn: fetchUsuarios,
         retry: false,
     });
+
+
+    console.log('Datos de usuarios:', usuarios);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -84,8 +95,11 @@ function ImpresionFichaRegistroHistorico() {
 
     return (
         <MainCard>
-            <div>
+
+            <div className="">
                 <h4 className="mb-4">Listado de Usuarios</h4>
+
+
             </div>
             <Datatable columns={columns(navigate)} data={usuarios.data} />
         </MainCard>
@@ -93,3 +107,5 @@ function ImpresionFichaRegistroHistorico() {
 }
 
 export default ImpresionFichaRegistroHistorico;
+
+

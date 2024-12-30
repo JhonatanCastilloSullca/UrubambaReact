@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import ErrorIcono from "../../assets/icons/errorIcono";
+import ErrorIcono from "../../../assets/icons/errorIcono";
 
 const fetchFichaRegistroHistorico = async (id) => {
     const token = localStorage.getItem("token");

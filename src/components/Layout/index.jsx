@@ -11,22 +11,23 @@ import FichaCatalogacionEspaciosPublicos from '../../pages/FichaCatalogacionEspa
 import Login from '../../pages/Login';
 import Logout from '../../pages/Logout';
 import { AuthProvider, useAuth } from '../Services/Auth/auth';
-import FichaRegistroCatalogacionInmuebles from '../../pages/FichaRegistroCatalogacionInmuebles';
-import FichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/FichaRegistroCatalogacionInmueblesAreaMonumental';
+import FichaRegistroCatalogacionInmuebles from '../../pages/Registro/FichaRegistroCatalogacionInmuebles';
+import FichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/Registro/FichaRegistroCatalogacionInmueblesAreaMonumental';
 import Usuarios from '../../pages/Usuarios';
 import Tecnicos from '../../pages/Tecnicos';
-import FichaRegistroHistorico from '../../pages/FichaRegistroHistorico';
-import ImpresionFichaRegistroHistorico from '../../pages/ImpresionFichaRegistroHistorico';
-import ImpresionFichaRegistroCatalogacionInmuebles from '../../pages/ImpresionFichaRegistroCatalogacionInmuebles';
-import ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental';
-import ImpresionFichaRegistroHistoricoShow from '../../pages/ImpresionFichaRegistroHistoricoShow';
-import ImpresionFichaRegistroCatalogacionInmueblesShow from '../../pages/ImpresionFichaRegistroCatalogacionInmueblesShow';
-import ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow from '../../pages/ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow';
+import FichaRegistroHistorico from '../../pages/Registro/FichaRegistroHistorico';
+import ImpresionFichaRegistroHistorico from '../../pages/Impresion/ImpresionFichaRegistroHistorico';
+import ImpresionFichaRegistroCatalogacionInmuebles from '../../pages/Impresion/ImpresionFichaRegistroCatalogacionInmuebles';
+import ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/Impresion/ImpresionFichaRegistroCatalogacionInmueblesAreaMonumental';
+import ImpresionFichaRegistroHistoricoShow from '../../pages/Show/ImpresionFichaRegistroHistoricoShow';
+import ImpresionFichaRegistroCatalogacionInmueblesShow from '../../pages/Show/ImpresionFichaRegistroCatalogacionInmueblesShow';
+import ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow from '../../pages/Show/ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow';
+import EditFichaRegistroHistorico from '../../pages/Edit/EditFichaRegistroHistorico';
+import EditFichaRegistroCatalogacionInmueblesAreaMonumental from '../../pages/Edit/EditFichaRegistroCatalogacionInmueblesAreaMonumental';
+import EditFichaRegistroCatalogacionInmuebles from '../../pages/Edit/EditFichaRegistroCatalogacionInmuebles';
 
 function ProtectedRoute({ children }) {
     const { user } = useAuth();
-    console.log("ProtectedRoute: user", user);
-
     return user ? children : <Navigate to="/login" replace />;
 }
 
@@ -35,8 +36,6 @@ function ProtectedRoute({ children }) {
 
 function PublicRoute({ children }) {
     const { user } = useAuth();
-    console.log("PublicRoute: user", user);
-
     return user ? <Navigate to="/" replace /> : children;
 }
 
@@ -81,6 +80,11 @@ function Layout() {
                         <Route path="impresion/ficha-registro-historico/:id" element={<ImpresionFichaRegistroHistoricoShow />} />
                         <Route path="impresion/ficha-registro-catalogacion-inmuebles/:id" element={<ImpresionFichaRegistroCatalogacionInmueblesShow />} />
                         <Route path="impresion/ficha-registro-catalogacion-inmuebles-area-monumental/:id" element={<ImpresionFichaRegistroCatalogacionInmueblesAreaMonumentalShow />} />
+
+                        <Route path="edit/edit-ficha-registro-historico/:id" element={<EditFichaRegistroHistorico />} />
+                        <Route path="edit/edit-ficha-registro-catalogacion-inmuebles/:id" element={<EditFichaRegistroCatalogacionInmuebles />} />
+                        <Route path="edit/edit-ficha-registro-catalogacion-inmuebles-area-monumental/:id" element={<EditFichaRegistroCatalogacionInmueblesAreaMonumental />} />
+
 
                         <Route path="404" element={<Page404 />} />
                         <Route path="403" element={<Page403 />} />

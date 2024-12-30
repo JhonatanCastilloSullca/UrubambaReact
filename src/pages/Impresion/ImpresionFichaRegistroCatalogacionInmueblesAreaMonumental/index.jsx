@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import ErrorIcono from "../../assets/icons/errorIcono";
-import Datatable from "../../components/Datatable";
-import MainCard from "../../components/MainCard";
+import ErrorIcono from "../../../assets/icons/errorIcono";
+import Datatable from "../../../components/Datatable";
+import MainCard from "../../../components/MainCard";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -66,8 +66,8 @@ const fetchUsuarios = async () => {
 
 
 function ImpresionFichaRegistroHistorico() {
-        const navigate = useNavigate();
-    
+    const navigate = useNavigate();
+
     const { data: usuarios, isLoading, isError, error } = useQuery({
         queryKey: ['usuarios'],
         queryFn: fetchUsuarios,

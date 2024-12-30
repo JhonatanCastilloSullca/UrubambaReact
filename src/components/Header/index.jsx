@@ -28,7 +28,6 @@ function Header({ toggleSidebar }) {
 
     const toggleTheme = () => {
         setIsDarkMode(!isDarkMode);
-        console.log(user);
     };
 
     return (

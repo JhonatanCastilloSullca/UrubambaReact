@@ -1,8 +1,8 @@
 import { useForm, FormProvider, useFieldArray } from "react-hook-form";
-import MainCard from "../../components/MainCard";
-import ErrorIcono from "../../assets/icons/errorIcono";
-import NumeroForm from "../../components/NumeroForm";
-import OnlyInputError from "../../components/OnlyInputError";
+import MainCard from "../../../components/MainCard";
+import ErrorIcono from "../../../assets/icons/errorIcono";
+import NumeroForm from "../../../components/NumeroForm";
+import OnlyInputError from "../../../components/OnlyInputError";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 

@@ -1,14 +1,14 @@
 import { useForm, FormProvider, useFieldArray } from "react-hook-form";
-import MainCard from "../../components/MainCard";
-import ErrorIcono from "../../assets/icons/errorIcono";
-import NumeroForm from "../../components/NumeroForm";
-import OnlyInputLetras from "../../components/OnlyInputLetras";
-import OnlyLabelTd from "../../components/OnlyLabelTd";
-import OnlyInputError from "../../components/OnlyInputError";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import OnlyInputError from "../../../components/OnlyInputError";
+import NumeroForm from "../../../components/NumeroForm";
+import MainCard from "../../../components/MainCard";
+import OnlyLabelTd from "../../../components/OnlyLabelTd";
+import OnlyInputLetras from "../../../components/OnlyInputLetras";
+import ErrorIcono from "../../../assets/icons/errorIcono";
 
-function FichaRegistroCatalogacionInmueblesAreaMonumental() {
+function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
     const methods = useForm();
     const { register, control, handleSubmit, formState: { errors } } = methods;
     const { fields: fields_evidencias_arq_fachadas_inmuebles, append: append_fields_evidencias_arq_fachadas_inmuebles, remove: remove_fields_evidencias_arq_fachadas_inmuebles } = useFieldArray({
@@ -2455,4 +2455,4 @@ function FichaRegistroCatalogacionInmueblesAreaMonumental() {
         </>
     )
 }
-export default FichaRegistroCatalogacionInmueblesAreaMonumental;
+export default EditFichaRegistroCatalogacionInmueblesAreaMonumental;

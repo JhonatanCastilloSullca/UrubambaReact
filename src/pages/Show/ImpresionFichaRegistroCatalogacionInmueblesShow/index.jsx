@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import ErrorIcono from "../../assets/icons/errorIcono";
-import OnlyLabelTd from '../../components/OnlyLabelTd';
+import ErrorIcono from "../../../assets/icons/errorIcono";
+import OnlyLabelTd from '../../../components/OnlyLabelTd';
 
 const fetchFichaRegistroHistorico = async (id) => {
     const token = localStorage.getItem("token");
@@ -321,7 +321,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.patrimonio_si}
+                                        {data.data?.informacion?.patrimonio_si}
                                     </div>
                                 </div>
                             </div>
@@ -333,7 +333,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.patrimonio_no}
+                                        {data.data?.informacion?.patrimonio_no}
                                     </div>
                                 </div>
                             </div>
@@ -345,7 +345,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.patrimonio_tramite}
+                                        {data.data?.informacion?.patrimonio_tramite}
                                     </div>
                                 </div>
                             </div>
@@ -368,7 +368,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                             <div className="flex w-full">
                                 <div className="flex w-full" >
                                     <div className='bg-white h-7 w-full flex ps-4'>
-                                        {data.data.informacion.patrimonio_tramite}
+                                        {data.data?.informacion?.patrimonio_tramite}
                                     </div>
                                 </div>
                             </div>
@@ -391,7 +391,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                             <div className="flex w-full">
                                 <div className="flex w-full" >
                                     <div className='bg-white h-7 w-full flex ps-4'>
-                                        {data.data.informacion.barrio}
+                                        {data.data?.informacion?.barrio}
                                     </div>
                                 </div>
                             </div>
@@ -414,7 +414,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                             <div className="flex w-full">
                                 <div className="flex w-full" >
                                     <div className='bg-white h-7 w-full flex ps-4'>
-                                        {data.data.informacion.denominacion}
+                                        {data.data?.informacion?.denominacion}
                                     </div>
                                 </div>
                             </div>
@@ -442,7 +442,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex w-full border-l-2  border-black">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.categoria}
+                                        {data.data?.informacion?.categoria}
                                     </div>
                                 </div>
                             </div>
@@ -470,7 +470,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex w-full border-l-2  border-black">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.zonificacion_am}
+                                        {data.data?.informacion?.zonificacion_am}
                                     </div>
                                 </div>
                             </div>
@@ -482,7 +482,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex w-full border-l-2  border-black">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.zonificacion_zt}
+                                        {data.data?.informacion?.zonificacion_zt}
                                     </div>
                                 </div>
                             </div>
@@ -505,7 +505,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                             <div className="flex w-full">
                                 <div className="flex w-full" >
                                     <div className='bg-white h-7 w-full flex ps-4'>
-                                        {data.data.informacion.sectores}
+                                        {data.data?.informacion?.sectores}
                                     </div>
                                 </div>
                             </div>
@@ -533,7 +533,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.filiacion_ph}
+                                        {data.data?.informacion?.filiacion_ph}
                                     </div>
                                 </div>
                             </div>
@@ -545,7 +545,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.filiacion_c}
+                                        {data.data?.informacion?.filiacion_c}
                                     </div>
                                 </div>
                             </div>
@@ -557,7 +557,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.filiacion_r}
+                                        {data.data?.informacion?.filiacion_r}
                                     </div>
                                 </div>
                             </div>
@@ -569,7 +569,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                                 </div>
                                 <div className="flex">
                                     <div className="w-full bg-white h-7 px-2 text-center justify-center items-center flex">
-                                        {data.data.informacion.filiacion_cp}
+                                        {data.data?.informacion?.filiacion_cp}
                                     </div>
                                 </div>
                             </div>
@@ -584,7 +584,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                             </div>
                         </div>
                         <div className="w-full bg-white h-full flex">
-                            {data.data.informacion.contexto_historico}
+                            {data.data?.informacion?.contexto_historico}
                         </div>
                     </div>
 
@@ -595,7 +595,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                             </div>
                         </div>
                         <div className="w-full bg-white h-full flex">
-                            {data.data.informacion.descripcion_general}
+                            {data.data?.informacion?.descripcion_general}
                         </div>
                     </div>
                 </div>

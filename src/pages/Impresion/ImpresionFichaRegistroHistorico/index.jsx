@@ -1,10 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import ErrorIcono from "../../assets/icons/errorIcono";
-import Datatable from "../../components/Datatable";
-import MainCard from "../../components/MainCard";
 import { useNavigate } from 'react-router-dom';
-
-
+import ErrorIcono from "../../../assets/icons/errorIcono";
+import Datatable from "../../../components/Datatable";
+import MainCard from "../../../components/MainCard";
 
 const columns = (navigate) => [
     {
@@ -35,21 +33,29 @@ const columns = (navigate) => [
         header: "Acciones",
         accessorKey: 'acciones',
         cell: ({ row }) => (
-            <button
-                onClick={() => navigate(`/impresion/ficha-registro-catalogacion-inmuebles/${row.original.id}`)}
-                className="btn btn-primary"
-            >
-                Ver detalles
-            </button>
+            <div className="flex gap-2">
+                <button
+                    onClick={() => navigate(`/impresion/ficha-registro-historico/${row.original.id}`)}
+                    className="btn btn-primary"
+                >
+                    Ver Ficha
+                </button>
+                <button
+                    onClick={() => navigate(`/edit/edit-ficha-registro-historico/${row.original.id}`)}
+                    className="btn btn-primary"
+                >
+                    Editar Ficha
+                </button>
+            </div>
         ),
     },
+
 ];
 
 const fetchUsuarios = async () => {
     const token = localStorage.getItem("token");
 
-
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-registro-historico`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -64,21 +70,13 @@ const fetchUsuarios = async () => {
     return data;
 };
 
-
 function ImpresionFichaRegistroHistorico() {
-
-    const navigate = useNavigate();   
-
-
-
+    const navigate = useNavigate();
     const { data: usuarios, isLoading, isError, error } = useQuery({
         queryKey: ['usuarios'],
         queryFn: fetchUsuarios,
         retry: false,
     });
-
-
-    console.log('Datos de usuarios:', usuarios);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -95,11 +93,8 @@ function ImpresionFichaRegistroHistorico() {
 
     return (
         <MainCard>
-
-            <div className="">
+            <div>
                 <h4 className="mb-4">Listado de Usuarios</h4>
-
-
             </div>
             <Datatable columns={columns(navigate)} data={usuarios.data} />
         </MainCard>
@@ -107,5 +102,3 @@ function ImpresionFichaRegistroHistorico() {
 }
 
 export default ImpresionFichaRegistroHistorico;
-
-
