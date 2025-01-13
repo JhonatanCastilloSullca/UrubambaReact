@@ -17,10 +17,12 @@ function EditFichaRegistroHistorico() {
     });
     const { register, control, handleSubmit, formState: { errors } } = methods;
     const { fields: fields_ficha_registro_hist, append: append_fields_ficha_registro_hist, remove: remove_fields_ficha_registro_hist } = useFieldArray({
-
         control,
         name: "ficha_registro_historico",
     });
+
+
+
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -48,7 +50,6 @@ function EditFichaRegistroHistorico() {
         enabled: !!id,
     });
 
-    // Post Data
     const postData = async (data) => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-registro-historico`, {
             method: "POST",
@@ -73,11 +74,16 @@ function EditFichaRegistroHistorico() {
         },
     });
 
-    // Submit
     const onSubmit = (data) => {
         console.log("Datos enviados:", data);
         console.log("Errores:", errors);
-        mutation.mutate(data);
+        const data2 = {
+            ...data,
+            ficha_id_anterior: id,
+        };
+        console.log(data2);
+        mutation.mutate(data2);
+
     };
 
 
@@ -92,6 +98,7 @@ function EditFichaRegistroHistorico() {
                         descripcion: registro.descripcion || '',
                         fuente: registro.fuente || '',
                         id: registro.id,
+
                     });
                 });
             }

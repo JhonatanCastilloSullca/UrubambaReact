@@ -35,12 +35,20 @@ const columns = (navigate) => [
         header: "Acciones",
         accessorKey: 'acciones',
         cell: ({ row }) => (
-            <button
-                onClick={() => navigate(`/impresion/ficha-registro-catalogacion-inmuebles/${row.original.id}`)}
-                className="btn btn-primary"
-            >
-                Ver detalles
-            </button>
+            <div className="flex gap-2">
+                <button
+                    onClick={() => navigate(`/impresion/ficha-registro-catalogacion-inmuebles/${row.original.id}`)}
+                    className="btn btn-primary"
+                >
+                    Ver detalles
+                </button>
+                <button
+                    onClick={() => navigate(`/edit/edit-ficha-registro-catalogacion-inmuebles/${row.original.id}`)}
+                    className="btn btn-primary"
+                >
+                    Editar Ficha
+                </button>
+            </div>
         ),
     },
 ];

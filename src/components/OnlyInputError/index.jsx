@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ErrorIcono from "../../assets/icons/errorIcono";
 
 const OnlyInputError = ({
@@ -8,8 +9,9 @@ const OnlyInputError = ({
     isRequired = true,
     className = 'w-full peer h-10 rounded-md text-secondBackAdmin-dark font-normal bg-gray-50 px-4 outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400',
     tipo = '',
-    value = '',  // Agregar el prop value
+    value = '',
 }) => {
+    const [inputValue, setInputValue] = useState(value);
 
     const pattern = tipo === 'letras'
         ? /^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/
@@ -24,12 +26,16 @@ const OnlyInputError = ({
             : 'Solo se permiten letras y números.';
 
     const handleInput = (event) => {
+        const { value } = event.target;
         if (tipo === 'letras') {
-            event.target.value = event.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '');
+            setInputValue(value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, ''));
         } else if (tipo === 'numeros') {
-            event.target.value = event.target.value.replace(/[^0-9]/g, '');
+            setInputValue(value.replace(/[^0-9]/g, ''));
+        } else {
+            setInputValue(value);
         }
     };
+
     return (
         <>
             <input
@@ -38,14 +44,13 @@ const OnlyInputError = ({
                 maxLength={maxLength}
                 inputMode={tipo === 'numeros' ? 'numeric' : 'text'}
                 onInput={handleInput}
-                value={value}
+                value={inputValue}
                 {...register(name, {
                     required: isRequired ? 'Este campo es obligatorio.' : false,
                     pattern: { value: pattern, message: errorMessage },
                     maxLength: { value: maxLength, message: `Máximo de ${maxLength} caracteres permitidos` },
                 })}
             />
-
             {errors?.message && (
                 <span className="text-sm text-red-600 font-medium flex items-center gap-2 text-center">
                     <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>

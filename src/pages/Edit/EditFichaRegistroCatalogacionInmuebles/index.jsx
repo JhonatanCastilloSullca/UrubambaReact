@@ -1,7 +1,7 @@
 import { useForm, FormProvider, useFieldArray } from "react-hook-form";
 
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
 import MainCard from "../../../components/MainCard";
 import NumeroForm from "../../../components/NumeroForm";
 import OnlyInputError from "../../../components/OnlyInputError";
@@ -10,7 +10,15 @@ import OnlyLabelTd from "../../../components/OnlyLabelTd";
 import OnlyInputLetras from "../../../components/OnlyInputLetras";
 
 function EditFichaRegistroCatalogacionInmuebles() {
-    const methods = useForm();
+
+    const methods = useForm({
+        defaultValues: {
+            analisis_bloques_no_construidos: [],
+            analisis_bloques_construidos: [],
+            analisis_fachadas: [],
+        },
+        mode: "onBlur",
+    });
 
     const { register, control, handleSubmit, formState: { errors } } = methods;
     const { fields: fields_no_const, append: append_fields_no_const, remove: remove_fields_no_const } = useFieldArray({
@@ -26,7 +34,33 @@ function EditFichaRegistroCatalogacionInmuebles() {
         name: "analisis_fachadas",
     });
 
+    const { id } = useParams();
     const navigate = useNavigate();
+
+    const getHeaders = () => ({
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    });
+
+    const fetchData = async (id) => {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble/${id}`, {
+            method: "GET",
+            headers: getHeaders(),
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al obtener los datos");
+        }
+
+        return response.json();
+    };
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ["analisis_bloques_no_construidos", "analisis_bloques_construidos", "analisis_fachadas", id],
+        queryFn: () => fetchData(id),
+        enabled: !!id,
+    });
+    console.log(data.data.cod_unico_catastral);
+
     const postData = async (formData) => {
         const token = localStorage.getItem("token");
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble`, {
@@ -125,6 +159,8 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.codigo_unico_catastral}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.cod_unico_catastral || ''}
+
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-3">
@@ -139,6 +175,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.codigo_hoja_catastral}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.cod_hoja_catastral || ''}
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-2">
@@ -150,8 +187,9 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                 <OnlyInputError
                                     name={`nro_ficha`}
                                     register={register}
-                                    errors={errors.codigo_registro}
+                                    errors={errors.num_ficha}
                                     maxLength={10}
+                                    value={data?.data?.num_ficha || ''}
                                 />
                             </div>
                         </div>
@@ -175,6 +213,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_dpto}
                                                     maxLength={2}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_dep || ''}
                                                 />
                                             </div>
                                             <div className="col-span-4 flex flex-col gap-2">
@@ -185,6 +224,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_prov}
                                                     maxLength={2}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_prov || ''}
                                                 />
                                             </div>
                                             <div className="col-span-4 flex flex-col gap-2">
@@ -195,6 +235,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_dist}
                                                     maxLength={2}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_dist || ''}
                                                 />
                                             </div>
                                         </div>
@@ -210,6 +251,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     maxLength={3}
                                                     isRequired={true}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_sector || ''}
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
@@ -221,6 +263,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     maxLength={3}
                                                     isRequired={true}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_manzana || ''}
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
@@ -232,6 +275,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     maxLength={3}
                                                     isRequired={true}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_lote || ''}
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
@@ -242,6 +286,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_edifica}
                                                     maxLength={2}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_edifica || ''}
                                                 />
                                             </div>
                                             <div className="col-span-1 flex flex-col gap-2">
@@ -252,6 +297,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_entrada}
                                                     maxLength={2}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_entrada || ''}
                                                     isRequired={false}
                                                 />
                                             </div>
@@ -263,6 +309,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_piso}
                                                     maxLength={2}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_piso || ''}
                                                     isRequired={false}
                                                 />
                                             </div>
@@ -274,6 +321,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_unidad}
                                                     maxLength={2}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_unidad || ''}
                                                     isRequired={false}
                                                 />
                                             </div>
@@ -285,6 +333,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                                     errors={errors.ubicacion_dc}
                                                     maxLength={1}
                                                     tipo="numeros"
+                                                    value={data?.data?.unidad.cod_dc || ''}
                                                     isRequired={false}
                                                 />
                                             </div>
@@ -308,6 +357,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                             maxLength={3}
                                             isRequired={true}
                                             tipo="numeros"
+                                            value={data?.data?.registro.cod_sector || ''}
                                         />
                                     </div>
                                     <div className="col-span-2 flex flex-col gap-2">
@@ -319,6 +369,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                             maxLength={3}
                                             isRequired={true}
                                             tipo="numeros"
+                                            value={data?.data?.registro.cod_manzana || ''}
                                         />
                                     </div>
                                     <div className="col-span-2 flex flex-col gap-2">
@@ -330,6 +381,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                             maxLength={3}
                                             isRequired={true}
                                             tipo="numeros"
+                                            value={data?.data?.registro.cod_lote || ''}
                                         />
                                     </div>
                                     <div className="col-span-2 flex flex-col gap-2">
@@ -340,6 +392,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                             errors={errors.ubicacion_fraccion}
                                             maxLength={1}
                                             tipo="numeros"
+                                            value={data?.data?.registro.cod_fraccion || ''}
                                             isRequired={false}
                                         />
                                     </div>
