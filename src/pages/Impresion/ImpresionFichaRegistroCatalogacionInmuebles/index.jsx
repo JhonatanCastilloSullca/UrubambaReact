@@ -86,7 +86,6 @@ function ImpresionFichaRegistroHistorico() {
     });
 
 
-    console.log('Datos de usuarios:', usuarios);
 
     if (isLoading) {
         return <div>Loading...</div>;

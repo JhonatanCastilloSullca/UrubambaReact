@@ -67,7 +67,7 @@ function EditFichaRegistroHistorico() {
         mutationFn: postData,
         onSuccess: () => {
             console.log("Enviado correctamente");
-            navigate("/usuarios");
+            navigate("/impresion/ficha-registro-historico");
         },
         onError: (error) => {
             console.error("Error al enviar los datos:", error);
@@ -95,8 +95,8 @@ function EditFichaRegistroHistorico() {
                     append_fields_ficha_registro_hist({
                         fecha: registro.fecha || '',
                         propietario_arrendatario: registro.propietario || '',
-                        descripcion: registro.descripcion || '',
                         fuente: registro.fuente || '',
+                        descripcion: registro.descripcion || '',
                         id: registro.id,
 
                     });
@@ -220,7 +220,6 @@ function EditFichaRegistroHistorico() {
                                                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Propietario y/o Arrendatario</label>
                                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                     placeholder="Propietario y/o Arrendatario..."
-                                                    value={item?.propietario_arrendatario || ''}
                                                     {...register(`ficha_registro_historico.${index}.propietario_arrendatario`, {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -247,7 +246,6 @@ function EditFichaRegistroHistorico() {
                                                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fuente</label>
                                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                     placeholder="Fuente..."
-                                                    value={item?.fuente || ''}
 
                                                     {...register(`ficha_registro_historico.${index}.fuente`, {
                                                         required: 'Este campo es obligatorio.',
@@ -275,7 +273,6 @@ function EditFichaRegistroHistorico() {
                                                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
                                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                     placeholder="Descripcion..."
-                                                    value={item?.descripcion || ''}
                                                     {...register(`ficha_registro_historico.${index}.descripcion`, {
                                                         required: 'Este campo es obligatorio.',
                                                         minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },

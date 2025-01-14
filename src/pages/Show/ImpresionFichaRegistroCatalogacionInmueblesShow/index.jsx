@@ -1055,7 +1055,7 @@ function ImpresionFichaRegistroCatalogacionInmueblesShow() {
                 <div className="col-span-4 flex flex-col w-full ">
                     <div className="flex border">
                         <div className="w-full bg-white h-7 font-bold text-center justify-center items-center flex">
-                            DESCRIPCION DE LA  FACHADA
+                            DESCRIPCION DE LA FACHADA
                         </div>
                     </div>
                     <div className="w-full bg-white  flex">

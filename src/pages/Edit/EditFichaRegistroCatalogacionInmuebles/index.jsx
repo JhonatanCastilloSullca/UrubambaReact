@@ -8,6 +8,7 @@ import OnlyInputError from "../../../components/OnlyInputError";
 import ErrorIcono from "../../../assets/icons/errorIcono";
 import OnlyLabelTd from "../../../components/OnlyLabelTd";
 import OnlyInputLetras from "../../../components/OnlyInputLetras";
+import { useEffect } from "react";
 
 function EditFichaRegistroCatalogacionInmuebles() {
 
@@ -59,7 +60,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
         queryFn: () => fetchData(id),
         enabled: !!id,
     });
-    console.log(data.data.cod_unico_catastral);
+
 
     const postData = async (formData) => {
         const token = localStorage.getItem("token");
@@ -80,7 +81,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
         mutationFn: postData,
         onSuccess: () => {
             console.log("Enviado correctamente");
-            navigate("/");
+            navigate("/impresion/ficha-registro-catalogacion-inmuebles");
         },
         onError: (error) => {
             console.error("Error al enviar los datos:", error);
@@ -123,16 +124,249 @@ function EditFichaRegistroCatalogacionInmuebles() {
             formData.append(name, JSON.stringify(groupData));
         });
 
+        formData.append("ficha_id_anterior", id);
+
         for (let [key, value] of formData.entries()) {
             console.log(key, value);
         }
-
+        console.log(formData);
 
         mutation.mutate(formData);
     };
 
 
+    useEffect(() => {
+        if (data) {
+            methods.reset(data);
 
+            if (data.data.bloquesnoconstruidos?.length > 0) {
+                data.data.bloquesnoconstruidos.forEach((registro) => {
+                    append_fields_no_const({
+
+                        sectores: registro.sector,
+                        tipo_patio: registro.tipo_patio,
+                        tipo_jardin: registro.tipo_jardin,
+                        tipo_patio_jardin: registro.tipo_patio_jardin,
+                        tipo_huerto: registro.tipo_huerto,
+                        tipo_corral: registro.tipo_corral,
+                        tipo_estacionamiento: registro.tipo_estacionamiento,
+                        tipo_otros: registro.tipo_otros,
+                        epoca_const_prehispanico: registro.epoca_prehispanico,
+                        epoca_const_colonial: registro.epoca_colonial,
+                        epoca_const_republicano: registro.epoca_republicano,
+                        epoca_const_contemporaneo: registro.epoca_contemporaneo,
+                        tipo_acabado_piso_canto_rodado: registro.acabado_piso_canto,
+                        tipo_acabado_piso_laja_piedra: registro.acabado_piso_laja_piedra,
+                        tipo_acabado_piso_empedrado: registro.acabado_piso_empedrado,
+                        tipo_acabado_piso_concreto: registro.acabado_piso_concreto,
+                        tipo_acabado_piso_terrazo: registro.acabado_piso_terrazo,
+                        tipo_acabado_piso_ceramico: registro.acabado_piso_ceramico,
+                        tipo_acabado_piso_tierra: registro.acabado_piso_tierra,
+                        tipo_acabado_piso_ladrillo: registro.acabado_piso_ladrillo,
+                        tipo_acabado_piso_piso_verde: registro.acabado_piso_verde,
+                        tipo_acabado_piso_otros: registro.acabado_piso_otros,
+                        tipo_acabado_piso_sin_acabado: registro.acabado_piso_sin_acabado,
+                        tipo_acabado_techo_opaco: registro.acabado_techo_opaco,
+                        tipo_acabado_techo_translucido: registro.acabado_techo_translucido,
+                        estado_const_terminado: registro.estado_terminado,
+                        estado_const_en_const: registro.estado_en_construccion,
+                        estado_const_inconcluso: registro.estado_inconclusa,
+                        elementos_bancas: registro.elementos_bancas,
+                        elementos_jardinera: registro.elementos_jadinera,
+                        elementos_escalera: registro.elementos_escalera,
+                        elementos_fuente: registro.elementos_fuente,
+                        elementos_escultura: registro.elementos_escultura,
+                        elementos_diseminado: registro.elementos_diseminado,
+                        vegetacion_arb_nativos: registro.vegetacion_nativos,
+                        vegetacion_arb_foraneos: registro.vegetacion_foraneos,
+                        vegetacion_arbustos: registro.vegetacion_arbustos,
+                        vegetacion_gras: registro.vegetacion_gras,
+                        tipo_intervencion_sin_intervencion: registro.intervencion_sin_intervencion,
+                        tipo_intervencion_restauracion: registro.intervencion_restauracion,
+                        tipo_intervencion_refacion: registro.intervencion_refaccion,
+                        tipo_intervencion_remodelacion: registro.intervencion_remodelacion,
+                        tipo_intervencion_reconstruccion: registro.intervencion_reconstruccion,
+                        tipo_intervencion_obra_nueva: registro.intervencion_obra_nueva,
+                        tipo_intervencion_demolicion: registro.intervencion_demolicion,
+                        uso_compartido: registro.uso_compartido,
+                        uso_privado: registro.uso_privado,
+                        estado_conserv_bueno: registro.estado_bueno,
+                        estado_conserv_regular: registro.estado_regular,
+                        estado_conserv_malo: registro.estado_malo,
+                        estado_conserv_ruinoso: registro.estado_ruinoso,
+                        categoria_registro_valor_patri: registro.categoria_valor_patrimonial,
+                        categoria_registro_valor_contex: registro.categoria_valor_contextual,
+                        categoria_registro_element_patrimoni: registro.categoria_elemento_patrimonial,
+                        categoria_registro_sin_valor: registro.categoria_sin_valor,
+                    });
+                });
+            }
+
+            if (data.data.bloquesconstruidos?.length > 0) {
+                data.data.bloquesconstruidos.forEach((registro) => {
+                    append_fields_const({
+                        bloque: registro.bloque,
+                        nivel_edificacion: registro.nivel_edificacion,
+                        partido_arq_bloque_u: registro.partido_bloque_u,
+                        partido_arq_bloque_l: registro.partido_bloque_l,
+                        partido_arq_bloque_i: registro.partido_bloque_i,
+                        partido_arq_claustral: registro.partido_claustral,
+                        partido_arq_compacto: registro.partido_compacto,
+                        epoca_const_prehispanico: registro.epoca_prehispanico,
+                        epoca_const_colonial: registro.epoca_colonial,
+                        epoca_const_republicano: registro.epoca_republicano,
+                        epoca_const_contemp: registro.epoca_contemporaneo,
+                        tipo_arq_civil_publica: registro.tipo_arquitectura_civil_publica,
+                        tipo_arq_civil_domest: registro.tipo_arquitectura_civil_democratica,
+                        tipo_arq_religiosa: registro.tipo_arquitectura_religiosa,
+                        tipo_arq_indust: registro.tipo_arquitectura_industrial,
+                        tipo_arq_comercial: registro.tipo_arquitectura_comercial,
+                        tipo_arq_militar: registro.tipo_arquitectura_militar,
+                        filiacion_estilist_manierista: registro.filiacion_manierista,
+                        filiacion_estilist_plateresco: registro.filiacion_plateresco,
+                        filiacion_estilist_barroco: registro.filiacion_barroco,
+                        filiacion_estilist_neoclasico: registro.filiacion_neoclasico,
+                        filiacion_estilist_rococo: registro.filiacion_rococo,
+                        filiacion_estilist_mudejar: registro.filiacion_mudejar,
+                        filiacion_estilist_otros: registro.filiacion_otros,
+                        estado_const_terminado: registro.estado_construccion_terminado,
+                        estado_const_en_const: registro.estado_construccion_en_construccion,
+                        estado_const_inconclusa: registro.estado_construccion_inconclusa,
+                        estado_const_sin_construir: registro.estado_construccion_sin_construir,
+                        material_pred_muros_adobe: registro.material_muro_adobe,
+                        material_pred_muros_quincha: registro.material_muro_quincha,
+                        material_pred_muros_madera: registro.material_muro_madera,
+                        material_pred_muros_ladrillo: registro.material_muro_ladrillo,
+                        material_pred_muros_piedra: registro.material_muro_piedra,
+                        material_pred_muros_concreto: registro.material_muro_concreto,
+                        material_pred_pisos_madera_parquet: registro.material_pisos_madera,
+                        material_pred_pisos_ladrillo_pastelero: registro.material_pisos_ladrillo,
+                        material_pred_pisos_ceramico: registro.material_pisos_ceramico,
+                        material_pred_pisos_piedra: registro.material_pisos_piedra,
+                        material_pred_pisos_tierra: registro.material_pisos_tierra,
+                        material_pred_pisos_concreto: registro.material_pisos_concreto,
+                        material_pred_techos_teja_artesanal: registro.material_techos_teja_artesanal,
+                        material_pred_techos_teja_indust: registro.material_techos_teja_industrial,
+                        material_pred_techos_calamina: registro.material_techos_calamina,
+                        material_pred_techos_translucido: registro.material_techos_translucidos,
+                        material_pred_techos_concreto: registro.material_techos_concreto,
+                        tipo_intervencion_obra_original: registro.tipo_intervension_obra_original,
+                        tipo_intervencion_restauracion: registro.tipo_intervension_restauracion,
+                        tipo_intervencion_refacion: registro.tipo_intervension_refacion,
+                        tipo_intervencion_remodelacion: registro.tipo_intervension_remodelacion,
+                        tipo_intervencion_reconstrucion: registro.tipo_intervension_reconstruccion,
+                        tipo_intervencion_obra_nueva: registro.tipo_intervension_obra_nueva,
+                        tipo_intervencion_demolicion: registro.tipo_intervension_demolicion,
+                        tipo_intervencion_ampliacion: registro.tipo_intervension_ampliacion,
+                        uso_actual_suelo_residencial: registro.uso_actual_residencial,
+                        uso_actual_suelo_comercio_servicio: registro.uso_actual_comercio,
+                        uso_actual_suelo_hospedaje: registro.uso_actual_hospedaje,
+                        uso_actual_suelo_educacion: registro.uso_actual_educacion,
+                        uso_actual_suelo_salud: registro.uso_actual_salud,
+                        uso_actual_suelo_recreacion: registro.uso_actual_recreacion,
+                        uso_actual_suelo_indus_produc: registro.uso_actual_industrial,
+                        uso_actual_suelo_otros_usos: registro.uso_actual_otros,
+                        cond_habitabilidad_optimo: registro.condicion_optimo,
+                        cond_habitabilidad_hacinado: registro.condicion_hacinado,
+                        cond_habitabilidad_tugurio: registro.condicion_tugurio,
+                        cond_habitabilidad_desocupado: registro.condicion_desocupado,
+                        servicios_comunes_serv_higienico: registro.sevicios_servicio_higenico,
+                        servicios_comunes_grifo_agua: registro.sevicios_grifo_agua,
+                        servicios_comunes_energia_luz: registro.sevicios_energia_luz,
+                        regimen_tenencia_propietario: registro.regimen_propietario,
+                        regimen_tenencia_alquilado: registro.regimen_alquilado,
+                        regimen_tenencia_anticresis: registro.regimen_anticresis,
+                        regimen_tenencia_consenso: registro.regimen_consenso,
+                        regimen_tenencia_alojado: registro.regimen_alojado,
+                        regimen_tenencia_otros: registro.regimen_otros,
+                        estado_conserv_bueno: registro.estado_conservacion_bueno,
+                        estado_conserv_regular: registro.estado_conservacion_regular,
+                        estado_conserv_malo: registro.estado_conservacion_malo,
+                        estado_conserv_ruinoso: registro.estado_conservacion_ruinoso,
+                        categoria_registro_valor_patrimonial: registro.categoria_valor_patrimonial,
+                        categoria_registro_valor_contextual: registro.categoria_valor_contextual,
+                        categoria_registro_elem_patrimoni: registro.categoria_elemento_patrimonial,
+                        categoria_registro_sin_valor: registro.categoria_sin_valor,
+                        espacios_zaguan: registro.espacios_zaguan,
+                        espacios_galeria_arcos: registro.espacios_arcos_galeria,
+                        espacios_galeria_adint: registro.espacios_adintelado_galeria,
+                        espacios_corredor: registro.espacios_corredor,
+                        espacios_chiflon: registro.espacios_chiflon,
+                        espacios_caja_escalera: registro.espacios_caja_escalera,
+                        espacios_logia_arcos: registro.espacios_arcos_logia,
+                        espacios_logia_adint: registro.espacios_adintelado_logia,
+                        espacios_otros: registro.espacios_otros,
+                        elem_valor_pintura_mural: registro.elementos_pintura_mural,
+                        elem_valor_religiosas: registro.elementos_religiosos,
+                        elem_valor_bienes_muebles: registro.elementos_bienes_muebles,
+                        elem_valor_diseminados: registro.elementos_diseminados,
+                    });
+                });
+            }
+
+            if (data.data.analisisfachadas?.length > 0) {
+                data.data.analisisfachadas.forEach((registro) => {
+                    append_fields_analisis_fachadas({
+                        elemento_codigo: registro.elemento_general,
+                        cantidad: registro.cantidad,
+                        facturacion_simple: registro.factura_simple,
+                        facturacion_elaborado: registro.factura_elaborado,
+                        ubicacion_fachada_1: registro.ubicacion_fachada1,
+                        ubicacion_fachada_2: registro.ubicacion_fachada2,
+                        ubicacion_fachada_3: registro.ubicacion_fachada3,
+                        ubicacion_fachada_4: registro.ubicacion_fachada4,
+                        epoca_prehispanico: registro.epoca_prehispanico,
+                        epoca_colonial: registro.epoca_colonial,
+                        epoca_republicano: registro.epoca_republicano,
+                        epoca_contemp: registro.epoca_contemporaneo,
+                        filiacion_estilistica_manierista: registro.filiacion_manierista,
+                        filiacion_estilistica_plateresco: registro.filiacion_plateresco,
+                        filiacion_estilistica_barroco: registro.filiacion_barroco,
+                        filiacion_estilistica_neoclasico: registro.filiacion_neoclasico,
+                        filiacion_estilistica_rococo: registro.filiacion_rococo,
+                        filiacion_estilistica_mudejar: registro.filiacion_mudejar,
+                        filiacion_estilistica_otros: registro.filiacion_otros,
+                        material_tierra: registro.material_tierra,
+                        material_ladrillo: registro.material_ladrillo,
+                        material_piedra: registro.material_piedra,
+                        material_yeso: registro.material_yeso,
+                        material_concreto: registro.material_concreto,
+                        material_madera: registro.material_madera,
+                        material_metal: registro.material_metal,
+                        material_vidrio: registro.material_vidrio,
+                        detalles_rejas: registro.detalles_rejas,
+                        detalles_balaustres: registro.detalles_balaustres,
+                        detalles_celosias: registro.detalles_celosias,
+                        detalles_casetones: registro.detalles_casetones,
+                        color_blanco: registro.color_blanco,
+                        color_marfil: registro.color_marfil,
+                        color_crema: registro.color_crema,
+                        color_azul: registro.color_azul,
+                        color_marron: registro.color_marron,
+                        color_verde: registro.color_verde,
+                        color_natural: registro.color_natural,
+                        color_otros: registro.color_otros,
+                        estado_conserv_bueno: registro.estado_conservacion_bueno,
+                        estado_conserv_regular: registro.estado_conservacion_regular,
+                        estado_conserv_malo: registro.estado_conservacion_malo,
+                        estado_conserv_ruinoso: registro.estado_conservacion_ruinoso,
+                    });
+                });
+            }
+        }
+        console.log(data)
+    }, [data, methods, append_fields_analisis_fachadas, append_fields_const, append_fields_no_const]);
+
+
+
+
+    if (isLoading || mutation.isLoading) {
+        return <div>Cargando...</div>;
+    }
+
+    if (isError || mutation.isError) {
+        return <div>Error: {error?.message || "Error desconocido"}</div>;
+    }
 
 
 
@@ -416,9 +650,16 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     <select
                                         id="select"
                                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        {...register('info_general_declaro_patrimonio', {
-                                            // required: 'Este campo es obligatorio.',
-                                        })}
+                                        value={
+                                            data?.data?.informacion?.patrimonio_si === "X"
+                                                ? "SI"
+                                                : data?.data?.informacion?.patrimonio_no === "X"
+                                                    ? "NO"
+                                                    : data?.data?.informacion?.patrimonio_tramite === "X"
+                                                        ? "EN TRAMITE"
+                                                        : ""
+                                        }
+                                        {...register("info_general_declaro_patrimonio")}
                                     >
                                         <option value="">Seleccione...</option>
                                         <option value="SI">SI</option>
@@ -445,6 +686,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_direccion}
                                     maxLength={100}
                                     isRequired={false}
+                                    value={data?.data?.informacion.direccion || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -459,6 +701,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_barrio}
                                     maxLength={100}
                                     isRequired={false}
+                                    value={data?.data?.informacion.barrio || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -473,6 +716,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_denominacion}
                                     maxLength={100}
                                     isRequired={false}
+                                    value={data?.data?.informacion.denominacion || ''}
                                 />
                             </div>
                             <div className="col-span-5 flex flex-col gap-2">
@@ -487,6 +731,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_cat_catal_ch}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.categoria || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -501,6 +746,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_zon_am}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.zonificacion_am || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -515,6 +761,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_zon_zt}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.zonificacion_zt || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -529,6 +776,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_sect_gest_s7}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.sectores || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -543,6 +791,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_fil_cult_ph}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.filiacion_ph || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -557,6 +806,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_fil_cult_c}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.filiacion_c || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -571,6 +821,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_fil_cult_r}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.filiacion_r || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -585,6 +836,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.info_general_fil_cult_cp}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.informacion.filiacion_cp || ''}
                                 />
                             </div>
                         </div>
@@ -597,20 +849,31 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                 size="xs"
                             />
                             <div className="my-4">
-                                <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Observaciones</label>
-                                <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                <label
+                                    htmlFor="message"
+                                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                >
+                                    Observaciones
+                                </label>
+                                <textarea
+                                    id="message"
+                                    rows="4"
+                                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones Tipos..."
+                                    defaultValue={data?.data?.informacion.contexto_historico || ''}
                                     {...register('contexto_historico_espacial', {
+                                        // Reglas de validación (descomentarlas si las necesitas)
                                         // required: 'Este campo es obligatorio.',
                                         // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
                                         // pattern: { value: /^[a-zA-Z]+$/, message: 'Solo se permiten letras.' },
                                     })}
-                                >
-                                </textarea>
+                                />
                             </div>
                             {errors.contexto_historico_espacial && (
                                 <span className="text-sm text-red-600 font-medium flex items-center gap-2">
-                                    <span className="link-icon">{<ErrorIcono strokeWidth={2} strokeColor="currentColor" />}</span>
+                                    <span className="link-icon">
+                                        <ErrorIcono strokeWidth={2} strokeColor="currentColor" />
+                                    </span>
                                     {errors.contexto_historico_espacial.message}
                                 </span>
                             )}
@@ -625,6 +888,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Observaciones</label>
                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones Tipos..."
+                                    defaultValue={data?.data?.informacion.descripcion_general || ''}
                                     {...register('descripcion_general', {
                                         // required: 'Este campo es obligatorio.',
                                         // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1219,7 +1483,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                             <div className="col-span-12 flex flex-col gap-2">
                                 <NumeroForm
                                     nro="214"
-                                    text="ANALISIS DE BLOQUES NO CONSTRUIDOS"
+                                    text="ANALISIS DE BLOQUES CONSTRUIDOS"
                                     size="sm"
                                 />
                                 <div className="w-full overflow-x-auto">
@@ -2241,6 +2505,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     />
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Observaciones..."
+                                        defaultValue={data?.data?.descripcion_fachada || ''}
                                         {...register('caracteristicas_fachada_colores_observaciones', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2307,6 +2572,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                             errors={errors.codigo_imagen_fachada_1}
                                             maxLength={10}
                                             isRequired={false}
+                                            value={data?.data?.descripcion_fachada || ''}
                                         />
                                     </div>
                                 </div>
@@ -2499,6 +2765,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Descripcion..."
+                                        defaultValue={data?.data?.culturaviva.descripcion || ''}
                                         {...register('cultura_viva_descripcion', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2517,13 +2784,14 @@ function EditFichaRegistroCatalogacionInmuebles() {
                             <div className="col-span-4 flex flex-col gap-2">
                                 <NumeroForm
                                     nro="243"
-                                    text="DESCRIPCION"
+                                    text="OBSERVACION"
                                     size="xs"
                                 />
 
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Observaciones..."
+                                        defaultValue={data?.data?.culturaviva.observaciones || ''}
                                         {...register('cultura_viva_observaciones', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -3007,6 +3275,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                 />
                                 <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Observaciones..."
+                                    defaultValue={data?.data?.observaciones || ''}
                                     {...register('analisis_fachadas_observaciones', {
                                         // required: 'Este campo es obligatorio.',
                                         // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -3034,6 +3303,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                 <input
                                     type="date"
                                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    value={data.data.responsable.fecha_creacion.split(' ')[0] || ''}
                                     {...register('fecha_inspeccion', {
                                         // required: 'Este campo es obligatorio.',
                                         // validate: value => new Date(value) <= new Date() || 'La fecha no puede ser futura.',
@@ -3055,6 +3325,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                 <input
                                     type="time"
                                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    value={data.data.responsable.fecha_creacion.split(' ')[1]}
                                     {...register('hora_inspeccion', {
                                         // required: 'Este campo es obligatorio.',
                                         // validate: value => value !== '' || 'Debe seleccionar una hora válida.',
@@ -3079,6 +3350,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     errors={errors.brigada}
                                     maxLength={100}
                                     isRequired={false}
+                                    value={data?.data?.responsable.brigada || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -3094,6 +3366,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     maxLength={100}
                                     tipo="letras"
                                     isRequired={false}
+                                    value={data?.data?.responsable.coordinador.nombres || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -3109,6 +3382,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     maxLength={100}
                                     tipo="letras"
                                     isRequired={false}
+                                    value={data?.data?.responsable.tecnico.nombres || ''}
                                 />
                             </div>
                             <div className="col-span-4 flex flex-col gap-2">
@@ -3124,6 +3398,7 @@ function EditFichaRegistroCatalogacionInmuebles() {
                                     maxLength={100}
                                     tipo="letras"
                                     isRequired={false}
+                                    value={data?.data?.responsable.propietario.nombres || ''}
                                 />
                             </div>
                         </div>
