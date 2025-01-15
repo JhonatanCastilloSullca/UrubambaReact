@@ -1,15 +1,24 @@
 import { useForm, FormProvider, useFieldArray } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import OnlyInputError from "../../../components/OnlyInputError";
 import NumeroForm from "../../../components/NumeroForm";
 import MainCard from "../../../components/MainCard";
 import OnlyLabelTd from "../../../components/OnlyLabelTd";
 import OnlyInputLetras from "../../../components/OnlyInputLetras";
 import ErrorIcono from "../../../assets/icons/errorIcono";
+import { useEffect } from "react";
 
 function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
-    const methods = useForm();
+
+    const methods = useForm({
+        defaultValues: {
+            evidencias_arq_fachadas_inmuebles: [],
+            evidencias_arq_fachadas_interior_inmuebles: [],
+        },
+        mode: "onBlur",
+    });
+
     const { register, control, handleSubmit, formState: { errors } } = methods;
     const { fields: fields_evidencias_arq_fachadas_inmuebles, append: append_fields_evidencias_arq_fachadas_inmuebles, remove: remove_fields_evidencias_arq_fachadas_inmuebles } = useFieldArray({
         control,
@@ -20,10 +29,32 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
         name: "evidencias_arq_fachadas_interior_inmuebles",
     });
 
-
+    const { id } = useParams();
     const navigate = useNavigate();
 
+    const getHeaders = () => ({
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    });
 
+    const fetchData = async (id) => {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble-arquitectonica/${id}`, {
+            method: "GET",
+            headers: getHeaders(),
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al obtener los datos");
+        }
+
+        return response.json();
+    };
+
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ["analisis_bloques_no_construidos", "analisis_bloques_construidos", "analisis_fachadas", id],
+        queryFn: () => fetchData(id),
+        enabled: !!id,
+    });
 
     const postData = async (formData) => {
         const token = localStorage.getItem("token");
@@ -41,23 +72,16 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
         return response.json();
     };
 
-
-
-
-
     const mutation = useMutation({
         mutationFn: postData,
         onSuccess: () => {
             console.log("Enviado correctamente");
-            navigate("/");
+            navigate("/impresion/ficha-registro-catalogacion-inmuebles-area-monumental");
         },
         onError: (error) => {
             console.error("Error al enviar los datos:", error);
         },
     });
-
-
-
 
     const onSubmit = (data) => {
         const formData = new FormData();
@@ -94,14 +118,179 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
 
             formData.append(name, JSON.stringify(groupData));
         });
+        formData.append("ficha_id_anterior", id);
 
         for (let [key, value] of formData.entries()) {
             console.log(key, value);
         }
-
+        console.log(formData);
 
         mutation.mutate(formData);
     };
+
+
+
+    useEffect(() => {
+        if (data) {
+            methods.reset(data);
+            if (data.data.evidenciaarquelogicafachadas?.length > 0) {
+                data.data.evidenciaarquelogicafachadas.forEach((registro) => {
+                    append_fields_evidencias_arq_fachadas_interior_inmuebles({
+
+                        evidencia_material: registro.evidencia_material,
+                        ubicacion_fachada_1: registro.ubicacion_fachada1,
+                        ubicacion_fachada_2: registro.ubicacion_fachada2,
+                        ubicacion_fachada_3: registro.ubicacion_fachada3,
+                        ubicacion_fachada_4: registro.ubicacion_fachada4,
+                        ident_paramento_original_prehisp: registro.identificacion_origial_prehispanico,
+                        ident_paramento_elem_orig_reutilizados: registro.identificacion_elementos_originales,
+                        ident_paramento_reconstruido: registro.identificacion_reconstruido,
+                        ident_paramento_restaurado: registro.identificacion_restaurado,
+                        tipo_const_estruc_arq_anden: registro.construccion_anden,
+                        tipo_const_estruc_arq_cancha: registro.construccion_cancha,
+                        tipo_const_estruc_arq_canal: registro.construccion_canal,
+                        tipo_const_estruc_arq_calle: registro.construccion_calle,
+                        tipo_const_estruc_arq_contencion: registro.construccion_contencion,
+                        tipo_const_estruc_arq_escalinata: registro.construccion_escalinata,
+                        tipo_const_estruc_arq_recinto: registro.construccion_recinto,
+                        tipo_const_estruc_arq_muro_portante: registro.construccion_muro_portante,
+                        tipo_const_estruc_arq_vacio1: registro.tipo_const_estruc_arq_vacio1,
+                        elem_estruc_arq_argollas: registro.elementos_argollas,
+                        elem_estruc_arq_canal_drenaje: registro.elementos_canal_drenaje,
+                        elem_estruc_arq_clavos: registro.elementos_clavos,
+                        elem_estruc_arq_dintel: registro.elementos_dintel,
+                        elem_estruc_arq_nicho: registro.elementos_nicho,
+                        elem_estruc_arq_petroglifo: registro.elementos_petroglifo,
+                        elem_estruc_arq_vano_original: registro.elementos_vano_original,
+                        elem_estruc_arq_vano_aperturado: registro.elementos_vano_aperturado,
+                        elem_estruc_arq_umbral: registro.elementos_umbral,
+                        elem_estruc_arq_vacio1: registro.elem_estruc_arq_vacio1,
+                        elem_estruc_arq_vacio2: registro.elem_estruc_arq_vacio2,
+                        aparejos_acab_celular: registro.acabados_celular,
+                        aparejos_acab_canteado: registro.acabados_canteado,
+                        aparejos_acab_engastado: registro.acabados_engastado,
+                        aparejos_acab_poligonal: registro.acabados_poligonal,
+                        aparejos_acab_sedimentario: registro.acabados_sedimentario,
+                        aparejos_acab_rustico: registro.acabados_rustico,
+                        aparejos_acab_vacio1: registro.aparejos_acab_vacio1,
+                        aparejos_acab_vacio2: registro.aparejos_acab_vacio2,
+                        material_const_andesita: registro.material_andesita,
+                        material_const_arenisca: registro.material_arenisca,
+                        material_const_caliza: registro.material_caliza,
+                        material_const_diorita: registro.material_diorita,
+                        material_const_granito: registro.material_granito,
+                        material_const_vacio1: registro.material_const_vacio1,
+                        material_const_vacio2: registro.material_const_vacio2,
+                        mortero_arcilla: registro.mortero_arcilla,
+                        mortero_barro: registro.mortero_barro,
+                        mortero_calicanto: registro.mortero_calicanto,
+                        mortero_emboquillado: registro.mortero_emboquillado,
+                        mortero_sin_mortero: registro.mortero_sin_mortero,
+                        mortero_cemento: registro.mortero_cemento,
+                        mortero_vacio1: registro.mortero_vacio1,
+                        mortero_vacio2: registro.mortero_vacio2,
+                        medidas_altura_promedio: registro.medidas_altura,
+                        medidas_ancho: registro.medidas_ancho,
+                        medidas_largo: registro.medidas_largo,
+                        medidas_profundidad: registro.medidas_profundida,
+                        medidas_diametro_dimension: registro.medidas_diametro,
+                        medidas_inclinacion: registro.medidas_inclinacion,
+                        estruc_compart_inmueb_compart_evidenc_estruc_arq: registro.estructuras_inmuebles,
+                        conserv_bueno: registro.conservacion_bueno,
+                        conserv_regular: registro.conservacion_regular,
+                        conserv_malo: registro.conservacion_malo,
+                    });
+                });
+            }
+
+            if (data.data.evidenciaarquelogicainmuebles?.length > 0) {
+                data.data.evidenciaarquelogicainmuebles.forEach((registro) => {
+                    append_fields_evidencias_arq_fachadas_inmuebles({
+
+                        evidencia_material: registro.evidencia_material,
+                        ident_paramento_original_prehisp: registro.identificacion_origial_prehispanico,
+                        ident_paramento_elem_orig_reutilizados: registro.identificacion_elementos_originales,
+                        ident_paramento_reconstruido: registro.identificacion_reconstruido,
+                        ident_paramento_restaurado: registro.identificacion_restaurado,
+                        ident_paramento_vacio1: registro.ident_paramento_vacio1,
+                        ident_paramento_vacio2: registro.ident_paramento_vacio2,
+                        ident_paramento_vacio3: registro.ident_paramento_vacio3,
+                        ident_paramento_vacio4: registro.ident_paramento_vacio4,
+                        tipo_const_estruc_arq_anden: registro.construccion_anden,
+                        tipo_const_estruc_arq_cancha: registro.construccion_cancha,
+                        tipo_const_estruc_arq_canal: registro.construccion_canal,
+                        tipo_const_estruc_arq_calle: registro.construccion_calle,
+                        tipo_const_estruc_arq_contencion: registro.construccion_contencion,
+                        tipo_const_estruc_arq_escalinata: registro.construccion_escalinata,
+                        tipo_const_estruc_arq_recinto: registro.construccion_recinto,
+                        tipo_const_estruc_arq_muro_portante: registro.construccion_muro_portante,
+                        elem_estruc_arq_argollas: registro.elementos_argollas,
+                        elem_estruc_arq_canal_drenaje: registro.elementos_canal_drenaje,
+                        elem_estruc_arq_clavos: registro.elementos_clavos,
+                        elem_estruc_arq_dintel: registro.elementos_dintel,
+                        elem_estruc_arq_nicho: registro.elementos_nicho,
+                        elem_estruc_arq_petroglifo: registro.elementos_petroglifo,
+                        elem_estruc_arq_vano_original: registro.elementos_vano_original,
+                        elem_estruc_arq_vano_aperturado: registro.elementos_vano_aperturado,
+                        elem_estruc_arq_umbral: registro.elementos_umbral,
+                        elem_estruc_arq_elem_liticos_sueltos: registro.elem_estruc_arq_elem_liticos_sueltos,
+                        elem_estruc_arq_vacio1: registro.elem_estruc_arq_vacio1,
+                        elem_estruc_arq_vacio2: registro.elem_estruc_arq_vacio2,
+                        aparejos_acab_celular: registro.acabados_celular,
+                        aparejos_acab_canteado: registro.acabados_canteado,
+                        aparejos_acab_engastado: registro.acabados_engastado,
+                        aparejos_acab_poligonal: registro.acabados_poligonal,
+                        aparejos_acab_sedimentario: registro.acabados_sedimentario,
+                        aparejos_acab_rustico: registro.acabados_rustico,
+                        aparejos_acab_vacio1: registro.aparejos_acab_vacio1,
+                        aparejos_acab_vacio2: registro.aparejos_acab_vacio2,
+                        aparejos_acab_vacio3: registro.aparejos_acab_vacio3,
+                        material_const_andesita: registro.material_andesita,
+                        material_const_arenisca: registro.material_arenisca,
+                        material_const_caliza: registro.material_caliza,
+                        material_const_diorita: registro.material_diorita,
+                        material_const_granito: registro.material_granito,
+                        material_const_vacio1: registro.material_const_vacio1,
+                        material_const_vacio2: registro.material_const_vacio2,
+                        mortero_arcilla: registro.mortero_arcilla,
+                        mortero_barro: registro.mortero_barro,
+                        mortero_calicanto: registro.mortero_calicanto,
+                        mortero_emboquillado: registro.mortero_emboquillado,
+                        mortero_sin_mortero: registro.mortero_sin_mortero,
+                        mortero_cemento: registro.mortero_cemento,
+                        mortero_vacio1: registro.mortero_vacio1,
+                        mortero_vacio2: registro.mortero_vacio2,
+                        medidas_altura_promedio: registro.medidas_altura,
+                        medidas_ancho: registro.medidas_ancho,
+                        medidas_largo: registro.medidas_largo,
+                        medidas_profundidad: registro.medidas_profundida,
+                        medidas_diametro_dimension: registro.medidas_diametro,
+                        medidas_inclinacion: registro.medidas_inclinacion,
+                        estruc_compart_inmueb_compart_evidenc_estruc_arq: registro.estructuras_inmuebles,
+                        conserv_bueno: registro.conservacion_bueno,
+                        conserv_regular: registro.conservacion_regular,
+                        conserv_malo: registro.conservacion_malo,
+
+                    });
+                });
+            }
+
+        }
+        // value={data?.data?.declarantes[0].brigada || ''}
+    }, [data, methods, append_fields_evidencias_arq_fachadas_inmuebles, append_fields_evidencias_arq_fachadas_interior_inmuebles]);
+
+
+
+    if (isLoading || mutation.isLoading) {
+        return <div>Cargando...</div>;
+    }
+
+    if (isError || mutation.isError) {
+        return <div>Error: {error?.message || "Error desconocido"}</div>;
+    }
+
+
+
     return (
         <>
             <h3 className="mb-4 font-bold text-2xl text-textAdmin-light dark:text-textAdmin-dark">
@@ -124,6 +313,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     errors={errors.codigo_unico_catastral}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.cod_unico_catastral || ''}
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-3">
@@ -138,6 +328,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     errors={errors.codigo_hoja_catastral}
                                     maxLength={10}
                                     isRequired={false}
+                                    value={data?.data?.cod_hoja_catastral || ''}
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-2">
@@ -152,6 +343,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     errors={errors.nro_ficha}
                                     maxLength={15}
                                     isRequired={true}
+                                    value={data?.data?.num_ficha || ''}
                                 />
                             </div>
                             <div className="flex flex-col gap-2 col-span-2">
@@ -166,6 +358,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                     errors={errors.nombre_calle}
                                     maxLength={100}
                                     isRequired={false}
+                                    value={data?.data?.direccion || ''}
                                 />
                             </div>
                         </div>
@@ -189,6 +382,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_dpto}
                                                     maxLength={2}
                                                     isRequired={true}
+                                                    value={data?.data?.unidad.cod_dep || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -200,6 +394,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_prov}
                                                     maxLength={2}
                                                     isRequired={true}
+                                                    value={data?.data?.unidad.cod_prov || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -211,6 +406,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_dist}
                                                     maxLength={2}
                                                     isRequired={true}
+                                                    value={data?.data?.unidad.cod_dist || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -226,6 +422,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_sector}
                                                     maxLength={3}
                                                     isRequired={true}
+                                                    value={data?.data?.unidad.cod_sector || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -237,6 +434,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_mzna}
                                                     maxLength={3}
                                                     isRequired={true}
+                                                    value={data?.data?.unidad.cod_manzana || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -248,6 +446,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_lote}
                                                     maxLength={3}
                                                     isRequired={true}
+                                                    value={data?.data?.unidad.cod_lote || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -259,6 +458,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_cod_fraccion}
                                                     maxLength={2}
                                                     isRequired={false}
+                                                    value={data?.data?.unidad.cod_fraccion || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -270,6 +470,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_edifica}
                                                     maxLength={2}
                                                     isRequired={false}
+                                                    value={data?.data?.unidad.cod_edifica || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -281,6 +482,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_entrada}
                                                     maxLength={2}
                                                     isRequired={false}
+                                                    value={data?.data?.unidad.cod_entrada || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -292,6 +494,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_piso}
                                                     maxLength={2}
                                                     isRequired={false}
+                                                    value={data?.data?.unidad.cod_piso || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -303,6 +506,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_unidad}
                                                     maxLength={2}
                                                     isRequired={false}
+                                                    value={data?.data?.unidad.cod_unidad || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -314,6 +518,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                     errors={errors.ubicacion_dc}
                                                     maxLength={1}
                                                     isRequired={false}
+                                                    value={data?.data?.unidad.cod_dc || ''}
                                                     tipo="numeros"
                                                 />
                                             </div>
@@ -334,6 +539,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                             name={`ubicacion_sector_2`}
                                             register={register}
                                             errors={errors.ubicacion_sector_2}
+                                            value={data?.data?.registro.cod_sector || ''}
                                             maxLength={3}
                                             isRequired={true}
                                             tipo="numeros"
@@ -344,6 +550,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`ubicacion_mzna_2`}
                                             register={register}
+                                            value={data?.data?.registro.cod_manzana || ''}
                                             errors={errors.ubicacion_mzna_2}
                                             maxLength={3}
                                             isRequired={true}
@@ -355,6 +562,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`ubicacion_lote_2`}
                                             register={register}
+                                            value={data?.data?.registro.cod_lote || ''}
                                             errors={errors.ubicacion_lote_2}
                                             maxLength={3}
                                             isRequired={true}
@@ -366,6 +574,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`ubicacion_fraccion`}
                                             register={register}
+                                            value={data?.data?.registro.cod_fraccion || ''}
                                             errors={errors.ubicacion_fraccion}
                                             maxLength={2}
                                             isRequired={false}
@@ -420,8 +629,8 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                 <OnlyLabelTd className="h-48" colspan={1} label="Con elementos originales reutilizados" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Reconstruido" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Restaurado" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Anden" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Cancha" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Canal" orientation="vertical" />
@@ -430,7 +639,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                 <OnlyLabelTd colspan={1} label="Escalinata" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Recinto" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Muro Portante" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Argollas" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Canal de Drenaje" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Clavos" orientation="vertical" />
@@ -440,31 +649,31 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                                 <OnlyLabelTd colspan={1} label="Vano Original" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Vano Aperturado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Umbral" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Celular" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Canteado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Engastado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Poligonal" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Sedimentario" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Rustico" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Andesita" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Arenisca" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Caliza" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Diorita" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Granito" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Arcilla" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Barro" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Calicanto" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Emboquillado" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Sin Mortero" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Cemento" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 1" orientation="vertical" />
-                                                <OnlyLabelTd colspan={1} label="Vacio 2" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
+                                                <OnlyLabelTd colspan={1} label="" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Altura Promedio" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Ancho" orientation="vertical" />
                                                 <OnlyLabelTd colspan={1} label="Largo" orientation="vertical" />
@@ -1641,6 +1850,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Observaciones Evidencias Arqueologicas en el Interior del Inmueble..."
+                                        defaultValue={data?.data?.observaciones_evidencias || ''}
                                         {...register('observaciones_evidencias_arqueologicas_int', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1670,6 +1880,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Observaciones..."
+                                        defaultValue={data?.data?.observaciones || ''}
                                         {...register('observaciones', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1695,6 +1906,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Recomendaciones..."
+                                        defaultValue={data?.data?.recomendaciones || ''}
                                         {...register('recomendaciones', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1733,6 +1945,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`pea`}
                                             register={register}
+                                            value={data?.data?.informacioninmuebles.pea || ''}
                                             errors={errors.pea}
                                             maxLength={10}
                                             isRequired={false}
@@ -1746,6 +1959,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`pea_año`}
                                             register={register}
+                                            value={data?.data?.informacioninmuebles.pea_año || ''}
                                             errors={errors.pea_año}
                                             maxLength={10}
                                             isRequired={false}
@@ -1763,6 +1977,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`pia`}
                                             register={register}
+                                            value={data?.data?.informacioninmuebles.pia || ''}
                                             errors={errors.pia}
                                             maxLength={10}
                                             isRequired={false}
@@ -1776,6 +1991,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`pia_año`}
                                             register={register}
+                                            value={data?.data?.informacioninmuebles.pia_año || ''}
                                             errors={errors.pia_año}
                                             maxLength={10}
                                             isRequired={false}
@@ -1793,6 +2009,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`pmar`}
                                             register={register}
+                                            value={data?.data?.informacioninmuebles.pmar || ''}
                                             errors={errors.pmar}
                                             maxLength={10}
                                             isRequired={false}
@@ -1806,6 +2023,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         <OnlyInputError
                                             name={`pmar_año`}
                                             register={register}
+                                            value={data?.data?.informacioninmuebles.pmar_año || ''}
                                             errors={errors.pmar_año}
                                             maxLength={10}
                                             isRequired={false}
@@ -1821,6 +2039,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <OnlyInputError
                                     name={`ninguna`}
                                     register={register}
+                                    value={data?.data?.informacioninmuebles.ninguna || ''}
                                     errors={errors.ninguna}
                                     maxLength={10}
                                     isRequired={false}
@@ -1835,6 +2054,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Observaciones..."
+                                        defaultValue={data?.data?.informacioninmuebles.observaciones || ''}
                                         {...register('observaciones_informacion_inmueble', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1869,6 +2089,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Costumbre y tradiciones..."
+                                        defaultValue={data?.data?.culturaviva.constumbres_tradiciones || ''}
                                         {...register('costumbres_tradiciones', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1894,6 +2115,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Colecciones Singulares..."
+                                        defaultValue={data?.data?.culturaviva.colecciones_singulares || ''}
                                         {...register('colecciones_singulares', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1945,6 +2167,8 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Registro fotografico Descripción..."
+                                        defaultValue={data?.data?.culturaviva.descripcionfachada1 || ''}
+
                                         {...register('registro_fotografico_1_descripcion', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -1996,6 +2220,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Registro fotografico Descripción..."
+                                        defaultValue={data?.data?.culturaviva.descripcionfachada2 || ''}
                                         {...register('registro_fotografico_2_descripcion', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2021,6 +2246,8 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Contaminacion..."
+                                        defaultValue={data?.data?.contaminacion.contaminacion || ''}
+
                                         {...register('contaminacion', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2047,6 +2274,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <input
                                     type="time"
                                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    value={data.data.contaminacion.fecha_creacion.split(' ')[1]}
                                     {...register('hora_inspeccion', {
                                         // required: 'Este campo es obligatorio.',
                                         // validate: value => value !== '' || 'Debe seleccionar una hora válida.',
@@ -2068,6 +2296,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <input
                                     type="date"
                                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    value={data.data.contaminacion.fecha_creacion.split(' ')[0] || ''}
                                     {...register('fecha_inspeccion', {
                                         // required: 'Este campo es obligatorio.',
                                         // validate: value => new Date(value) <= new Date() || 'La fecha no puede ser futura.',
@@ -2089,6 +2318,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <OnlyInputError
                                     name={`nombre_catalogador`}
                                     register={register}
+                                    value={data?.data?.contaminacion.catalogador.nombres || ''}
                                     errors={errors.nombre_catalogador}
                                     maxLength={100}
                                     isRequired={false}
@@ -2112,6 +2342,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="CERAMICA (DESCRIBIR)"
+                                        defaultValue={data?.data?.evidenciaarquelogicaestructural.ceramica || ''}
                                         {...register('evidencias_arq_no_estruc_ceramica', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2137,6 +2368,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="ORGANICOS (DESCRIBIR)"
+                                        defaultValue={data?.data?.evidenciaarquelogicaestructural.organicos || ''}
                                         {...register('evidencias_arq_no_estruc_organicos', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2162,6 +2394,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="OTROS (DESCRIBIR)"
+                                        defaultValue={data?.data?.evidenciaarquelogicaestructural.otros || ''}
                                         {...register('evidencias_arq_no_estruc_otros', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2187,6 +2420,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                 <div className="my-4">
                                     <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="LITOS TRABAJADOS PETROGLIFOS (DESCRIBIR)"
+                                        defaultValue={data?.data?.evidenciaarquelogicaestructural.litos_trabajados || ''}
                                         {...register('evidencias_arq_no_estruc_litos_trabajados_petroglifos', {
                                             // required: 'Este campo es obligatorio.',
                                             // minLength: { value: 1, message: 'Debe tener al menos 1 caracteres.' },
@@ -2259,6 +2493,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_1_dni}
                                         maxLength={15}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[0]?.persona.num_documento || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2273,6 +2508,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_1_nombres}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[0]?.persona.nombres || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2287,6 +2523,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_1_apellidos}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[0]?.persona.apellido_paterno || ''}
                                     />
                                 </div>
                             </div>
@@ -2309,6 +2546,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_2_dni}
                                         maxLength={15}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[1]?.persona.num_documento || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2323,6 +2561,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_2_nombres}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[1]?.persona.nombres || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2337,6 +2576,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_2_apellidos}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[1]?.persona.apellido_paterno || ''}
                                     />
                                 </div>
                             </div>
@@ -2359,6 +2599,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_3_dni}
                                         maxLength={15}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[2]?.persona.num_documento || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2373,6 +2614,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_3_nombres}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[2]?.persona.nombres || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2387,6 +2629,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_3_apellidos}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[2]?.persona.apellido_paterno || ''}
                                     />
                                 </div>
                             </div>
@@ -2409,6 +2652,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_4_dni}
                                         maxLength={15}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[3]?.persona.num_documento || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2423,6 +2667,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_4_nombres}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[3]?.persona.nombres || ''}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 my-2">
@@ -2437,6 +2682,7 @@ function EditFichaRegistroCatalogacionInmueblesAreaMonumental() {
                                         errors={errors.declarante_4_apellidos}
                                         maxLength={100}
                                         isRequired={false}
+                                        value={data?.data?.declarantes[3]?.persona.apellido_paterno || ''}
                                     />
                                 </div>
                             </div>
