@@ -1,12 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import ErrorIcono from "../../../assets/icons/errorIcono";
 import Datatable from "../../../components/Datatable";
 import MainCard from "../../../components/MainCard";
 import { useNavigate } from 'react-router-dom';
 
-
-
-const columns = (navigate) => [
+const columns = (navigate, handleDelete) => [
     {
         header: "ID",
         accessorKey: 'id',
@@ -40,13 +38,19 @@ const columns = (navigate) => [
                     onClick={() => navigate(`/impresion/ficha-registro-catalogacion-inmuebles-area-monumental/${row.original.id}`)}
                     className="btn btn-primary"
                 >
-                    Ver detalles
+                    Ver Ficha
                 </button>
                 <button
                     onClick={() => navigate(`/edit/edit-ficha-registro-catalogacion-inmuebles-area-monumental/${row.original.id}`)}
                     className="btn btn-primary"
                 >
                     Editar Ficha
+                </button>
+                <button
+                    onClick={() => handleDelete(row.original.id)}
+                    className="btn btn-danger"
+                >
+                    Eliminar
                 </button>
             </div>
         ),
@@ -55,8 +59,6 @@ const columns = (navigate) => [
 
 const fetchUsuarios = async () => {
     const token = localStorage.getItem("token");
-
-
     const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble-arquitectonica`, {
         method: "GET",
         headers: {
@@ -72,9 +74,9 @@ const fetchUsuarios = async () => {
     return data;
 };
 
-
 function ImpresionFichaRegistroHistorico() {
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
 
     const { data: usuarios, isLoading, isError, error } = useQuery({
         queryKey: ['usuarios'],
@@ -82,7 +84,31 @@ function ImpresionFichaRegistroHistorico() {
         retry: false,
     });
 
+    const handleDelete = async (id) => {
+        if (window.confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+            try {
+                const token = localStorage.getItem("token");
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ficha-inmueble-arquitectonica/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
 
+                if (response.ok) {
+                    alert("Registro eliminado exitosamente.");
+                    queryClient.invalidateQueries(['usuarios']);
+                } else {
+                    const errorData = await response.json();
+                    console.error("Error al eliminar:", errorData);
+                    alert("Hubo un problema al eliminar el registro.");
+                }
+            } catch (error) {
+                console.error("Error en la solicitud:", error);
+                alert("Ocurrió un error al intentar eliminar el registro.");
+            }
+        }
+    };
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -99,17 +125,12 @@ function ImpresionFichaRegistroHistorico() {
 
     return (
         <MainCard>
-
-            <div className="">
+            <div>
                 <h4 className="mb-4">Listado de Usuarios</h4>
-
-
             </div>
-            <Datatable columns={columns(navigate)} data={usuarios.data} />
+            <Datatable columns={columns(navigate, handleDelete)} data={usuarios.data} />
         </MainCard>
     );
 }
 
 export default ImpresionFichaRegistroHistorico;
-
-
