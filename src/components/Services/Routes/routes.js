@@ -12,23 +12,7 @@ const routes = [
         private: true,
         icon: 'MenuIcon',
     },
-    // {
-    //     to: '/roles',
-    //     text: 'Roles',
-    //     private: true,
-    //     icon: 'MenuIcon',
-    // },
-    // {
-    //     text: 'Mantenimiento',
-    //     private: true,
-    //     icon: 'MenuIcon',
-    //     subLinks: [
-    //         { to: '/configuracion/sectores', text: 'Sectores' },
-    //         { to: '/configuracion/manzanas', text: 'Manzanas' },
-    //         { to: '/configuracion/vias', text: 'Vías' },
-    //         { to: '/configuracion/tecnicos', text: 'Tecnicos' },
-    //     ],
-    // },
+
     {
         text: 'Fichas',
         private: true,
@@ -52,19 +36,6 @@ const routes = [
         ],
     },
 
-    // {
-    //     to: '/login',
-    //     text: 'Progreso de fichas',
-    //     private: false,
-    //     publicOnly: true,
-    //     icon: 'MenuIcon',
-    // },
-    // {
-    //     to: '/logout',
-    //     text: 'Visor de mapas',
-    //     private: true,
-    //     icon: 'MenuIcon',
-    // },
 ];
 
 export default routes;
